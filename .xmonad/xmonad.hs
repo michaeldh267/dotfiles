@@ -37,5 +37,5 @@ main = do
                          ]
 
 myStartupHook = do
---	spawn "xsetroot -cursor_name left_ptr"
-	spawn "pkill xfsettingsd; xfsettingsd"
+--      spawn "xsetroot -cursor_name left_ptr"
+        spawn "pkill xfsettingsd; xfsettingsd"
