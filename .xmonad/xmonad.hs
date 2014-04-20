@@ -1,18 +1,15 @@
 -- Running on XMonad 0.11 with XMobar 0.20.1 on Slackware 14.1
 import XMonad
+import XMonad.Actions.CycleWS
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
-import XMonad.Util.Run(spawnPipe)
 import XMonad.Hooks.UrgencyHook
-import System.IO
 import XMonad.Layout
 import XMonad.Layout.NoBorders
 import XMonad.StackSet as W (focusUp, focusDown)
 import XMonad.Util.EZConfig(additionalKeys, additionalKeysP)
-import XMonad.Actions.CycleWS
-
-
-
+import XMonad.Util.Run(spawnPipe)
+import System.IO
 
 main = do
   xmproc <- spawnPipe "/home/myk/.cabal/bin/xmobar /home/myk/.xmobarrc"
