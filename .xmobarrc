@@ -1,0 +1,19 @@
+Config { font = "-*-terminus-*-*-*-*-14-*-*-*-*-*-iso10646-*"
+       , borderColor = "Black"
+       , border = TopB
+       , bgColor = "Black"
+       , fgColor = "grey60"
+       , lowerOnStart = True
+       , pickBroadest = False
+       , persistent   = False
+       , hideOnStart  = False
+       , allDesktops  = True
+       , overrideRedirect = True
+       , position = TopW L 100
+       , commands = [ Run Date "%a %b %_d %l:%M" "date" 01
+                    , Run StdinReader
+                    ]
+       , sepChar = "%"
+       , alignSep = "}{"
+       , template = "%StdinReader% }{ %date% "
+}      
