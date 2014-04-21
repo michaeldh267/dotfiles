@@ -22,7 +22,10 @@ main = do
        , layoutHook = smartBorders $ avoidStruts  $  layoutHook defaultConfig
        , logHook = dynamicLogWithPP $ xmobarPP
                    { ppOutput = hPutStrLn xmproc
-                   , ppTitle = xmobarColor "green" "" . shorten 50
+                   , ppTitle = xmobarColor   "grey60" "" -- Window title format
+                   , ppUrgent = xmobarColor  "DodgerBlue" "" . wrap "" "" 
+                   , ppCurrent = xmobarColor "Gold" "grey30" . wrap "" ""
+                   , ppLayout = xmobarColor  "grey60" ""-- layout format Full, Tall, etc
                    }
        , startupHook = myStartupHook
        }
