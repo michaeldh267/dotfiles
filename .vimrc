@@ -5,6 +5,9 @@ filetype plugin indent on
 set background=dark
 colorscheme badwolf
 
+set path=.,**
+set spelllang=en
+set omnifunc=syntaxcomplete#Complete
 set nocompatible
 set modelines=0
 set tabstop=4
@@ -90,3 +93,12 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_python_python_exec = '/usr/bin/python3'
 let g:syntastic_shell = "/bin/zsh"
 
+" F5 All the things!
+" au FileType python map <F5> :!clear && python -i %<CR>
+" au FileType python map <F5> :!clear; and bpython -i %<CR>
+" au BufWritePost *.py silent !ctags -R .
+" au FileType vim map <F5> :so ~/.vimrc<CR>
+
+au FocusLost * :wa " Gvim: save if focus lost
+
+au FileType html map <F5> :!iceweasel %<CR><CR>

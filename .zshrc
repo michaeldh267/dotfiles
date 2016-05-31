@@ -36,10 +36,10 @@ zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' # +case insens
 REPORTTIME=5
 alias l='ls --color=auto'
 alias ls='ls --color=auto -X'
+alias la='ls --color=auto -Xa'
 alias j='jobs'
-alias st='stterm -f "Ubuntu Mono:size=20:antialias=true:autohint=true"'
 alias m='mocp'
-alias v='vim.nox-py2'
+alias v='vim'
 
 # Who loves the path?
 export PATH=~/bin:$PATH
