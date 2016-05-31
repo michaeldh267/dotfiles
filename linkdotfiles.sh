@@ -1,11 +1,12 @@
 #!/bin/sh
 
-if [ ! -e "$HOME/.vimrc" ]; then
-	ln -sfv "$PWD/.vimrc" "$HOME/.vimrc";
-fi
+#if ! [ -e "$HOME/.vimrc" ]; then
+# Why test these? ln already tests if a file exists.
+ln -sv "$PWD/.vimrc" "$HOME/.vimrc"
+#fi
 
-if [ ! -e "$HOME/.zshrc" ]; then
-	ln -sfv "$PWD/.zshrc" "$HOME/.zshrc";
-fi
+ln -sv "$PWD/.zshrc" "$HOME/.zshrc"
 
-#TODO /f link-if-not-exists
+
+ln -sv "$PWD/.Xresources" "$HOME/.Xresources"
+
