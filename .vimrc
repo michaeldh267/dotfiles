@@ -64,15 +64,18 @@ if has('win32')
 else
 	let s:homedir = "$HOME/.vim"
 endif
+execute "set backupdir=" . s:homedir . "/backup"
+execute "set directory=" . s:homedir . "/directory"
+execute "set undodir=" . s:homedir . "/undo"
 if !isdirectory(expand(&backupdir))
     call mkdir(expand(&backupdir))
 endif
 if !isdirectory(expand(&undodir))
     call mkdir(expand(&undodir))
 endif
-execute "set backupdir=" . s:homedir . "/backup"
-execute "set directory=" . s:homedir . "/backup"
-execute "set undodir=" . s:homedir . "/undo"
+if !isdirectory(expand(&directory))
+    call mkdir(expand(&directory))
+endif
 
 set statusline=%<%f\ %y%h%m%r%=%-14.(%l,%c%V%)\ %P
 set statusline+=%#warningmsg#
