@@ -1,10 +1,13 @@
-execute pathogen#infect()
-syntax on
-filetype plugin indent on
-" Depends: vim-sensibile, badwolf, syntastic
-set background=dark
-colorscheme badwolf
-
+call plug#begin('~/.vim/plugged')
+Plug 'https://github.com/tpope/vim-sensible'
+Plug 'scrooloose/syntastic'
+Plug 'fatih/vim-go'
+"Plug 'https://github.com/flazz/vim-colorschemes'
+call plug#end()
+"execute pathogen#infect()
+"Depends: vim-sensibile, badwolf, syntastic
+"set background=dark
+"colorscheme badwolf
 set path=.,**
 set spelllang=en
 set omnifunc=syntaxcomplete#Complete
@@ -19,34 +22,35 @@ set showmode
 set showcmd
 set hidden
 set visualbell
-set cursorline
+"set lazyredraw
+"set cursorline
 set ttyfast
 set undofile
 set ignorecase
 set smartcase
 set gdefault
 set showmatch
-set hlsearch
+"set hlsearch
 set wrap
-set textwidth=79
-set colorcolumn=85
+"set textwidth=79
+"set colorcolumn=85
 set title
 set mouse=a
-
+"set clipboard^=unnamedplus
 nnoremap / /\v
 vnoremap / /\v
 nnoremap <leader>sv :source $MYVIMRC<cr>
 nnoremap <leader>ev :split $MYVIMRC<cr>
-inoremap jk <esc>
-inoremap <esc> <nop>
-inoremap <up> <nop>
-inoremap <down> <nop>
-inoremap <left> <nop>
-inoremap <right> <nop>
-nnoremap <up> <nop>
-nnoremap <down> <nop>
-nnoremap <left> <nop>
-nnoremap <right> <nop>
+"inoremap jk <esc>
+"inoremap <esc> <nop>
+"inoremap <up> <nop>
+"inoremap <down> <nop>
+"inoremap <left> <nop>
+"inoremap <right> <nop>
+"nnoremap <up> <nop>
+"nnoremap <down> <nop>
+"nnoremap <left> <nop>
+"nnoremap <right> <nop>
 nnoremap j gj
 nnoremap k gk
 nnoremap <silent> <F3> :YRShow<cr>
@@ -101,4 +105,9 @@ let g:syntastic_shell = "/bin/zsh"
 
 au FocusLost * :wa " Gvim: save if focus lost
 
-au FileType html map <F5> :!iceweasel %<CR><CR>
+au FileType html map <F5> :!firefox %<CR><CR>
+
+syntax off
+set nohlsearch
+set t_Co=0
+set t_md=

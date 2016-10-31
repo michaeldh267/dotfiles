@@ -34,13 +34,15 @@
   "Get your own colors!"
   (progn
     (global-hl-line-mode 1)
-    (set-face-background 'hl-line "#030")
-    (set-background-color "black")
-    (set-foreground-color "#0e0")
-    (set-face-attribute
-     'region nil
-     :background "#666"
-     :foreground "#fff")))
+    (load-theme 'misterioso)
+    ;; (set-face-background 'hl-line "#030")
+    ;; (set-background-color "black")
+    ;; (set-foreground-color "#0e0")
+    ;; (set-face-attribute
+    ;;  'region nil
+    ;;  :background "#666"
+    ;; :foreground "#fff")
+    ))
 
 (defun my-fonts ()
   "Get your own fonts!"
@@ -58,12 +60,12 @@
 
 
 
-(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
+(add-to-list 'package-archives
+             '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 
 (progn
-  (package-initialize)  
-  (let ((my-packages '(
-                       better-defaults
+  (package-initialize)
+  (let ((my-packages '(better-defaults
                        paredit
                        idle-highlight-mode
                        ido-ubiquitous
@@ -73,7 +75,7 @@
                        go-mode
                        )))
     (dolist (p my-packages)
-      (when (not (package-installed-p p))
+      (unless (package-installed-p p)
         (package-install p)))))
 
 (setq inferior-lisp-program "sbcl"
@@ -81,7 +83,7 @@
       slime-complete-symbol-function 'slime-fuzzy-complete-symbol
       slime-startup-animation nil
       )
-(load (expand-file-name "/home/michael/quicklisp/slime-helper.el"))
+;; (load (expand-file-name "/home/michael/quicklisp/slime-helper.el"))
 (require 'slime-autoloads)
 ;; Also setup the slime-fancy contrib
 (add-to-list 'slime-contribs 'slime-fancy)

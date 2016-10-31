@@ -6,6 +6,8 @@ promptinit
 prompt off
 zmodload -i zsh/complist
 autoload -U compinit && compinit
+autoload -U +X bashcompinit && bashcompinit
+eval "$(stack --bash-completion-script stack)" # stack req
 setopt append_history \
 	inc_append_history \
 	share_history \
@@ -34,12 +36,25 @@ zstyle ':completion:*' use-cache on
 zstyle ':completion:*' rehash true
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' # +case insens
 REPORTTIME=5
-alias l='ls --color=auto'
+alias isapt='sudo apt install'
+alias usapt='sudo apt update && sudo apt upgrade'
+alias l='pwd && ls --color=auto'
 alias ls='ls --color=auto -X'
 alias la='ls --color=auto -Xa'
 alias j='jobs'
 alias m='mocp'
 alias v='vim'
-
+alias vzshrc='vim $HOME/.zshrc'
+#alias AppendTo='>>' Of course this didn't work right...
+#alias rm='rm -i'
+alias dateh="date +'%A %B %d %l:%M:%S %p %Z %z'"
 # Who loves the path?
-export PATH=~/bin:$PATH
+typeset -U PATH
+export PATH=$HOME/bin:$PATH
+export PATH=$HOME/algs4/bin:$PATH
+#export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
+export PATH=$PATH:/usr/local/go/bin
+export GOPATH=$HOME/work
+export PATH=$PATH:$GOPATH/bin # convenience
+export PATH=$PATH:/opt/rakudo-star-2016.07/bin
+export PATH=$PATH:/opt/rakudo-star-2016.07/share/perl6/site/bin
