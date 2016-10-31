@@ -5,7 +5,6 @@ promptinit
 prompt off
 zmodload -i zsh/complist
 autoload -U compinit && compinit
-<<<<<<< HEAD
 autoload -U +X bashcompinit && bashcompinit
 eval "$(stack --bash-completion-script stack)" # stack req
 setopt append_history \
@@ -27,7 +26,6 @@ setopt append_history \
 	list_ambiguous \
 	glob_complete \
 	rec_exact
-=======
 setopt inc_append_history # save history line by line
 setopt share_history # restore history line by line
 setopt extended_history # timestamps saved to history file
@@ -39,7 +37,6 @@ setopt autocd # directory as command does cd
 setopt no_beep # no beeping beeping
 # setopt glob_complete
 # setopt rec_exact
->>>>>>> c073d5b216859230b35d573d1aee8ee9c1939229
 HISTFILE=~/.histfile
 HISTSIZE=1000000
 SAVEHIST=1000000
@@ -58,7 +55,6 @@ alias j='jobs'
 alias m='mocp'
 alias v='vim'
 alias vzshrc='vim $HOME/.zshrc'
-#alias AppendTo='>>' Of course this didn't work right...
 #alias rm='rm -i'
 alias dateh="date +'%A %B %d %l:%M:%S %p %Z %z'"
 # Who loves the path?
