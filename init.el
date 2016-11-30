@@ -1,7 +1,5 @@
 (require 'package)
 
-;; emacs lisp intro - Writing Defuns
-
 (defun toggle-gui ()
   "toggles the gui. duh!"
   (interactive)
@@ -34,20 +32,11 @@
   "Get your own colors!"
   (progn
     (global-hl-line-mode 1)
-    (load-theme 'misterioso)
-    ;; (set-face-background 'hl-line "#030")
-    ;; (set-background-color "black")
-    ;; (set-foreground-color "#0e0")
-    ;; (set-face-attribute
-    ;;  'region nil
-    ;;  :background "#666"
-    ;; :foreground "#fff")
-    ))
+    (load-theme 'misterioso)))
 
 (defun my-fonts ()
   "Get your own fonts!"
   (set-frame-font "Liberation Mono-14"))
-
 
 (progn
   (gui-off)
@@ -58,49 +47,9 @@
   (my-keys)
   (setq inhibit-startup-screen t))
 
-
-
-(add-to-list 'package-archives
-             '("melpa-stable" . "https://stable.melpa.org/packages/") t)
-
-(progn
-  (package-initialize)
-  (let ((my-packages '(better-defaults
-                       paredit
-                       idle-highlight-mode
-                       ido-ubiquitous
-                       find-file-in-project
-                       magit
-                       smex
-                       go-mode
-                       )))
-    (dolist (p my-packages)
-      (unless (package-installed-p p)
-        (package-install p)))))
-
-(setq inferior-lisp-program "sbcl"
-      lisp-indent-function 'common-lisp-indent-function
-      slime-complete-symbol-function 'slime-fuzzy-complete-symbol
-      slime-startup-animation nil
-      )
-;; (load (expand-file-name "/home/michael/quicklisp/slime-helper.el"))
-(require 'slime-autoloads)
-;; Also setup the slime-fancy contrib
-(add-to-list 'slime-contribs 'slime-fancy)
-
-(add-hook 'lisp-mode-hook (lambda () (slime-mode t)))
-(add-hook 'inferior-lisp-mode-hook (lambda () (inferior-slime-mode t)))
-
-(put 'erase-buffer 'disabled nil)
-
-;; get your own vim!
+;; under .emacs.d/ run: hg clone https://bitbucket.org/lyro/evil
+(add-to-list 'load-path "~/.emacs.d/evil")
 (require 'evil)
-;;(evil-mode 1)
+(evil-mode 1)
 
-(defun strip-nl (s e)
-  (interactive "r")
-  (save-restriction
-    (goto-char (point-min))
-    (narrow-to-region s e)
-    (while (re-search-forward "\n" nil t)
-      (replace-match " " nil t))))
+(add-to-list 'package-archives '("marmalade" . "https://marmalade-repo.org/packages/"))

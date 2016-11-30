@@ -1,4 +1,4 @@
-export TERM=xterm-256color
+export TERM=gnome-256color
 bindkey -e
 autoload -Uz promptinit
 promptinit
@@ -6,7 +6,7 @@ prompt off
 zmodload -i zsh/complist
 autoload -U compinit && compinit
 autoload -U +X bashcompinit && bashcompinit
-eval "$(stack --bash-completion-script stack)" # stack req
+#eval "$(stack --bash-completion-script stack)" # stack req
 setopt append_history \
 	inc_append_history \
 	share_history \
@@ -41,29 +41,30 @@ HISTFILE=~/.histfile
 HISTSIZE=1000000
 SAVEHIST=1000000
 zstyle ':completion:*' verbose yes
-zstyle ':completion:*' menu select=2 # use menu if more than 2 ambiguous result
+zstyle ':completion:*' menu select
 zstyle ':completion:*' use-cache on 
 zstyle ':completion:*' rehash true
-zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' # +case insens
+#zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' # +case insens
 REPORTTIME=5
-alias isapt='sudo apt install'
-alias usapt='sudo apt update && sudo apt upgrade'
+#alias isapt='sudo apt install'
+#alias usapt='sudo apt update && sudo apt upgrade'
 alias l='pwd && ls --color=auto'
 alias ls='ls --color=auto -X'
 alias la='ls --color=auto -Xa'
+alias st='stterm -f "Liberation Mono:size=15"'
 alias j='jobs'
 alias m='mocp'
 alias v='vim'
-alias vzshrc='vim $HOME/.zshrc'
+#alias vzshrc='vim $HOME/.zshrc'
 #alias rm='rm -i'
 alias dateh="date +'%A %B %d %l:%M:%S %p %Z %z'"
 # Who loves the path?
 typeset -U PATH
-export PATH=$HOME/bin:$PATH
-export PATH=$HOME/algs4/bin:$PATH
+#export PATH=$HOME/bin:$PATH
+#export PATH=$HOME/algs4/bin:$PATH
 #export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
 export PATH=$PATH:/usr/local/go/bin
 export GOPATH=$HOME/work
 export PATH=$PATH:$GOPATH/bin # convenience
-export PATH=$PATH:/opt/rakudo-star-2016.07/bin
-export PATH=$PATH:/opt/rakudo-star-2016.07/share/perl6/site/bin
+#export PATH=$PATH:/opt/rakudo-star-2016.07/bin
+#export PATH=$PATH:/opt/rakudo-star-2016.07/share/perl6/site/bin
