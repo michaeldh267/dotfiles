@@ -1,13 +1,7 @@
-try
-  execute pathogen#infect()
-endtry
-filetype plugin indent on
+execute pathogen#infect()
 syntax on
-try
-  colorscheme badwolf
-catch
-  colorscheme murphy
-endtry
+filetype plugin indent on
+colorscheme badwolf
 
 nnoremap <C-w>q :close<CR>
 nnoremap ZZ :close<CR>
@@ -92,3 +86,4 @@ endfunc
 au FileType python call LoadPyAbbrevs()
 
 au FileType php setlocal sw=2 sts=2 ai
+echom "hi"

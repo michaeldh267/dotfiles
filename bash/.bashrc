@@ -115,7 +115,3 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
-PLAN9=/usr/local/plan9 export PLAN9
-PATH=$PATH:$PLAN9/bin export PATH
-alias a="acme -f /mnt/font/'Ubuntu Mono'/13a/font &"
-PATH=$PATH:/usr/local/go/bin
