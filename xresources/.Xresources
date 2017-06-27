@@ -16,3 +16,7 @@ URxvt.matcher.button: 1
 !URxvt*background:black
 !URxvt*foreground:white
 URxvt*reverseVideo:true
+
+! blue
+! URxvt*color4:  #7979ff
+URxvt*color12: #9898ff
