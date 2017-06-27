@@ -1,10 +1,20 @@
 # the basics
-build-essential gdb vim emacs git sudo
+build-essential gdb vim emacs git sudo curl
+ctags
+vim-syntastic
+vim-pathogen
 
 # desktop
 i3 i3status pasystray
 mpv vlc 
 rxvt-unicode-256color tmux irssi
+feh markdown 
+chromium fonts-symbola fonts-inconsolata
 
 # extras
 love luarocks
+
+# python
+python3-virtualenv virtualenvwrapper
+python3-pylint-common
+bpython3

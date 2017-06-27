@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 set -e
 
-sed -e s/#.*$//g debs | tr '\n' ' '
+sed -e s/#.*$//g $HOME/bin/init/debs | tr '\n' ' '

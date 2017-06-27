@@ -1,7 +1,7 @@
-"execute pathogen#infect()
+execute pathogen#infect()
 syntax on
 filetype plugin indent on
-colorscheme blue
+colorscheme badwolf
 
 nnoremap <C-w>q :close<CR>
 nnoremap ZZ :close<CR>
