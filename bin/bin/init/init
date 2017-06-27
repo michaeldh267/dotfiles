@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+set -e
+
+sed -e s/#.*$//g debs | tr '\n' ' '

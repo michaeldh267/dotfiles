@@ -4,3 +4,15 @@ Xft.hintstyle:  hintslight
 Xft.hinting: 1
 Xft.antialias: 1
 Xft.rgba: rgb
+
+URxvt.font: xft:Inconsolata:size=14
+URxvt.letterSpace: -1
+
+URxvt.perl-ext-common: default,matcher,tabbed
+
+URxvt.url-launcher: /usr/bin/xdg-open
+URxvt.matcher.button: 1
+
+!URxvt*background:black
+!URxvt*foreground:white
+URxvt*reverseVideo:true

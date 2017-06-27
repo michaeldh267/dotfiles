@@ -1,0 +1,10 @@
+# the basics
+build-essential gdb vim emacs git sudo
+
+# desktop
+i3 i3status pasystray
+mpv vlc 
+rxvt-unicode-256color tmux irssi
+
+# extras
+love luarocks
