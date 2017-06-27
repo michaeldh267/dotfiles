@@ -19,4 +19,9 @@ URxvt*reverseVideo:true
 
 ! blue
 ! URxvt*color4:  #7979ff
+! bright blue
 URxvt*color12: #9898ff
+! bright red
+! URxvt*color9:  #ff8000
+! dark red / now orange
+URxvt*color1: #ff8000

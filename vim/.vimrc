@@ -89,3 +89,4 @@ endfunc
 au FileType python call LoadPyAbbrevs()
 
 au FileType php setlocal sw=2 sts=2 ai
+" EOF
