@@ -113,3 +113,7 @@ if ! shopt -oq posix; then
 fi
 export PATH="$HOME/.local/bin":"$PATH"
 export PATH="$HOME/bin":"$PATH"
+export PYTHONSTARTUP="$HOME/.pythonrc"
+export WORKON_HOME="$HOME/.virtualenvs"
+source /etc/bash_completion.d/virtualenvwrapper
+

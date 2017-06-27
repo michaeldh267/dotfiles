@@ -14,6 +14,6 @@ chromium fonts-symbola fonts-inconsolata
 love luarocks
 
 # python
-python3-virtualenv virtualenvwrapper
+python3-virtualenv virtualenvwrapper python3-pip
 python3-pylint-common
 bpython3
