@@ -1,8 +1,7 @@
 # the basics
-build-essential gdb vim emacs git sudo curl
-ctags
-vim-syntastic
-vim-pathogen
+build-essential gdb emacs git sudo curl
+vim ctags vim-syntastic vim-pathogen
+dos2unix
 
 # desktop
 i3 i3status pasystray

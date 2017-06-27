@@ -19,6 +19,7 @@ set laststatus=2
 set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+,eol:$
 set modelines=0
 set mouse=a
+set nobackup
 set nocompatible
 set nrformats=hex
 set ruler
