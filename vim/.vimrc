@@ -19,7 +19,6 @@ set laststatus=2
 set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+,eol:$
 set modelines=0
 set mouse=a
-set nobackup
 set nocompatible
 set nrformats=hex
 set ruler
@@ -31,6 +30,9 @@ set tags=./tags;,tags
 set ttyfast
 set viminfo+=!
 set wildmenu
+
+set backupdir=~/.vim/backup//
+set directory=~/.vim/swp//
 
 " Load matchit.vim, but only if the user hasn't installed a newer version.
 if !exists('g:loaded_matchit') && findfile('plugin/matchit.vim', &rtp) ==# ''
