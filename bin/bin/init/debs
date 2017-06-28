@@ -1,5 +1,5 @@
 # the basics
-build-essential gdb emacs git sudo curl
+build-essential gdb emacs git sudo curl tree
 vim ctags vim-syntastic vim-pathogen
 dos2unix
 
