@@ -1,7 +1,7 @@
 # the basics
 build-essential gdb emacs git sudo curl tree
 vim ctags vim-syntastic vim-pathogen
-dos2unix
+dos2unix mc links
 
 # desktop
 i3 i3status pasystray
@@ -9,6 +9,7 @@ mpv vlc
 rxvt-unicode-256color tmux irssi
 feh markdown 
 chromium fonts-symbola fonts-inconsolata
+transmission-gtk
 
 # extras
 love luarocks
@@ -16,4 +17,5 @@ love luarocks
 # python
 python3-virtualenv virtualenvwrapper python3-pip
 python3-pylint-common
+python3-bs4
 bpython3
