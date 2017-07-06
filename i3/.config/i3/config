@@ -32,6 +32,7 @@ floating_modifier $mod
 # start a terminal
 #bindsym $mod+Return exec urxvt
 bindsym $mod+Return exec stterm -f "LiberationMono:size=16"
+#bindsym $mod+Return exec stterm -f 'LiberationMono:size=16'
 
 # kill focused window
 bindsym $mod+Shift+q kill

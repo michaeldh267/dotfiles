@@ -3,6 +3,7 @@ build-essential gdb emacs git sudo curl tree htop
 vim ctags vim-syntastic vim-pathogen
 dos2unix mc links
 tig
+stterm
 
 # desktop
 i3 i3status pasystray
@@ -11,6 +12,8 @@ rxvt-unicode-256color tmux irssi stterm
 feh markdown 
 chromium fonts-symbola fonts-inconsolata
 transmission-gtk
+atool
+virt-manager
 
 # extras
 love luarocks

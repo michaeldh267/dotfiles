@@ -92,6 +92,7 @@ alias ll='ls -l'
 alias la='ls -A'
 alias l='ls -CF'
 alias j='jobs -l'
+alias gs='git status --short'
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
@@ -118,12 +119,24 @@ export PYTHONSTARTUP="$HOME/.pythonrc"
 export WORKON_HOME="$HOME/.virtualenvs"
 source /etc/bash_completion.d/virtualenvwrapper
 function myk-relink() {
-	pushd ~/dotfiles
-	stow -R * --ignore=^/readme.md/il
-	popd
-	source ~/.bashrc
-	xrdb ~/.Xresources
+	source "$HOME/.bashrc"
+	xrdb "$HOME/.Xresources"
 }
 function myk-sync() {
-	sudo apt update && sudo apt upgrade && sudo apt install $($HOME/bin/init/init)
+	sudo apt update && sudo apt upgrade && sudo apt install "$($HOME/bin/init/init)"
+}
+function myk-stow() {
+	for package in *; do
+
+		if [[ $(pwd) != $HOME/dotfiles ]];
+		then
+			cd "$HOME/dotfiles"
+		fi
+
+		if [[ -d "$package" ]]; 
+		then
+			stow -v -R "$package"
+		fi
+
+	done
 }
