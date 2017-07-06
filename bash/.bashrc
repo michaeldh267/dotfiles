@@ -117,4 +117,13 @@ export PATH="$HOME/bin":"$PATH"
 export PYTHONSTARTUP="$HOME/.pythonrc"
 export WORKON_HOME="$HOME/.virtualenvs"
 source /etc/bash_completion.d/virtualenvwrapper
-
+function myk-relink() {
+	pushd ~/dotfiles
+	stow -R * --ignore=^/readme.md/il
+	popd
+	source ~/.bashrc
+	xrdb ~/.Xresources
+}
+function myk-sync() {
+	sudo apt update && sudo apt upgrade && sudo apt install $($HOME/bin/init/init)
+}
