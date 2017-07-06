@@ -92,6 +92,7 @@ alias ll='ls -l'
 alias la='ls -A'
 alias l='ls -CF'
 alias j='jobs -l'
+alias gs='git status --short'
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
