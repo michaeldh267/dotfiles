@@ -126,17 +126,15 @@ function myk-sync() {
 	sudo apt update && sudo apt upgrade && sudo apt install "$($HOME/bin/init/init)"
 }
 function myk-stow() {
-	for package in *; do
-
-		if [[ $(pwd) != $HOME/dotfiles ]];
-		then
-			cd "$HOME/dotfiles"
-		fi
-
-		if [[ -d "$package" ]]; 
-		then
-			stow -v -R "$package"
-		fi
-
-	done
+ 		if [[ $(pwd) != "$HOME/dotfiles" ]];
+ 		then
+ 			cd "$HOME/dotfiles"
+ 		fi
+		stow -v -R $(echo * | sed 's/readme.md//I')
+# 	for package in *; do
+# 		if [[ -d "$package" ]]; 
+# 		then
+# 			stow -v -R "$package"
+# 		fi
+# 	done
 }
