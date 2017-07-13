@@ -123,7 +123,7 @@ function myk-relink() {
 	xrdb "$HOME/.Xresources"
 }
 function myk-sync() {
-	sudo apt update && sudo apt upgrade && sudo apt install "$($HOME/bin/init/init)"
+	sudo apt update && sudo apt upgrade && sudo apt install $("$HOME/bin/init/init")
 }
 function myk-stow() {
 	for package in *; do

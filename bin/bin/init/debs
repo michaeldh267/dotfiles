@@ -13,7 +13,7 @@ feh markdown
 chromium fonts-symbola fonts-inconsolata
 transmission-gtk
 atool
-virt-manager
+#virt-manager
 
 # extras
 love luarocks
