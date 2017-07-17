@@ -4,16 +4,17 @@ vim ctags vim-syntastic vim-pathogen
 dos2unix mc links
 tig
 stterm
+devscripts
 
 # desktop
 i3 i3status pasystray
-mpv vlc 
+mpv vlc nitrogen
 rxvt-unicode-256color tmux irssi stterm
 feh markdown 
 chromium fonts-symbola fonts-inconsolata
 transmission-gtk
 atool
-virt-manager
+hexchat
 
 # extras
 love luarocks
