@@ -1,7 +1,19 @@
+;;; My .emacs
+
 (require 'package)
 (package-initialize)
 (add-to-list 'package-archives '("marmalade" . "https://marmalade-repo.org/packages/") t)
-add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+
+(unless package-archive-contents
+  (package-refresh-contents))
+
+(setq myk-package-list
+  '(better-defaults paredit))
+
+(dolist (p myk-package-list)
+  (unless (package-installed-p p)
+    (package-install p)))
 
 (require 'better-defaults)
 
@@ -21,6 +33,7 @@ add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 
 (setq inferior-lisp-program "/usr/bin/mit-scheme")
 
+(add-to-list 'load-path "~/.emacs.d/evil")
 (require 'evil)
 (evil-mode 1)
 (define-key evil-normal-state-map [escape] 'keyboard-quit)
