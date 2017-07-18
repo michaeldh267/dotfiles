@@ -156,36 +156,34 @@ bindsym $mod+r mode "resize"
 # bar {
 #          status_command i3status
 #  }
-# set $white #ffffff
-# set $black #000000
-# set $orange #ff8000
-# set $red #ff0000
-# set $blue #0000ff
-# set $grey #333333
-# set $purple #800080
-# # class                 border  backgr. text    indicator child_border
-# client.focused          $blue  $white  $red    $blue     $black
-# client.focused_inactive $white  $white  $blue   $purple   #5f676a
-# client.unfocused        $white  $white  $blue   $purple   #222222
-# client.urgent           $red    $red    $white  $red      $red
-# client.placeholder      #000000 #0c0c0c $white  #000000   #0c0c0c
-# client.background       #ffffff
+set $white #ffffff
+set $black #000000
+set $orange #ff8000
+set $red #f70000
+set $blue #0000ff
+set $grey #333333
+set $purple #800080
+set $green #00f600
+set $cyan #00ffff
+set $yellow #ffff00
+
 bar {
 	position top
 		status_command i3status
 		colors {
-				background #002b36
-				statusline #839496
-				separator  #586e75
-				focused_workspace  #b58900 #b58900 #002b36
-				active_workspace   #586e75 #586e75 #002b36
-				inactive_workspace #073642 #002b36 #839496
-				urgent_workspace   #dc322f #dc322f #fdf6e3
+						   #outer 
+				background $black
+				statusline $yellow
+				separator  $purple
+				focused_workspace  $purple $black $green
+				active_workspace   $purple $black $red
+				inactive_workspace $purple $black $red				
+				urgent_workspace   $red $black $red
 		}
 }
 
-
-client.focused          #002b36 #586e75 #fdf6e3 #268bd2
-client.focused_inactive #002b36 #073642 #839496 #073642
-client.unfocused        #002b36 #073642 #839496 #073642
-client.urgent 		#002b36 #dc322f #fdf6e3 #002b36
+# class                 border  backgr. text indicator child_border
+client.focused          $green $black $green $purple $green
+client.focused_inactive $black $black $yellow $black $black
+client.unfocused        $black $black $purple
+client.urgent 		$yellow $black $yellow $black $black
