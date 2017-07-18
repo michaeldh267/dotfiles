@@ -137,11 +137,11 @@ function myk-stow() {
  		then
  			cd "$HOME/dotfiles"
  		fi
-		stow -v -R $(echo * | sed 's/readme.md//I')
-# 	for package in *; do
-# 		if [[ -d "$package" ]]; 
-# 		then
-# 			stow -v -R "$package"
-# 		fi
-# 	done
+		# stow -v -R $(echo * | sed 's/readme.md//I')
+		for package in *; do
+			if [[ -d "$package" ]]; 
+			then
+				stow -v -R "$package"
+			fi
+		done
 }
