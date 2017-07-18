@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+grep --color=auto "$*" "$HOME/.myk-db"

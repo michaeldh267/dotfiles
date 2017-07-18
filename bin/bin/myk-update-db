@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+find / >>~/.myk-db 2>/dev/null
