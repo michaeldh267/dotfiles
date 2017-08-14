@@ -56,14 +56,10 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
-# Git Prompt
-. ~/git-prompt.sh
-export GIT_PS1_SHOWDIRTYSTATE=1
-# export PS1='[\u@\h \W$(__git_ps1 " (%s)")]\$ '
 if [ "$color_prompt" = yes ]; then
-	PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]$(__git_ps1 " (%s)")\$ '
+	PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
 else
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w$(__git_ps1 " (%s)")]\$ '
+	PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w]\$ '
 fi
 unset color_prompt force_color_prompt
 
@@ -119,29 +115,11 @@ if ! shopt -oq posix; then
 fi
 export PATH="$HOME/.local/bin":"$PATH"
 export PATH="$HOME/bin":"$PATH"
+export PATH="$HOME/.luarocks/bin":"$PATH"
 export PYTHONSTARTUP="$HOME/.pythonrc"
 export WORKON_HOME="$HOME/.virtualenvs"
 source /etc/bash_completion.d/virtualenvwrapper
 
-#export PS1='[\u@\h \W$(__git_ps1 " (%s)")]\$ '
-
-function myk-relink() {
-	source "$HOME/.bashrc"
-	xrdb "$HOME/.Xresources"
-}
 function myk-sync() {
 	sudo apt update && sudo apt upgrade && sudo apt install $("$HOME/bin/init/init")
-}
-function myk-stow() {
- 		if [[ $(pwd) != "$HOME/dotfiles" ]];
- 		then
- 			cd "$HOME/dotfiles"
- 		fi
-		# stow -v -R $(echo * | sed 's/readme.md//I')
-		for package in *; do
-			if [[ -d "$package" ]]; 
-			then
-				stow -v -R "$package"
-			fi
-		done
 }

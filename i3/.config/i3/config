@@ -162,10 +162,12 @@ set $orange #ff8000
 set $red #f70000
 set $blue #0000ff
 set $grey #333333
-set $purple #800080
-set $green #00f600
+set $purple #f000f0
+set $green #00ff00
+set $dgreen #008000
 set $cyan #00ffff
 set $yellow #ffff00
+set $dyellow #f0f000
 
 bar {
 	position top
@@ -173,17 +175,17 @@ bar {
 		colors {
 						   #outer 
 				background $black
-				statusline $yellow
+				statusline $dyellow
 				separator  $purple
-				focused_workspace  $purple $black $green
+				focused_workspace  $cyan $black $green
 				active_workspace   $purple $black $red
-				inactive_workspace $purple $black $red				
-				urgent_workspace   $red $black $red
+				inactive_workspace $dgreen $black $dgreen
+				urgent_workspace   $yellow $black $yellow
 		}
 }
 
 # class                 border  backgr. text indicator child_border
-client.focused          $green $black $green $purple $green
+client.focused          $cyan $black $green $purple $green
 client.focused_inactive $black $black $yellow $black $black
 client.unfocused        $black $black $purple
 client.urgent 		$yellow $black $yellow $black $black

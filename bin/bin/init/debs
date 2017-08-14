@@ -4,7 +4,7 @@ vim ctags vim-syntastic vim-pathogen
 dos2unix mc links
 tig
 stterm
-devscripts
+rename
 
 # desktop
 i3 i3status pasystray
@@ -15,8 +15,12 @@ chromium fonts-symbola fonts-inconsolata
 transmission-gtk
 atool
 hexchat
+octave
 
-# extras
+# lisp
+racket
+
+# lua
 love luarocks
 
 # perl

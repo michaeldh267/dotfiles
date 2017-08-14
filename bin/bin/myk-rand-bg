@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# Set a random background every hour.
+
+set -e # exit if any command has non-zero return value
+#set -u # exit if undefined reference found
+#set -o pipefail # do not mask pipeline errors
+#set -x # debug mode 
+#IFS=$'\n\t'
+while true; do
+	feh --bg-max --randomize ~/Downloads/*.jpg
+	sleep 3600 # seconds
+done &
