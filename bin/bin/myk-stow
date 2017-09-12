@@ -7,11 +7,10 @@ set -o pipefail # do not mask pipeline errors
 #set -x # debug mode 
 IFS=$'\n\t'
 
-pushd "$HOME/dotfiles"
+cd $HOME/dotfiles
 for package in *; do
 	if [[ -d "$package" ]]; 
 	then
-		stow -R "$package"
+		stow -v -R "$package"
 	fi
 done
-popd

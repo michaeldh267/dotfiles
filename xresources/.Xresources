@@ -7,12 +7,9 @@ Xft.rgba: rgb
 
 URxvt.font: xft:Liberation Mono:size=13
 URxvt.letterSpace: -1
-
 URxvt.perl-ext-common: default,matcher,tabbed
-
 URxvt.url-launcher: /usr/bin/xdg-open
 URxvt.matcher.button: 1
-
 !URxvt*background:black
 !URxvt*foreground:white
 URxvt*reverseVideo:true
@@ -25,3 +22,12 @@ URxvt*color12: #9898ff
 ! URxvt*color9:  #ff8000
 ! dark red / now orange
 URxvt*color1: #ff8000
+
+XTerm.vt100.renderfont: true
+XTerm.vt100.faceName: Liberation Mono:size=12:antialias=true
+XTerm.vt100.reverseVideo: on
+XTerm.vt100.saveLines: 5000
+XTerm.vt100.scrollBar: true
+XTerm.vt100.scrollbar.width: 8
+XTerm.vt100.color12: #9898ff
+XTerm.vt100.color1: #ff8000

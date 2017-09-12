@@ -1,11 +1,25 @@
 #!/usr/bin/env bash
-# install my vim things
+# sets up a new user
 
 #set -e # exit if any command has non-zero return value
 #set -u # exit if undefined reference found
 #set -o pipefail # do not mask pipeline errors
 #set -x # debug mode 
-#IFS=$'\n\t'
+IFS=$'\n\t'
+
+myk-install-home () {
+cd $HOME/dotfiles
+mkdir -pv ~/{.config,bin}
+for package in *; do
+	if [[ -d "$package" ]]; 
+	then
+		stow -R "$package"
+	fi
+done
+source ~/.bashrc
+xrdb ~/.Xresources
+}
+myk-install-home
 
 install-vim() {
 cd ~/dotfiles
