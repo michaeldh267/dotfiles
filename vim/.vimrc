@@ -64,6 +64,7 @@ set statusline+=%y        " Filetype of the file
 set statusline+=%c    " Current column
 set statusline+=-    " sep
 set statusline+=%l    " Current lin
+set statusline+=%l    " Current line
 set statusline+=/    " Separator
 set statusline+=%L   " Total lines
 
