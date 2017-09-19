@@ -57,13 +57,17 @@ else
 	colorscheme murphy
 endif
 
+if has("gui_running")
+	colorscheme badwolf
+	set guifont=Liberation\ Mono\ 12
+endif
+
 set statusline=%f         " Path to the file
 set statusline+=\ -\      " Separator
 set statusline+=FileType: " Label
 set statusline+=%y        " Filetype of the file
 set statusline+=%c    " Current column
 set statusline+=-    " sep
-set statusline+=%l    " Current lin
 set statusline+=%l    " Current line
 set statusline+=/    " Separator
 set statusline+=%L   " Total lines
