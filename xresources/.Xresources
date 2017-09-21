@@ -31,3 +31,4 @@ XTerm.vt100.scrollBar: true
 XTerm.vt100.scrollbar.width: 8
 XTerm.vt100.color12: #9898ff
 XTerm.vt100.color1: #ff8000
+XTerm.vt100.metaSendsEscape: true

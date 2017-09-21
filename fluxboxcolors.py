@@ -5,8 +5,8 @@
 # style your fluxbox with random colors!
 import random
 
-SATURATION = 0.55
-VALUE = 0.55
+SATURATION = 0.65
+VALUE = 0.65
 
 def hsv_to_rgb(H, s, v):
     '''degrees -> float -> float -> rgb'''
