@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 if [[ -f /etc/profile ]]; then
     . /etc/profile
 fi
