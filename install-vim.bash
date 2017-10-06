@@ -9,6 +9,7 @@
 
 install-vim() {
 cd ~/dotfiles
+stow -R vim
 mkdir -pv ~/.vim/{swp,backup,undo}
 mkdir -p ~/.vim/autoload ~/.vim/bundle && \
 	curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim

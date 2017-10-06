@@ -11,13 +11,12 @@ export EDITOR="/usr/bin/vim"
 export PAGER="/usr/bin/less"
 
 export PYTHONSTARTUP=$HOME/.pythonrc
-
 export GOPATH=$HOME/src
 
-export PATH=/home/myk/bin:$PATH
-export PATH=/home/myk/.local/bin:$PATH
-export PATH=/home/myk/.luarocks/bin:$PATH
-. /home/myk/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
+#export PATH=/home/myk/bin:$PATH
+#export PATH=/home/myk/.local/bin:$PATH
+#export PATH=/home/myk/.luarocks/bin:$PATH
+#. /home/myk/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
 
 
 vim () {
