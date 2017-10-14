@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+# sets up things
+
+#set -e # exit if any command has non-zero return value
+#set -u # exit if undefined reference found
+#set -o pipefail # do not mask pipeline errors
+#set -x # debug mode 
+#IFS=$'\n\t'
+
+install-vim() {
+cp -v $HOME/dotfiles/vim/.vimrc $HOME/.vimrc
+
+mkdir -pv $HOME/.vim/autoload $HOME/.vim/bundle
+
+cd  $HOME/.vim/autoload && git clone https://github.com/tpope/vim-pathogen
+
+local bundledir=$HOME/.vim/bundle
+
+local vimlist=("https://github.com/vim-syntastic/syntastic" \
+	"https://github.com/tpope/vim-fugitive")
+for url in "${vimlist[@]}"; do
+cd $bundledir && git clone $url
+done
+}
+case $1 in
+	vim)
+		echo "vim is great!"
+		install-vim
+		;;
+	*)
+		echo "Okay, whatever, dude..."
+		exit 1
+		;;
+esac
+#for package in *; do
+#	if [[ -d "$package" ]]; 
+#	then
+#		stow -R "$package"
+#	fi
+#done

@@ -1,4 +1,8 @@
+try
 execute pathogen#infect()
+catch
+endtry
+
 syntax on
 filetype plugin indent on
 
@@ -6,9 +10,7 @@ nnoremap <C-w>q :close<CR>
 nnoremap ZZ :close<CR>
 set autoindent
 set backspace=indent,eol,start
-set backupdir=~/.vim/backup//
 set complete-=i
-set directory=~/.vim/swp//
 set display=lastline
 set encoding=utf-8
 set formatoptions=qrn1
@@ -21,9 +23,6 @@ set laststatus=2
 set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+,eol:$
 set modelines=0
 set mouse=a
-set nocompatible
-set nocursorcolumn
-set nocursorline
 set nrformats=hex
 set ruler
 set sessionoptions-=options
@@ -33,11 +32,15 @@ set tabpagemax=50
 set tags=./tags;,tags
 set textwidth=79
 set ttyfast
-set undodir=~/.vim/undo//
 set viminfo+=!
 set wildmenu
 set wrap
 
+set nobackup
+set nocompatible
+set nocursorcolumn
+set nocursorline
+set noundofile
 " Load matchit.vim, but only if the user hasn't installed a newer version.
 if !exists('g:loaded_matchit') && findfile('plugin/matchit.vim', &rtp) ==# ''
 	runtime! macros/matchit.vim
@@ -47,18 +50,15 @@ if maparg('<C-L>', 'n') ==# ''
 	nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
 endif
 
-if &term =~ '256color'
-" disable Background Color Erase (BCE) so that color schemes
-" render properly when inside 256-color tmux and GNU screen.
-" see also http://sunaku.github.io/vim-256color-bce.html
-	set t_ut=
-	colorscheme badwolf
-else
-	colorscheme murphy
-endif
+set t_ut=
+try
+colorscheme desert
+catch
+colorscheme default
+endtry
 
 if has("gui_running")
-	colorscheme badwolf
+	colorscheme desert
 	set guifont=Liberation\ Mono\ 12
 endif
 
