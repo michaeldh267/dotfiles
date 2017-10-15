@@ -13,6 +13,8 @@ cp -v $HOME/dotfiles/vim/.vimrc $HOME/.vimrc
 mkdir -pv $HOME/.vim/autoload $HOME/.vim/bundle
 
 cd  $HOME/.vim/autoload && git clone https://github.com/tpope/vim-pathogen
+ln -s $HOME/.vim/autoload/vim-pathogen/autoload/pathogen.vim \
+	$HOME/.vim/autoload/pathogen.vim
 
 local bundledir=$HOME/.vim/bundle
 
