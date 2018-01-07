@@ -6,6 +6,7 @@ endtry
 syntax on
 filetype plugin indent on
 
+cnoreabbrev W w
 nnoremap <C-w>q :close<CR>
 nnoremap ZZ :close<CR>
 set autoindent
@@ -41,6 +42,7 @@ set nocompatible
 set nocursorcolumn
 set nocursorline
 set noundofile
+
 " Load matchit.vim, but only if the user hasn't installed a newer version.
 if !exists('g:loaded_matchit') && findfile('plugin/matchit.vim', &rtp) ==# ''
 	runtime! macros/matchit.vim
@@ -60,6 +62,11 @@ endtry
 if has("gui_running")
 	colorscheme desert
 	set guifont=Liberation\ Mono\ 12
+	set guioptions-=l
+	set guioptions-=r
+	set guioptions-=L
+	set guioptions-=R
+	set guioptions-=T
 endif
 
 set statusline=%f         " Path to the file
@@ -72,17 +79,19 @@ set statusline+=%l    " Current line
 set statusline+=/    " Separator
 set statusline+=%L   " Total lines
 
-if exists('g:loaded_syntastic_plugin')
-  let g:syntastic_always_populate_loc_list = 1
-  let g:syntastic_auto_loc_list = 1
-  let g:syntastic_check_on_open = 1
-  let g:syntastic_check_on_wq = 0
-  let g:syntastic_python_checkers = ['pylint'] " or python
-  let g:syntastic_cpp_checkers = ['clang_check', 'clang_tidy'] " clang_tidy, gcc
-  " Syntastic statusline settings
-  set statusline+=%#warningmsg#
-  set statusline+=%{SyntasticStatuslineFlag()}
-  set statusline+=%*
-endif
+"if exists('g:loaded_syntastic_plugin')
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_wq = 1
+let g:syntastic_python_checkers = ['python', 'flake8'] " or python
+let g:syntastic_cpp_checkers = ['clang_check', 'clang_tidy'] " clang_tidy, gcc
+" Syntastic statusline settings
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+"endif
+
+au BufNewfile,BufRead *.py set tabstop=4 softtabstop=4 shiftwidth=4 expandtab smarttab autoindent
 
 " EOF
