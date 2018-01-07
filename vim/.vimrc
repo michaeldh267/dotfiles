@@ -53,14 +53,20 @@ if maparg('<C-L>', 'n') ==# ''
 endif
 
 set t_ut=
-try
-colorscheme desert
-catch
-colorscheme default
-endtry
+if &t_Co == '256' || gas("gui_running")
+	try
+		colorscheme badwolf
+	catch
+		try
+			colorscheme desert
+		catch
+			colorscheme default
+		endtry
+	endtry
+endif
 
 if has("gui_running")
-	colorscheme desert
+	" colorscheme desert
 	set guifont=Liberation\ Mono\ 12
 	set guioptions-=l
 	set guioptions-=r

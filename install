@@ -19,7 +19,8 @@ ln -s $HOME/.vim/autoload/vim-pathogen/autoload/pathogen.vim \
 local bundledir=$HOME/.vim/bundle
 
 local vimlist=("https://github.com/vim-syntastic/syntastic" \
-	"https://github.com/tpope/vim-fugitive")
+	"https://github.com/tpope/vim-fugitive" \
+	"https://github.com/sjl/badwolf")
 for url in "${vimlist[@]}"; do
 cd $bundledir && git clone $url
 done
