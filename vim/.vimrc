@@ -53,7 +53,7 @@ if maparg('<C-L>', 'n') ==# ''
 endif
 
 set t_ut=
-if &t_Co == '256' || gas("gui_running")
+if &t_Co == '256' || has("gui_running")
 	try
 		colorscheme badwolf
 	catch
