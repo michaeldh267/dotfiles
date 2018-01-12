@@ -16,7 +16,7 @@ atool
 hexchat
 
 # lisp
-mit-scheme
+mit-scheme guile-2.0
 
 # lua
 love luarocks
