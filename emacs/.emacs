@@ -8,14 +8,14 @@
   (load-theme 'whiteboard)
   (set-frame-font "Liberation Mono-12")
   (show-paren-mode 1)
-  ;; (setq inhibit-startup-screen t)
-  ;; (if (display-graphic-p)
-  ;;     (progn
-  ;;       (show-paren-mode 1)
-        )
+  (setq inhibit-startup-screen t)
+  (if (display-graphic-p)
+      (progn
+        (show-paren-mode 1)
+        )))
 
 ;; scheme goop
-;; (setq inferior-list-program "/usr/bin/mit-scheme")
+(setq inferior-lisp-program "/usr/bin/mit-scheme")
 
 
 ;; If you don't have MELPA in your package archives:
@@ -23,13 +23,14 @@
 (add-to-list 'package-archives
   '("melpa" . "https://melpa.org/packages/") t)
 (package-initialize)
+
 (unless package-archive-contents
   (package-refresh-contents))
 
 (setq my-packages '(intero
-		      better-defaults
-                      geiser
-                      paredit))
+		    better-defaults
+		    geiser
+		    paredit))
 
 (dolist (p my-packages)
   (unless (package-installed-p p)

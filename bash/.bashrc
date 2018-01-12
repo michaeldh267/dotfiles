@@ -1,3 +1,4 @@
+#!/usr/vin/env bash
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
@@ -121,7 +122,15 @@ export PATH=$HOME/bin:$PATH
 export WORKON_HOME=$HOME/.virtualenvs
 export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
 export PROJECT_HOME=$HOME/Devel
-source /usr/local/bin/virtualenvwrapper.sh
+
+function source_if_file() {
+	local file="$*"
+	if [[ -f $file ]]; then
+		source "$file"
+	fi
+}
+
+source_if_file '/usr/local/bin/virtualenvwrapper.sh'
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 #export PATH="$PATH:$HOME/.rvm/bin"
