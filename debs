@@ -3,22 +3,20 @@ build-essential gdb emacs git sudo curl tree htop
 vim ctags vim-syntastic vim-pathogen
 dos2unix mc links
 tig
-stterm
 rename
 
 # desktop
 i3 i3status pasystray
-mpv vlc nitrogen
-rxvt-unicode-256color tmux irssi stterm
+mpv vlc 
+tmux
 feh markdown 
-chromium fonts-symbola fonts-inconsolata
+fonts-symbola fonts-inconsolata
 transmission-gtk
 atool
 hexchat
-octave
 
 # lisp
-racket
+mit-scheme
 
 # lua
 love luarocks
@@ -27,7 +25,4 @@ love luarocks
 perl-doc
 
 # python
-python3-virtualenv virtualenvwrapper python3-pip
-python3-pylint-common
-python3-bs4
-bpython3
+python3-pip

@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+find / >$HOME/.myk-db 2>/dev/null
+# don't scan fat-c; don't care
+#find / -not \( -path /fat-c -prune \) >$HOME/.myk-db 2>/dev/null

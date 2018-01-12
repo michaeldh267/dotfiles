@@ -1,16 +1,12 @@
 #!/usr/bin/env bash
-# Stow "packages" in ~/dotfiles, skipping non-directories
+# installs debian packages from the list in debs
 
 set -e # exit if any command has non-zero return value
 set -u # exit if undefined reference found
 set -o pipefail # do not mask pipeline errors
 #set -x # debug mode 
-IFS=$'\n\t'
+#IFS=$'\n\t'
 
-cd $HOME/dotfiles
-for package in *; do
-	if [[ -d "$package" ]]; 
-	then
-		stow -v -R "$package"
-	fi
-done
+sudo apt update && \
+sudo apt upgrade && \
+sudo apt install $(sed -e 's/#.*$//g' debs | tr '\n' ' ')

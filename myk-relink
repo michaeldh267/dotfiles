@@ -1,12 +1,11 @@
 #!/usr/bin/env bash
-# wrap youtube-dl, restrict filenames to ASCII chars
+# A helper function to reset the environment
 
 set -e # exit if any command has non-zero return value
 set -u # exit if undefined reference found
 set -o pipefail # do not mask pipeline errors
 #set -x # debug mode 
-IFS=$'\n\t'
+#IFS=$'\n\t'
 
-#echo "Hello $(whoami)"
-
-youtube-dl --restrict-filenames -o '%(title)s.%(ext)s' "$@"
+source "$HOME/.bashrc"
+xrdb "$HOME/.Xresources"

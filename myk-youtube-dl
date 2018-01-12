@@ -1,13 +1,12 @@
 #!/usr/bin/env bash
-# A helper function to reset the environment
+# wrap youtube-dl, restrict filenames to ASCII chars
 
 set -e # exit if any command has non-zero return value
 set -u # exit if undefined reference found
 set -o pipefail # do not mask pipeline errors
 #set -x # debug mode 
-IFS=$'\n\t'
+#IFS=$'\n\t'
 
-function myk-relink() {
-	source "$HOME/.bashrc"
-	xrdb "$HOME/.Xresources"
-}
+#echo "Hello $(whoami)"
+
+youtube-dl --restrict-filenames -o '%(title)s.%(ext)s' "$@"

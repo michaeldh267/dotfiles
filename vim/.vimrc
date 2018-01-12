@@ -28,6 +28,7 @@ set nrformats=hex
 set ruler
 set sessionoptions-=options
 set showcmd
+set smartindent " testing
 set smarttab
 set tabpagemax=50
 set tags=./tags;,tags
@@ -42,6 +43,7 @@ set nocompatible
 set nocursorcolumn
 set nocursorline
 set noundofile
+" No nothing, punk!
 
 " Load matchit.vim, but only if the user hasn't installed a newer version.
 if !exists('g:loaded_matchit') && findfile('plugin/matchit.vim', &rtp) ==# ''
@@ -100,4 +102,5 @@ set statusline+=%*
 
 au BufNewfile,BufRead *.py set tabstop=4 softtabstop=4 shiftwidth=4 expandtab smarttab autoindent
 
+"au BufNewfile,BufRead *.hs set tabstop=2 softtabstop=2 shiftwidth=2 shiftround expandtab
 " EOF
