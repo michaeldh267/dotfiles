@@ -1,6 +1,7 @@
 try
 execute pathogen#infect()
 catch
+	echom "Pathogen missing?"
 endtry
 
 syntax on
@@ -43,8 +44,8 @@ set nocompatible
 set nocursorcolumn
 set nocursorline
 set noundofile
-" No nothing, punk!
 
+set colorcolumn=80
 " Load matchit.vim, but only if the user hasn't installed a newer version.
 if !exists('g:loaded_matchit') && findfile('plugin/matchit.vim', &rtp) ==# ''
 	runtime! macros/matchit.vim
@@ -54,9 +55,10 @@ if maparg('<C-L>', 'n') ==# ''
 	nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
 endif
 
+" 
 set t_ut=
-if &t_Co == '256' || has("gui_running")
-	try
+if &t_Co == "256" || has("gui_running")
+	try 
 		colorscheme badwolf
 	catch
 		try
@@ -68,7 +70,6 @@ if &t_Co == '256' || has("gui_running")
 endif
 
 if has("gui_running")
-	" colorscheme desert
 	set guifont=Liberation\ Mono\ 12
 	set guioptions-=l
 	set guioptions-=r
@@ -87,20 +88,18 @@ set statusline+=%l    " Current line
 set statusline+=/    " Separator
 set statusline+=%L   " Total lines
 
-"if exists('g:loaded_syntastic_plugin')
-"let g:syntastic_always_populate_loc_list = 1
-"let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 1
-let g:syntastic_python_checkers = ['python', 'flake8'] " or python
-let g:syntastic_cpp_checkers = ['clang_check', 'clang_tidy'] " clang_tidy, gcc
-" Syntastic statusline settings
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-"endif
-
-au BufNewfile,BufRead *.py set tabstop=4 softtabstop=4 shiftwidth=4 expandtab smarttab autoindent
+if exists('g:loaded_syntastic_plugin')
+  let g:syntastic_always_populate_loc_list = 1
+  let g:syntastic_auto_loc_list = 1
+  let g:syntastic_check_on_open = 1
+  let g:syntastic_check_on_wq = 0
+  let g:syntastic_python_checkers = ['pylint'] " or python
+  let g:syntastic_cpp_checkers = ['clang_check', 'clang_tidy'] " clang_tidy,gcc
+  " Syntastic statusline settings
+  set statusline+=%#warningmsg#
+  set statusline+=%{SyntasticStatuslineFlag()}
+  set statusline+=%*
+endif
 
 "au BufNewfile,BufRead *.hs set tabstop=2 softtabstop=2 shiftwidth=2 shiftround expandtab
 " EOF
