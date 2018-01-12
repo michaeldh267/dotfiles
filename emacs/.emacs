@@ -15,7 +15,7 @@
         )
 
 ;; scheme goop
-(setq inferior-list-program "/usr/bin/mit-scheme")
+;; (setq inferior-list-program "/usr/bin/mit-scheme")
 
 
 ;; If you don't have MELPA in your package archives:
@@ -26,8 +26,10 @@
 (unless package-archive-contents
   (package-refresh-contents))
 
-(defvar my-packages '(intero
-		      better-defaults))
+(setq my-packages '(intero
+		      better-defaults
+                      geiser
+                      paredit))
 
 (dolist (p my-packages)
   (unless (package-installed-p p)
