@@ -102,4 +102,5 @@ if exists('g:loaded_syntastic_plugin')
 endif
 
 "au BufNewfile,BufRead *.hs set tabstop=2 softtabstop=2 shiftwidth=2 shiftround expandtab
+au BufNewfile,BufRead *.pas set tabstop=2 softtabstop=2 shiftwidth=2 smartindent
 " EOF
