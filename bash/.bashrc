@@ -125,7 +125,7 @@ export PROJECT_HOME=$HOME/Devel
 
 function source_if_file() {
 	local file="$*"
-	if [[ -f $file ]]; then
+	if [[ -f "$file" ]]; then
 		source "$file"
 	fi
 }
@@ -133,7 +133,7 @@ function source_if_file() {
 source_if_file '/usr/local/bin/virtualenvwrapper.sh'
 
 function myk-update-db() {
-find / >$HOME/.myk-db 2>/dev/null
+find / >"$HOME/.myk-db" 2>/dev/null
 # don't scan fat-c; don't care
 #find / -not \( -path /fat-c -prune \) >$HOME/.myk-db 2>/dev/null
 }
@@ -161,15 +161,12 @@ cd $bundledir && git clone $url
 done
 }
 
-myk-rnd-fb-bg() {
-while true; do
-	feh --bg-max --randomize ~/Downloads/*.jpg
-	sleep 3600 # seconds
-done &
+myk-rnd-bg() {
+feh --bg-fill --randomize ~/Downloads/*.jpg
 }
 
 myk-stow() {
-cd $HOME/dotfiles
+cd "$HOME/dotfiles"
 for package in *; do
 	if [[ -d "$package" ]]; 
 	then
