@@ -127,6 +127,7 @@ function source_if_file() {
 	local file="$*"
 	if [[ -f "$file" ]]; then
 		source "$file"
+		echo "Sourcing $file"
 	fi
 }
 
@@ -184,4 +185,6 @@ myk-youtube-dl() {
 youtube-dl --restrict-filenames -o '%(title)s.%(ext)s' "$@"
 }
 
+#[[ $- = *i* ]] && echo "Abort!"
+source_if_file "$HOME/liquidprompt/liquidprompt"
 # EOF

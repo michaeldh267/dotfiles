@@ -5,7 +5,7 @@
   ;; (global-set-key (kbd "M-s") 'save-buffer)
   ;; (global-set-key (kbd "M-o") 'other-window)
   ;; (global-set-key (kbd "C-x C-b") 'switch-to-buffer)
-  (load-theme 'whiteboard)
+  (load-theme 'tsdh-dark)
   (set-frame-font "Liberation Mono-12")
   (show-paren-mode 1)
   (setq inhibit-startup-screen t)
@@ -38,3 +38,6 @@
 
 (require 'better-defaults)
 (add-hook 'haskell-mode-hook 'intero-mode)
+
+; GC when window loses focus
+(add-hook 'focus-out-hook 'garbage-collect)
