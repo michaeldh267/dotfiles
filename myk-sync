@@ -1,12 +1,39 @@
 #!/usr/bin/env bash
-# installs debian packages from the list in debs
+# program installer
 
-set -e # exit if any command has non-zero return value
-set -u # exit if undefined reference found
-set -o pipefail # do not mask pipeline errors
-#set -x # debug mode 
-#IFS=$'\n\t'
+progs=(
+# the basics
+build-essential gdb emacs git sudo curl tree htop
+vim ctags vim-syntastic vim-pathogen
+dos2unix mc links
+tig
+rename stow
+
+# desktop
+i3 i3status pasystray
+mpv vlc 
+tmux
+feh markdown 
+fonts-symbola fonts-inconsolata
+transmission-gtk
+atool
+hexchat
+
+# lisp
+mit-scheme guile-2.0
+
+# lua
+love luarocks
+
+# perl
+perl-doc
+
+# python
+python3-pip
+)
+
+#echo "${progs[@]}" # used for debugging
 
 sudo apt update && \
 sudo apt upgrade && \
-sudo apt install $(sed -e 's/#.*$//g' debs | tr '\n' ' ')
+sudo apt install "${progs[@]}"

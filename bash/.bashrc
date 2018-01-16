@@ -132,6 +132,59 @@ function source_if_file() {
 
 source_if_file '/usr/local/bin/virtualenvwrapper.sh'
 
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-#export PATH="$PATH:$HOME/.rvm/bin"
+function myk-update-db() {
+find / >$HOME/.myk-db 2>/dev/null
+# don't scan fat-c; don't care
+#find / -not \( -path /fat-c -prune \) >$HOME/.myk-db 2>/dev/null
+}
+
+function myk-find() {
+grep --color=auto "$*" "$HOME/.myk-db"
+}
+
+myk-install-vim() {
+cp -v $HOME/dotfiles/vim/.vimrc $HOME/.vimrc
+
+mkdir -pv $HOME/.vim/autoload $HOME/.vim/bundle
+
+cd  $HOME/.vim/autoload && git clone https://github.com/tpope/vim-pathogen
+ln -s $HOME/.vim/autoload/vim-pathogen/autoload/pathogen.vim \
+	$HOME/.vim/autoload/pathogen.vim
+
+local bundledir=$HOME/.vim/bundle
+
+local vimlist=("https://github.com/vim-syntastic/syntastic" \
+	"https://github.com/tpope/vim-fugitive" \
+	"https://github.com/sjl/badwolf")
+for url in "${vimlist[@]}"; do
+cd $bundledir && git clone $url
+done
+}
+
+myk-rnd-fb-bg() {
+while true; do
+	feh --bg-max --randomize ~/Downloads/*.jpg
+	sleep 3600 # seconds
+done &
+}
+
+myk-stow() {
+cd $HOME/dotfiles
+for package in *; do
+	if [[ -d "$package" ]]; 
+	then
+		stow -v -R "$package"
+	fi
+done
+}
+
+myk-relink() {
+source "$HOME/.bashrc"
+xrdb "$HOME/.Xresources"
+}
+
+myk-youtube-dl() {
+youtube-dl --restrict-filenames -o '%(title)s.%(ext)s' "$@"
+}
+
 # EOF
