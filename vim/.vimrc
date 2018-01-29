@@ -1,7 +1,6 @@
 try
 execute pathogen#infect()
 catch
-	echom "Pathogen missing?"
 endtry
 
 syntax on
@@ -10,6 +9,8 @@ filetype plugin indent on
 cnoreabbrev W w
 nnoremap <C-w>q :close<CR>
 nnoremap ZZ :close<CR>
+nnoremap / /\v
+nnoremap ? ?\v
 set autoindent
 set backspace=indent,eol,start
 set complete-=i
@@ -89,17 +90,19 @@ set statusline+=/    " Separator
 set statusline+=%L   " Total lines
 
 if exists('g:loaded_syntastic_plugin')
-  let g:syntastic_always_populate_loc_list = 1
-  let g:syntastic_auto_loc_list = 1
-  let g:syntastic_check_on_open = 1
-  let g:syntastic_check_on_wq = 0
-  let g:syntastic_python_checkers = ['pylint'] " or python
-  let g:syntastic_cpp_checkers = ['clang_check', 'clang_tidy'] " clang_tidy,gcc
-  " Syntastic statusline settings
-  set statusline+=%#warningmsg#
-  set statusline+=%{SyntasticStatuslineFlag()}
-  set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_cpp_checkers = ['clang_check', 'clang_tidy'] " clang_tidy,gcc
+" Syntastic statusline settings
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
 endif
+let g:syntastic_python_checkers = ['flake8', 'python'] " or python
+"let g:syntastic_python_checkers = ['pyflakes', 'python'] " or python
+let g:syntastic_python_python_exec = '/usr/bin/python3'
 
 "au BufNewfile,BufRead *.hs set tabstop=2 softtabstop=2 shiftwidth=2 shiftround expandtab
 au BufNewfile,BufRead *.pas set tabstop=2 softtabstop=2 shiftwidth=2 smartindent

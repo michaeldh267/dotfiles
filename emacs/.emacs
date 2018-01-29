@@ -1,11 +1,12 @@
 (require 'cl-lib)
 (progn
+  ;;; Never to be uncommented
   ;; (global-set-key (kbd "M-b") 'switch-to-buffer)
   ;; (global-set-key (kbd "M-f") 'find-file)
   ;; (global-set-key (kbd "M-s") 'save-buffer)
   ;; (global-set-key (kbd "M-o") 'other-window)
   ;; (global-set-key (kbd "C-x C-b") 'switch-to-buffer)
-  (load-theme 'tsdh-dark)
+  (load-theme 'manoj-dark)
   (set-frame-font "Liberation Mono-12")
   (show-paren-mode 1)
   (setq inhibit-startup-screen t)
@@ -17,7 +18,6 @@
 ;; scheme goop
 (setq inferior-lisp-program "/usr/bin/mit-scheme")
 
-
 ;; If you don't have MELPA in your package archives:
 (require 'package)
 (add-to-list 'package-archives
@@ -28,9 +28,9 @@
   (package-refresh-contents))
 
 (setq my-packages '(intero
-		    better-defaults
-		    geiser
-		    paredit))
+                    better-defaults
+                    geiser
+                    paredit))
 
 (dolist (p my-packages)
   (unless (package-installed-p p)
@@ -41,3 +41,7 @@
 
 ; GC when window loses focus
 (add-hook 'focus-out-hook 'garbage-collect)
+
+(add-to-list 'load-path "~/.emacs.d/evil")
+(require 'evil)
+(evil-mode 1)
