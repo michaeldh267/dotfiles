@@ -187,5 +187,5 @@ if __name__ == '__main__':
     for line in color_config.split():
         # print(line + hexstr(*itertools.islice(gen_rgb(), 1)))
         print(line + hexstr(*itertools.islice(gen_rgb2(), 1)))
-    # for line in texture_config.split():
-        # print(line + ' '.join(gen_texture()))
+    for line in texture_config.split():
+        print(line + ' '.join(gen_texture()))

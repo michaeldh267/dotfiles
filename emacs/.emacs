@@ -14,9 +14,6 @@
         (show-paren-mode 1)
         )))
 
-;; scheme goop
-(setq inferior-lisp-program "/usr/bin/mit-scheme")
-
 
 ;; If you don't have MELPA in your package archives:
 (require 'package)
@@ -41,3 +38,19 @@
 
 ; GC when window loses focus
 (add-hook 'focus-out-hook 'garbage-collect)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages (quote (paredit geiser better-defaults intero))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
+(load (expand-file-name "~/quicklisp/slime-helper.el"))
+  ;; Replace "sbcl" with the path to your implementation
+  (setq inferior-lisp-program "/usr/local/bin/sbcl")
+(setq slime-contribs '(slime-fancy))
