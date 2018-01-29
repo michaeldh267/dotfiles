@@ -62,32 +62,37 @@ if &t_Co == "256" || has("gui_running")
 	try 
 		colorscheme badwolf
 	catch
-		try
-			colorscheme desert
-		catch
-			colorscheme default
-		endtry
+		colorscheme desert
+	endtry
+else
+	try
+		colorscheme industry
+	catch
+		colorscheme default
 	endtry
 endif
 
 if has("gui_running")
 	set guifont=Liberation\ Mono\ 12
-	set guioptions-=l
-	set guioptions-=r
+" 	set guioptions-=l
+" 	set guioptions-=r
 	set guioptions-=L
-	set guioptions-=R
-	set guioptions-=T
+	winpos 0 0
+	set lines=60
+	set columns=90
+" 	set guioptions-=R
+" 	set guioptions-=T
 endif
 
-set statusline=%f         " Path to the file
-set statusline+=\ -\      " Separator
-set statusline+=FileType: " Label
-set statusline+=%y        " Filetype of the file
-set statusline+=%c    " Current column
-set statusline+=-    " sep
-set statusline+=%l    " Current line
-set statusline+=/    " Separator
-set statusline+=%L   " Total lines
+set statusline=%f		" Path to the file
+set statusline+=\ -\		" Separator
+set statusline+=FileType:	" Label
+set statusline+=%y        	" Filetype of the file
+set statusline+=%c		" Current column
+set statusline+=-		" sep
+set statusline+=%l		" Current line
+set statusline+=/		" Separator
+set statusline+=%L		" Total lines
 
 if exists('g:loaded_syntastic_plugin')
 let g:syntastic_always_populate_loc_list = 1

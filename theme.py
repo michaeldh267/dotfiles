@@ -23,7 +23,7 @@ menu.frame.justify: {justify}
 menu.frame.color: {colorTo}
 menu.frame.colorTo: {colorTo}
 menu.frame.textColor: {text}
-menu.frame.disableColor: {colorTo}
+menu.frame.disableColor: {color}
 
 menu.hilite: {texture}
 menu.hilite.color: {color}
@@ -156,10 +156,10 @@ window.grip.unfocus.colorTo: {colorTo}
 toolbar.shaped: false'''
 
 print(config.format(
-    text="white",
-    textTo="grey",
-    color="#79d252",
-    colorTo="#09000c",
+    text="black",
+    textTo="black",
+    color="#fcaf3e",
+    colorTo="#ffffff",
     texture="raised gradient crossdiagonal bevel1",
     textureTo="sunken gradient pipecross interlaced",
     justify="left"))
