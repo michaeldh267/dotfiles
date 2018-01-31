@@ -159,6 +159,7 @@ local vimlist=("https://github.com/vim-syntastic/syntastic" \
 	"https://github.com/sjl/badwolf"
 	"https://github.com/jceb/vim-orgmode"
 	"https://github.com/tpope/vim-speeddating")
+
 for url in "${vimlist[@]}"; do
 cd $bundledir && git clone $url
 done
