@@ -188,5 +188,8 @@ youtube-dl --restrict-filenames -o '%(title)s.%(ext)s' "$@"
 }
 
 #[[ $- = *i* ]] && echo "Abort!"
-source_if_file "$HOME/liquidprompt/liquidprompt"
+#source_if_file "$HOME/liquidprompt/liquidprompt"
 # EOF
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"

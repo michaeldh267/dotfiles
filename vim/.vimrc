@@ -46,6 +46,9 @@ set nocursorcolumn
 set nocursorline
 set noundofile
 
+" indent crap
+set tabstop=2 softtabstop=2 shiftwidth=2 shiftround expandtab
+
 set colorcolumn=80
 " Load matchit.vim, but only if the user hasn't installed a newer version.
 if !exists('g:loaded_matchit') && findfile('plugin/matchit.vim', &rtp) ==# ''
@@ -109,6 +112,11 @@ let g:syntastic_python_checkers = ['flake8', 'python'] " or python
 "let g:syntastic_python_checkers = ['pyflakes', 'python'] " or python
 let g:syntastic_python_python_exec = '/usr/bin/python3'
 
+let g:syntastic_javascript_checkers = ['jshint']
+
 "au BufNewfile,BufRead *.hs set tabstop=2 softtabstop=2 shiftwidth=2 shiftround expandtab
-au BufNewfile,BufRead *.pas set tabstop=2 softtabstop=2 shiftwidth=2 smartindent
+"au BufNewfile,BufRead *.pas set tabstop=2 softtabstop=2 shiftwidth=2 smartindent
+let g:paredit_mode=1
+" let g:paredit_electric_return=1
+" let g:slimv_swank_cmd = '! xterm -e sbcl --load /usr/share/common-lisp/source/slime/start-swank.lisp &'
 " EOF

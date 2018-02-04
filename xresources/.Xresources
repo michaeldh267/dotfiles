@@ -5,12 +5,9 @@ Xft.hinting: 1
 Xft.antialias: 1
 Xft.rgba: rgb
 
-!URxvt.font: xft:Liberation Mono:size=13,xft:Source Code Pro,xft:Symbola,xft:Noto Mono,xft:DejaVu Sans Mono
-URxvt.font: xft:Terminus:size=16:bold
-!URxvt.font: 9x15bold,-misc-fixed-bold-r-normal--15-140-75-75-c-90-iso10646-1,-misc-fixed-medium-r-normal--15-140-75-75-c-90-iso10646-1,[codeset=JISX0208]xft:Kochi Gothic:antialias=false,xft:Symbola:antialias=false
-!URxvt.font: -*-terminus-*-r-normal-*-20-*-*-*-*-*-iso10646-*, \
-
-URxvt.letterSpace: 0
+!URxvt.font: xft:Terminus:size=16:bold
+URxvt.font: xft:monospace:size=13
+URxvt.letterSpace: -2
 
 !!! tabbed
 URxvt.perl-ext-common: default,matcher
@@ -34,7 +31,8 @@ URxvt*color12: #9898ff
 URxvt*color1: #ff8000
 
 XTerm.vt100.renderfont: true
-XTerm.vt100.faceName: Liberation Mono:size=12:antialias=true
+!XTerm.vt100.faceName: Liberation Mono:size=12:antialias=true
+XTerm.vt100.faceName: monospace:size=13:bold:antialias=true
 XTerm.vt100.reverseVideo: on
 XTerm.vt100.saveLines: 5000
 XTerm.vt100.scrollBar: true
