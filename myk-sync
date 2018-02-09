@@ -1,39 +1,40 @@
-#!/usr/bin/env bash
-# program installer
+#!/bin/sh
+# install programs I like, on a Debian or Deb derivative (*buntu, Mint, etc)
 
-progs=(
-# the basics
-build-essential gdb emacs git sudo curl tree htop
-vim ctags vim-syntastic vim-pathogen
+basics='
+build-essential
+gdb git sudo curl tree htop
+vim-gnome ctags vim-syntastic vim-pathogen
 dos2unix mc links
 tig
 rename stow
-
-# desktop
-i3 i3status pasystray
-mpv vlc 
+shellcheck
 tmux
-feh markdown 
-fonts-symbola fonts-inconsolata
-transmission-gtk
+markdown 
 atool
-hexchat
+fonts-symbola fonts-inconsolata
+suckless-tools
+youtube-dl
+'
 
-# lisp
-mit-scheme guile-2.0
+desktop='
+mpv
+feh 
+transmission-gtk
+hexchat'
 
-# lua
-love luarocks
+python='python3-pip'
 
-# perl
-perl-doc
-
-# python
-python3-pip
-)
-
-#echo "${progs[@]}" # used for debugging
+#echo "$basics $desktop $python"
 
 sudo apt update && \
 sudo apt upgrade && \
-sudo apt install "${progs[@]}"
+sudo apt install \
+"$basics" \
+"$desktop" \
+"$python" \
+--no-install-recommends
+
+sudo apt autoremove
+sudo apt autoclean
+sudo apt clean
