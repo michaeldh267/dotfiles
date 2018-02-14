@@ -39,13 +39,13 @@ grep --color=auto "$*" "$HOME/.myk-db"
 }
 
 myk-install-vim() {
-cp -v $HOME/dotfiles/vim/.vimrc $HOME/.vimrc
+cp -v "$HOME/dotfiles/vim/.vimrc" "$HOME/.vimrc"
 
-mkdir -pv $HOME/.vim/autoload $HOME/.vim/bundle
+mkdir -pv "$HOME/.vim/autoload" "$HOME/.vim/bundle"
 
-cd  $HOME/.vim/autoload && git clone https://github.com/tpope/vim-pathogen
-ln -s $HOME/.vim/autoload/vim-pathogen/autoload/pathogen.vim \
-	$HOME/.vim/autoload/pathogen.vim
+cd  "$HOME/.vim/autoload" && git clone https://github.com/tpope/vim-pathogen
+ln -s "$HOME/.vim/autoload/vim-pathogen/autoload/pathogen.vim" \
+	"$HOME/.vim/autoload/pathogen.vim"
 
 local bundledir=$HOME/.vim/bundle
 
@@ -55,10 +55,11 @@ local vimlist=("https://github.com/vim-syntastic/syntastic"
 	"https://github.com/jceb/vim-orgmode"
 	"https://github.com/tpope/vim-speeddating"
   "https://github.com/scrooloose/nerdtree"
-  "https://github.com/kien/ctrlp.vim")
+  "https://github.com/kien/ctrlp.vim"
+  "https://github.com/kien/rainbow_parentheses.vim")
 
 for url in "${vimlist[@]}"; do
-cd $bundledir && git clone $url
+cd "$bundledir" && git clone "$url"
 done
 }
 
@@ -112,8 +113,6 @@ transmission-gtk
 hexchat
 
 python3-pip)
-
-#echo "$basics $desktop $python"
 
 sudo apt update && \
 sudo apt upgrade && \
