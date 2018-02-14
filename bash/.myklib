@@ -92,9 +92,7 @@ cs () {
 
 myk-deb-install() {
 # install programs I like, on a Debian or Deb derivative (*buntu, Mint, etc)
-
-basics='
-build-essential
+local deblist=(build-essential
 gdb git sudo curl tree htop
 vim-gnome ctags vim-syntastic vim-pathogen
 dos2unix mc links
@@ -108,24 +106,18 @@ fonts-symbola fonts-inconsolata
 suckless-tools
 youtube-dl
 mpd mpc
-'
-
-desktop='
 mpv
 feh 
 transmission-gtk
-hexchat'
+hexchat
 
-python='python3-pip'
+python3-pip)
 
 #echo "$basics $desktop $python"
 
 sudo apt update && \
 sudo apt upgrade && \
-sudo apt install \
-"$basics" \
-"$desktop" \
-"$python" \
+sudo apt install "${deblist[@]}"  \
 --no-install-recommends
 
 sudo apt autoremove
