@@ -15,6 +15,7 @@ atool
 fonts-symbola fonts-inconsolata
 suckless-tools
 youtube-dl
+mpd mpc
 '
 
 desktop='
