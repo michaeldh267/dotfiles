@@ -6,6 +6,7 @@ endtry
 syntax on
 filetype plugin indent on
 
+map <C-n> :NERDTreeToggle<CR>
 cnoreabbrev W w
 nnoremap <C-w>q :close<CR>
 nnoremap ZZ :close<CR>
@@ -34,7 +35,7 @@ set smartindent " testing
 set smarttab
 set tabpagemax=50
 set tags=./tags;,tags
-set textwidth=79
+"set textwidth=79
 set ttyfast
 set viminfo+=!
 set wildmenu
@@ -77,46 +78,57 @@ endif
 
 if has("gui_running")
 	set guifont=Liberation\ Mono\ 12
-" 	set guioptions-=l
-" 	set guioptions-=r
+	set guioptions-=l
+ 	set guioptions-=r
 	set guioptions-=L
 	winpos 0 0
 	set lines=60
 	set columns=90
-" 	set guioptions-=R
-" 	set guioptions-=T
+ 	set guioptions-=R
+ 	set guioptions-=T
 endif
 
-set statusline=%f		" Path to the file
-set statusline+=\ -\		" Separator
-set statusline+=FileType:	" Label
-set statusline+=%y        	" Filetype of the file
-set statusline+=%c		" Current column
-set statusline+=-		" sep
-set statusline+=%l		" Current line
-set statusline+=/		" Separator
-set statusline+=%L		" Total lines
+set statusline=%f     " Path to the file
+set statusline+=\ -\  " Separator
+set statusline+=FT:   " Label
+set statusline+=%y    " Filetype of the file
+set statusline+=%c    " Current column
+set statusline+=-     " sep
+set statusline+=%l    " Current line
+set statusline+=/     " Separatorr
+set statusline+=%L    " Total lines
+set statusline+=%m    " Modified?
+set statusline+=%m    " Modified?
+set statusline+=%m    " Modified?
 
-if exists('g:loaded_syntastic_plugin')
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_cpp_checkers = ['clang_check', 'clang_tidy'] " clang_tidy,gcc
-" Syntastic statusline settings
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-endif
+" if exists('g:loaded_syntastic_plugin')
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 1
+" let g:syntastic_check_on_open = 1
+" let g:syntastic_check_on_wq = 0
+" let g:syntastic_cpp_checkers = ['clang_check', 'clang_tidy'] " clang_tidy,gcc
+" " Syntastic statusline settings
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
+" endif
 let g:syntastic_python_checkers = ['flake8', 'python'] " or python
 "let g:syntastic_python_checkers = ['pyflakes', 'python'] " or python
 let g:syntastic_python_python_exec = '/usr/bin/python3'
 
-let g:syntastic_javascript_checkers = ['jshint']
+let g:syntastic_javascript_checkers = ['eslint']
+"let g:syntastic_javascript_checkers = ['jshint']
 
 "au BufNewfile,BufRead *.hs set tabstop=2 softtabstop=2 shiftwidth=2 shiftround expandtab
 "au BufNewfile,BufRead *.pas set tabstop=2 softtabstop=2 shiftwidth=2 smartindent
 let g:paredit_mode=1
 " let g:paredit_electric_return=1
 " let g:slimv_swank_cmd = '! xterm -e sbcl --load /usr/share/common-lisp/source/slime/start-swank.lisp &'
+"
+" rainbow parenthesis settings
+let g:rbpt_max = 16
+let g:rbpt_loadcmd_toggle = 0
+au VimEnter * RainbowParenthesesToggle
+" CtrlP root
+let g:ctrlp_working_path_mode = 'c'
 " EOF

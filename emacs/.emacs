@@ -15,11 +15,9 @@
         (show-paren-mode 1)
         )))
 
-;; scheme goop
-;; (setq inferior-lisp-program "/usr/bin/mit-scheme")
-
 ;; If you don't have MELPA in your package archives:
 (require 'package)
+
 (add-to-list 'package-archives
   '("melpa" . "https://melpa.org/packages/") t)
 (package-initialize)
@@ -44,7 +42,7 @@
 
 (add-to-list 'load-path "~/.emacs.d/evil")
 (require 'evil)
-(evil-mode 1)
+;; (evil-mode 1)
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -58,6 +56,9 @@
  ;; If there is more than one, they won't work right.
  )
 (load (expand-file-name "~/quicklisp/slime-helper.el"))
-  ;; Replace "sbcl" with the path to your implementation
-  (setq inferior-lisp-program "/usr/local/bin/sbcl")
+;; Replace "sbcl" with the path to your implementation
+(setq inferior-lisp-program "/usr/bin/sbcl")
 (setq slime-contribs '(slime-fancy))
+
+;; (shell)
+

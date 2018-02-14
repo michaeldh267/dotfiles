@@ -154,11 +154,13 @@ ln -s $HOME/.vim/autoload/vim-pathogen/autoload/pathogen.vim \
 
 local bundledir=$HOME/.vim/bundle
 
-local vimlist=("https://github.com/vim-syntastic/syntastic" \
-	"https://github.com/tpope/vim-fugitive" \
+local vimlist=("https://github.com/vim-syntastic/syntastic"
+	"https://github.com/tpope/vim-fugitive"
 	"https://github.com/sjl/badwolf"
 	"https://github.com/jceb/vim-orgmode"
-	"https://github.com/tpope/vim-speeddating")
+	"https://github.com/tpope/vim-speeddating"
+  "https://github.com/scrooloose/nerdtree"
+  "https://github.com/kien/ctrlp.vim")
 
 for url in "${vimlist[@]}"; do
 cd $bundledir && git clone $url
@@ -190,7 +192,19 @@ youtube-dl --restrict-filenames -o '%(title)s.%(ext)s' "$@"
 
 #[[ $- = *i* ]] && echo "Abort!"
 #source_if_file "$HOME/liquidprompt/liquidprompt"
-# EOF
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
+alias l='ls -l'
+alias v='vim'
+alias g='gvim --remote-silent'
+alias dl='cd ~/Downloads'
+alias sapti='sudo apt install'
+function cs () {
+  cd "$1"
+  ls
+}
+# EOF
+# function vim () {
+#   /usr/bin/vim --servername foo --remote-silent "$*"
+# }
