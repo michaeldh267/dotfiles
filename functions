@@ -1,0 +1,135 @@
+#!/usr/bin/env bash
+# Stuff I use
+
+# set -e # exit if any command has non-zero return value
+# set -u # exit if undefined reference found
+# set -o pipefail # do not mask pipeline errors
+# #set -x # debug mode 
+# IFS=$'\n\t'
+
+
+source_if_file() {
+local file="$*"
+if [[ -f "$file" ]]; then
+source "$file"
+echo "Sourcing $file"
+fi
+}
+
+source_if_file '/usr/local/bin/virtualenvwrapper.sh'
+
+myk-update-db() {
+find / >"$HOME/.myk-db" 2>/dev/null
+# don't scan fat-c; don't care
+#find / -not \( -path /fat-c -prune \) >$HOME/.myk-db 2>/dev/null
+}
+
+myk-find() {
+if [ ! -f "$HOME/.myk-db" ]; then
+  echo "Database not found; updating database..."
+  myk-update-db
+fi
+grep --color=auto "$*" "$HOME/.myk-db"
+}
+
+
+myk-rnd-bg() {
+feh --bg-fill --randomize ~/Downloads/*.jpg
+}
+
+myk-stow() {
+cd "$HOME/dotfiles" || exit
+for package in *; do
+	if [[ -d "$package" ]]; 
+	then
+		stow -v -R "$package"
+	fi
+done
+}
+
+myk-relink() {
+source_if_file "$HOME/.bashrc"
+xrdb "$HOME/.Xresources"
+}
+
+myk-youtube-dl() {
+youtube-dl --restrict-filenames -o '%(title)s.%(ext)s' "$@"
+}
+
+cs () {
+  cd "$1" || exit
+  ls
+}
+
+myk-deb-install() {
+# install programs I like, on a Debian or Deb derivative (*buntu, Mint, etc)
+local deblist=(build-essential
+gdb git sudo curl tree htop
+vim-gnome ctags vim-syntastic vim-pathogen
+dos2unix mc links
+tig
+rename stow
+shellcheck
+tmux
+markdown 
+atool
+fonts-symbola fonts-inconsolata
+suckless-tools
+youtube-dl
+mpd mpc
+mpv
+feh 
+transmission-gtk
+hexchat
+
+python3-pip)
+
+sudo apt update && \
+sudo apt upgrade && \
+sudo apt install "${deblist[@]}"  \
+--no-install-recommends
+
+sudo apt autoremove
+sudo apt autoclean
+sudo apt clean
+}
+
+myk-deb-install2() {
+# install programs I like, on a Debian or Deb derivative (*buntu, Mint, etc)
+# I guess this is closer to a posix sh-like way to solve this.
+( # subshell
+
+basic='build-essential
+gdb git sudo curl tree htop
+vim-gnome ctags vim-syntastic vim-pathogen
+dos2unix mc links
+tig
+rename stow
+shellcheck
+tmux
+markdown 
+atool'
+
+desktop='
+fonts-symbola fonts-inconsolata
+suckless-tools
+youtube-dl
+mpd mpc
+mpv
+feh 
+transmission-gtk
+hexchat'
+
+python='python3-pip'
+
+
+# we _do_ actually want word splitting here, so no quoted vars
+sudo apt update && sudo apt upgrade && \
+sudo apt install $basic $desktop $python \
+--no-install-recommends && \
+sudo apt autoremove && \
+sudo apt autoclean && \
+sudo apt clean && \
+echo $?
+)
+}

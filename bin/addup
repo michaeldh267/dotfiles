@@ -1,0 +1,7 @@
+#!/usr/bin/env perl
+use strict;
+use warnings;
+use bigint;
+use feature 'say';
+use List::Util 'sum';
+say(sum(@ARGV));

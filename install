@@ -1,0 +1,94 @@
+#!/bin/bash
+# installs the files
+
+set -e # exit if any command has non-zero return value
+set -u # exit if undefined reference found
+set -o pipefail # do not mask pipeline errors
+#set -x # debug mode 
+#IFS=$'\n\t'
+
+die() {
+  printf '%s\n' "$1" >&2
+  exit 1
+}
+
+ensure_link () {
+# Thanks slj!
+	[[ -L "$2" ]] || ln -s "$1" "$2"
+}
+
+mkdir -p "$HOME/.vim/autoload" "$HOME/.vim/bundle"
+mkdir -p "$HOME/.config/fontconfig"
+mkdir -p "$HOME/.fluxbox"
+mkdir -p "$HOME/.vim"
+mkdir -p "$HOME/bin"
+
+install_dotfiles () {
+(
+dotdir="$HOME/dotfiles"
+cd "$dotdir" || exit
+ensure_link "$dotdir/Xresources" "$HOME/.Xresources"
+ensure_link "$dotdir/bash_aliases" "$HOME/.bash_aliases"
+ensure_link "$dotdir/emacs" "$HOME/.emacs"
+ensure_link "$dotdir/fonts.conf" "$HOME/.config/fontconfig/fonts.conf"
+ensure_link "$dotdir/functions" "$HOME/.functions"
+ensure_link "$dotdir/inputrc" "$HOME/.inputrc"
+ensure_link "$dotdir/irbrc" "$HOME/.irbrc"
+ensure_link "$dotdir/paths" "$HOME/.paths"
+ensure_link "$dotdir/pythonrc" "$HOME/.pythonrc"
+ensure_link "$dotdir/vimrc" "$HOME/.vimrc"
+ensure_link "$dotdir/tmux.conf" "$HOME/.tmux.conf"
+)
+}
+
+install_vim() {
+
+(
+bundledir=$HOME/.vim/bundle
+
+ensure_clone() {
+# Wow, this is gross!
+# Wow, this is cool.
+git clone "$1" || cd "$2" || die "ERROR: can't find directory: $2" && \
+git pull
+cd "$bundledir" || exit
+}
+
+cd  "$HOME/.vim/autoload" || exit
+ensure_clone 'https://github.com/tpope/vim-pathogen' 'vim-pathogen'
+ensure_link "$HOME/.vim/autoload/vim-pathogen/autoload/pathogen.vim" \
+	"$HOME/.vim/autoload/pathogen.vim"
+
+
+cd "$bundledir" || exit
+ensure_clone "https://github.com/vim-syntastic/syntastic" "syntastic"
+ensure_clone "https://github.com/tpope/vim-fugitive" 'vim-fugitive'
+ensure_clone "https://github.com/sjl/badwolf" 'badwolf'
+ensure_clone "https://github.com/jceb/vim-orgmode" 'vim-orgmode'
+ensure_clone "https://github.com/tpope/vim-speeddating" 'vim-speeddating'
+ensure_clone "https://github.com/scrooloose/nerdtree" 'nerdtree'
+ensure_clone "https://github.com/kien/ctrlp.vim" 'ctrlp.vim'
+ensure_clone "https://github.com/kien/rainbow_parentheses.vim" 'rainbow_parentheses.vim'
+)
+}
+
+main() {
+  case "$@" in
+    vim)
+      install_vim
+      exit
+      ;;
+    dotfiles)
+      install_dotfiles
+      exit
+      ;;
+    *)
+      echo "Wrong arguments: $*"
+      echo "Usage: install dotfiles"
+      echo "Usage: install vim"
+      exit
+      ;;
+  esac
+}
+
+main "$@"
