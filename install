@@ -36,8 +36,10 @@ ensure_link "$dotdir/inputrc" "$HOME/.inputrc"
 ensure_link "$dotdir/irbrc" "$HOME/.irbrc"
 ensure_link "$dotdir/paths" "$HOME/.paths"
 ensure_link "$dotdir/pythonrc" "$HOME/.pythonrc"
-ensure_link "$dotdir/vimrc" "$HOME/.vimrc"
 ensure_link "$dotdir/tmux.conf" "$HOME/.tmux.conf"
+ensure_link "$dotdir/toprc" "$HOME/.toprc"
+ensure_link "$dotdir/vimrc" "$HOME/.vimrc"
+ensure_link "$dotdir/xinitrc" "$HOME/.xinitrc"
 )
 }
 

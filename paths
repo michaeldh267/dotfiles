@@ -1,6 +1,5 @@
 #!/bin/bash
-export PATH=$HOME/bin:$PATH
 export WORKON_HOME=$HOME/.virtualenvs
 export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
 export PROJECT_HOME=$HOME/Devel
-export PATH=$PATH:$HOME/.rvm/bin
+export PATH=$HOME/bin:$PATH

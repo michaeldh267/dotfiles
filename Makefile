@@ -5,4 +5,5 @@ CCFLAGS=-Wall \
 	-Wdouble-promotion \
 	-Wshadow \
 	-Wformat=2 \
-
+	-fbounds-check \
+	-ftrapv

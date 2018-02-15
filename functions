@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 # Stuff I use
 
 # set -e # exit if any command has non-zero return value
@@ -38,18 +38,20 @@ feh --bg-fill --randomize ~/Downloads/*.jpg
 }
 
 myk-stow() {
-cd "$HOME/dotfiles" || exit
-for package in *; do
-	if [[ -d "$package" ]]; 
-	then
-		stow -v -R "$package"
-	fi
-done
+# cd "$HOME/dotfiles" || exit
+# for package in *; do
+# 	if [[ -d "$package" ]]; 
+# 	then
+# 		stow -v -R "$package"
+# 	fi
+# done
+exit
 }
 
 myk-relink() {
-source_if_file "$HOME/.bashrc"
-xrdb "$HOME/.Xresources"
+# source_if_file "$HOME/.bashrc"
+# xrdb "$HOME/.Xresources"
+exit
 }
 
 myk-youtube-dl() {
