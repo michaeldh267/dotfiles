@@ -59,8 +59,8 @@ youtube-dl --restrict-filenames -o '%(title)s.%(ext)s' "$@"
 }
 
 cs () {
-  cd "$1" || exit
-  ls
+# if cd succeeds, then ls
+  cd "$@" && ls
 }
 
 myk-deb-install() {
