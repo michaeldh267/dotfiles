@@ -82,8 +82,8 @@ if has("gui_running")
  	set guioptions-=r
 	set guioptions-=L
 	winpos 0 0
-	set lines=60
-	set columns=90
+"	set lines=60
+"	set columns=90
  	set guioptions-=R
  	set guioptions-=T
 endif
