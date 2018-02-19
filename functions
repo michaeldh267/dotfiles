@@ -102,11 +102,11 @@ myk-deb-install2() {
 ( # subshell
 
 basic='build-essential
-gdb git sudo curl tree htop
-vim-gnome ctags vim-syntastic vim-pathogen
+gdb git sudo curl tree
+vim-gnome ctags
 dos2unix mc links
 tig
-rename stow
+rename
 shellcheck
 tmux
 markdown 

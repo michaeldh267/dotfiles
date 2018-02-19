@@ -48,44 +48,45 @@ set nocursorline
 set noundofile
 
 " indent crap
-set tabstop=2 softtabstop=2 shiftwidth=2 shiftround expandtab
+"set tabstop=2 softtabstop=2 shiftwidth=2 shiftround expandtab
 
 set colorcolumn=80
 " Load matchit.vim, but only if the user hasn't installed a newer version.
 if !exists('g:loaded_matchit') && findfile('plugin/matchit.vim', &rtp) ==# ''
-	runtime! macros/matchit.vim
+  runtime! macros/matchit.vim
 endif
 
 if maparg('<C-L>', 'n') ==# ''
-	nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
+  nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
 endif
 
 " 
 set t_ut=
-if &t_Co == "256" || has("gui_running")
-	try 
-		colorscheme badwolf
-	catch
-		colorscheme desert
-	endtry
+"if &t_Co == "256" || has("gui_running")
+if has("gui_running")
+  try 
+    colorscheme badwolf-lc
+  catch
+    colorscheme desert
+  endtry
 else
-	try
-		colorscheme industry
-	catch
-		colorscheme default
-	endtry
+  try
+    colorscheme badwolf
+  catch
+    colorscheme desert
+  endtry
 endif
 
 if has("gui_running")
-	set guifont=Liberation\ Mono\ 12
-	set guioptions-=l
- 	set guioptions-=r
-	set guioptions-=L
-	winpos 0 0
-"	set lines=60
-"	set columns=90
- 	set guioptions-=R
- 	set guioptions-=T
+  set guifont=Liberation\ Mono\ 12
+  set guioptions-=l
+  set guioptions-=r
+  set guioptions-=L
+  " winpos 0 0
+  " set lines=60
+  " set columns=90
+  set guioptions-=R
+  set guioptions-=T
 endif
 
 set statusline=%f     " Path to the file
