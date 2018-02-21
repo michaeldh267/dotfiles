@@ -7,7 +7,6 @@
 # #set -x # debug mode 
 # IFS=$'\n\t'
 
-
 source_if_file() {
 local file="$*"
 if [[ -f "$file" ]]; then
@@ -15,8 +14,6 @@ source "$file"
 echo "Sourcing $file"
 fi
 }
-
-source_if_file '/usr/local/bin/virtualenvwrapper.sh'
 
 myk-update-db() {
 find / >"$HOME/.myk-db" 2>/dev/null
@@ -99,7 +96,7 @@ sudo apt clean
 myk-deb-install2() {
 # install programs I like, on a Debian or Deb derivative (*buntu, Mint, etc)
 # I guess this is closer to a posix sh-like way to solve this.
-( # subshell
+(
 
 basic='build-essential
 gdb git sudo curl tree
@@ -110,10 +107,12 @@ rename
 shellcheck
 tmux
 markdown 
-atool'
+atool
+apt-transport-https
+ca-certificates
+software-properties-common'
 
-desktop='
-fonts-symbola fonts-inconsolata
+desktop='fonts-symbola fonts-inconsolata
 suckless-tools
 youtube-dl
 mpd mpc
@@ -124,14 +123,12 @@ hexchat'
 
 python='python3-pip'
 
-
 # we _do_ actually want word splitting here, so no quoted vars
 sudo apt update && sudo apt upgrade && \
 sudo apt install $basic $desktop $python \
 --no-install-recommends && \
 sudo apt autoremove && \
 sudo apt autoclean && \
-sudo apt clean && \
-echo $?
+sudo apt clean
 )
 }

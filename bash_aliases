@@ -1,7 +1,6 @@
 #!/bin/bash
-
-alias dt='cs ~/dotfiles'
-alias dl='cs ~/Downloads'
+alias dt='cd ~/dotfiles && ls'
+alias dl='cd ~/Downloads && ls'
 alias g='gvim --remote-silent'
 alias l='ls -CF'
 alias la='ls -A'

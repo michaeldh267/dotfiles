@@ -127,9 +127,9 @@ let g:paredit_mode=1
 " let g:slimv_swank_cmd = '! xterm -e sbcl --load /usr/share/common-lisp/source/slime/start-swank.lisp &'
 "
 " rainbow parenthesis settings
-let g:rbpt_max = 16
-let g:rbpt_loadcmd_toggle = 0
-au VimEnter * RainbowParenthesesToggle
+" let g:rbpt_max = 16
+" let g:rbpt_loadcmd_toggle = 0
+" au VimEnter * RainbowParenthesesToggle
 " CtrlP root
 let g:ctrlp_working_path_mode = 'c'
 " EOF
