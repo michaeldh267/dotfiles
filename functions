@@ -121,7 +121,7 @@ feh
 transmission-gtk
 hexchat'
 
-python='python3-pip'
+python='python3-pip python3-setuptools'
 
 # we _do_ actually want word splitting here, so no quoted vars
 sudo apt update && sudo apt upgrade && \
@@ -131,4 +131,19 @@ sudo apt autoremove && \
 sudo apt autoclean && \
 sudo apt clean
 )
+}
+
+sapti () {
+sudo apt update && sudo apt upgrade && \
+sudo apt install "$*" \
+sudo apt autoremove && \
+sudo apt autoclean && \
+sudo apt clean
+}
+
+saptuu () {
+sudo apt update && sudo apt upgrade && \
+sudo apt autoremove && \
+sudo apt autoclean && \
+sudo apt clean
 }

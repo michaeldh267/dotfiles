@@ -22,3 +22,6 @@ export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
 export VIRTUALENVWRAPPER_VIRTUALENV_ARGS=' -p /usr/bin/python3 '
 export PROJECT_HOME=$HOME/Devel
 . /usr/local/bin/virtualenvwrapper.sh
+
+# for golang
+export GOPATH=$HOME/go
