@@ -28,7 +28,7 @@ install_dotfiles () {
 dotdir="$HOME/dotfiles"
 cd "$dotdir" || exit
 ensure_link "$dotdir/Xresources" "$HOME/.Xresources"
-ensure_link "$dotdir/Xsession" "$HOME/.Xsession"
+ensure_link "$dotdir/xsessionrc" "$HOME/.xsessionrc"
 ensure_link "$dotdir/bash_aliases" "$HOME/.bash_aliases"
 ensure_link "$dotdir/emacs" "$HOME/.emacs"
 ensure_link "$dotdir/fonts.conf" "$HOME/.config/fontconfig/fonts.conf"
