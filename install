@@ -4,7 +4,7 @@
 set -e # exit if any command has non-zero return value
 set -u # exit if undefined reference found
 set -o pipefail # do not mask pipeline errors
-set -x # debug mode 
+#set -x # debug mode
 #IFS=$'\n\t'
 
 die() {
@@ -29,7 +29,7 @@ dotdir="$HOME/dotfiles"
 cd "$dotdir" || exit
 ensure_link "$dotdir/Xresources" "$HOME/.Xresources"
 ensure_link "$dotdir/xsessionrc" "$HOME/.xsessionrc"
-ensure_link "$dotdir/bash_aliases" "$HOME/.bash_aliases"
+ensure_link "$dotdir/bashrc" "$HOME/.bashrc"
 ensure_link "$dotdir/emacs" "$HOME/.emacs"
 ensure_link "$dotdir/fonts.conf" "$HOME/.config/fontconfig/fonts.conf"
 ensure_link "$dotdir/functions" "$HOME/.functions"
@@ -75,6 +75,45 @@ ensure_clone "https://github.com/kien/rainbow_parentheses.vim" "rainbow_parenthe
 )
 }
 
+install_debs() {
+
+(
+
+basic='build-essential
+gdb git sudo curl tree
+vim-gnome ctags
+dos2unix mc links
+tig
+rename
+shellcheck
+tmux
+markdown
+atool
+apt-transport-https
+ca-certificates
+software-properties-common'
+
+desktop='fonts-symbola fonts-inconsolata
+suckless-tools
+youtube-dl
+mpd mpc
+mpv
+feh
+transmission-gtk
+hexchat'
+
+python='python3-pip python3-setuptools'
+
+# we _do_ actually want word splitting here, so no quoted vars
+sudo apt update && sudo apt upgrade && \
+sudo apt install $basic $desktop $python \
+--no-install-recommends && \
+sudo apt autoremove && \
+sudo apt autoclean && \
+sudo apt clean
+)
+}
+
 main() {
   case "$@" in
     vim)
@@ -85,10 +124,22 @@ main() {
       install_dotfiles
       exit
       ;;
+    debs)
+      install_debs
+      exit
+      ;;
+    all)
+      install_debs
+      install_dotfiles
+      install_vim
+      exit
+      ;;
     *)
       echo "Wrong arguments: $*"
       echo "Usage: install dotfiles"
       echo "Usage: install vim"
+      echo "Usage: install debs"
+      echo "Usage: install all"
       exit
       ;;
   esac
