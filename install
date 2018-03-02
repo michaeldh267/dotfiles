@@ -28,13 +28,13 @@ install_dotfiles () {
 dotdir="$HOME/dotfiles"
 cd "$dotdir" || exit
 ensure_link "$dotdir/Xresources" "$HOME/.Xresources"
+ensure_link "$dotdir/Xsession" "$HOME/.Xsession"
 ensure_link "$dotdir/bash_aliases" "$HOME/.bash_aliases"
 ensure_link "$dotdir/emacs" "$HOME/.emacs"
 ensure_link "$dotdir/fonts.conf" "$HOME/.config/fontconfig/fonts.conf"
 ensure_link "$dotdir/functions" "$HOME/.functions"
 ensure_link "$dotdir/inputrc" "$HOME/.inputrc"
 ensure_link "$dotdir/irbrc" "$HOME/.irbrc"
-ensure_link "$dotdir/paths" "$HOME/.paths"
 ensure_link "$dotdir/profile" "$HOME/.profile"
 ensure_link "$dotdir/pythonrc" "$HOME/.pythonrc"
 ensure_link "$dotdir/tmux.conf" "$HOME/.tmux.conf"
@@ -57,9 +57,9 @@ git clone "$1" || cd "$2" || git pull "$1"
 }
 
 
-cd  "$HOME/.vim/autoload" || exit
+cd "$bundledir" || exit
 ensure_clone 'https://github.com/tpope/vim-pathogen' 'vim-pathogen'
-ensure_link "$HOME/.vim/autoload/vim-pathogen/autoload/pathogen.vim" \
+ensure_link "$HOME/.vim/bundle/vim-pathogen/autoload/pathogen.vim" \
 	"$HOME/.vim/autoload/pathogen.vim"
 
 

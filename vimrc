@@ -35,11 +35,12 @@ set smartindent " testing
 set smarttab
 set tabpagemax=50
 set tags=./tags;,tags
-"set textwidth=79
 set ttyfast
 set viminfo+=!
 set wildmenu
-set wrap
+
+"set textwidth=79
+set nowrap " Friends don't let friends wrap text. You've been warned.
 
 set nobackup
 set nocompatible
@@ -65,7 +66,7 @@ set t_ut=
 "if &t_Co == "256" || has("gui_running")
 if has("gui_running")
   try 
-    colorscheme badwolf-lc
+    colorscheme badwolf
   catch
     colorscheme desert
   endtry
