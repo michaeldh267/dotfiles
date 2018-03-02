@@ -4,16 +4,8 @@
 # set -e # exit if any command has non-zero return value
 # set -u # exit if undefined reference found
 # set -o pipefail # do not mask pipeline errors
-# #set -x # debug mode 
+# #set -x # debug mode
 # IFS=$'\n\t'
-
-source_if_file() {
-local file="$*"
-if [[ -f "$file" ]]; then
-source "$file"
-echo "Sourcing $file"
-fi
-}
 
 myk-update-db() {
 find / >"$HOME/.myk-db" 2>/dev/null
@@ -34,23 +26,6 @@ myk-rnd-bg() {
 feh --bg-fill --randomize ~/Downloads/*.jpg
 }
 
-myk-stow() {
-# cd "$HOME/dotfiles" || exit
-# for package in *; do
-# 	if [[ -d "$package" ]]; 
-# 	then
-# 		stow -v -R "$package"
-# 	fi
-# done
-exit
-}
-
-myk-relink() {
-# source_if_file "$HOME/.bashrc"
-# xrdb "$HOME/.Xresources"
-exit
-}
-
 myk-youtube-dl() {
 youtube-dl --restrict-filenames -o '%(title)s.%(ext)s' "$@"
 }
@@ -60,40 +35,7 @@ cs () {
   cd "$@" && ls
 }
 
-myk-deb-install() {
-# install programs I like, on a Debian or Deb derivative (*buntu, Mint, etc)
-local deblist=(build-essential
-gdb git sudo curl tree htop
-vim-gnome ctags vim-syntastic vim-pathogen
-dos2unix mc links
-tig
-rename stow
-shellcheck
-tmux
-markdown 
-atool
-fonts-symbola fonts-inconsolata
-suckless-tools
-youtube-dl
-mpd mpc
-mpv
-feh 
-transmission-gtk
-hexchat
-
-python3-pip)
-
-sudo apt update && \
-sudo apt upgrade && \
-sudo apt install "${deblist[@]}"  \
---no-install-recommends
-
-sudo apt autoremove
-sudo apt autoclean
-sudo apt clean
-}
-
-myk-deb-install2() {
+install-debs () {
 # install programs I like, on a Debian or Deb derivative (*buntu, Mint, etc)
 # I guess this is closer to a posix sh-like way to solve this.
 (
@@ -106,7 +48,7 @@ tig
 rename
 shellcheck
 tmux
-markdown 
+markdown
 atool
 apt-transport-https
 ca-certificates
@@ -117,7 +59,7 @@ suckless-tools
 youtube-dl
 mpd mpc
 mpv
-feh 
+feh
 transmission-gtk
 hexchat'
 
@@ -136,14 +78,14 @@ sudo apt clean
 sapti () {
 sudo apt update && sudo apt upgrade && \
 sudo apt install "$*" && \
-sudo apt autoremove && \
-sudo apt autoclean && \
-sudo apt clean
+sudo apt-get autoremove && \
+sudo apt-get autoclean && \
+sudo apt-get clean
 }
 
 saptuu () {
 sudo apt update && sudo apt upgrade && \
-sudo apt autoremove && \
-sudo apt autoclean && \
-sudo apt clean
+sudo apt-get autoremove && \
+sudo apt-get autoclean && \
+sudo apt-get clean
 }
