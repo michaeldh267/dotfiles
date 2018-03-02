@@ -1,3 +1,4 @@
+#!/bin/sh
 while true; do
   xsetroot -name "$( date +"%c" )::$(mpc current)"
   sleep 1m
