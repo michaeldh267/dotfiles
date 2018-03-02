@@ -16,9 +16,9 @@ if [ -n "$BASH_VERSION" ]; then
     fi
 fi
 # set PATH so it includes user's private bin directories
-export PATH="$HOME/bin:$HOME/.local/bin:$PATH"
-export WORKON_HOME=$HOME/.virtualenvs
-export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
-export VIRTUALENVWRAPPER_VIRTUALENV_ARGS=' -p /usr/bin/python3 '
-export PROJECT_HOME=$HOME/Devel
-. /usr/local/bin/virtualenvwrapper.sh
+# export PATH="$HOME/bin:$HOME/.local/bin:$PATH"
+# export WORKON_HOME=$HOME/.virtualenvs
+# export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+# export VIRTUALENVWRAPPER_VIRTUALENV_ARGS=' -p /usr/bin/python3 '
+# export PROJECT_HOME=$HOME/Devel
+# . /usr/local/bin/virtualenvwrapper.sh
