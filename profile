@@ -17,11 +17,5 @@ if [ -n "$BASH_VERSION" ]; then
 fi
 # set PATH so it includes user's private bin directories
 export PATH="$HOME/bin:$HOME/.local/bin:$PATH"
-# export WORKON_HOME=$HOME/.virtualenvs
-# export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
-# export VIRTUALENVWRAPPER_VIRTUALENV_ARGS=' -p /usr/bin/python3 '
-# export PROJECT_HOME=$HOME/Devel
-# [ -r  /usr/local/bin/virtualenvwrapper.sh ] && . /usr/local/bin/virtualenvwrapper.sh
-
 # for golang
 export GOPATH=$HOME/go
