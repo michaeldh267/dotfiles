@@ -1,3 +1,4 @@
+#!/bin/bash
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
@@ -115,11 +116,12 @@ fi
 # happy little functions
 [ -f ~/.functions ] && . ~/.functions
 
-# set PATH so it includes user's private bin directories
-export PATH="$HOME/bin:$HOME/.local/bin:$PATH"
+# # set PATH so it includes user's private bin directories
+# export PATH="$HOME/.local/bin:$PATH"
+# export PATH="$HOME/bin:$PATH"
 
-# for golang
-export GOPATH=$HOME/go
+# # for golang
+# export GOPATH=$HOME/go
 
 alias dt='cd ~/dotfiles && ls'
 alias dl='cd ~/Downloads && ls'

@@ -1,4 +1,4 @@
-
+#!/usr/bin/env python
 config='''menu.bevelWidth: 2
 
 menu.borderWidth: 2
@@ -143,11 +143,11 @@ window.handle.unfocus.color: {colorTo}
 window.handle.unfocus.colorTo: {colorTo}
 
 window.grip.focus: {texture}
-window.grip.focus.color: {color}
+window.grip.focus.color: {text}
 window.grip.focus.colorTo: {color}
 window.grip.unfocus: {texture}
 window.grip.unfocus.color: {color}
-window.grip.unfocus.colorTo: {colorTo}
+window.grip.unfocus.colorTo: {color}
 
 *font: sans-12
 
@@ -156,10 +156,10 @@ window.grip.unfocus.colorTo: {colorTo}
 toolbar.shaped: false'''
 
 print(config.format(
-    text="black",
-    textTo="black",
-    color="#fcaf3e",
-    colorTo="#ffffff",
+    text="#00ff00",
+    textTo="#00ff00",
+    color="#500080",
+    colorTo="#000000",
     texture="raised gradient crossdiagonal bevel1",
     textureTo="sunken gradient pipecross interlaced",
     justify="left"))

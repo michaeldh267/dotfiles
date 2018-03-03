@@ -40,7 +40,7 @@ ensure_link "$dotdir/pythonrc" "$HOME/.pythonrc"
 ensure_link "$dotdir/tmux.conf" "$HOME/.tmux.conf"
 ensure_link "$dotdir/toprc" "$HOME/.toprc"
 ensure_link "$dotdir/vimrc" "$HOME/.vimrc"
-ensure_link "$dotdir/xinitrc" "$HOME/.xinitrc"
+#ensure_link "$dotdir/xinitrc" "$HOME/.xinitrc"
 )
 }
 

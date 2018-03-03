@@ -17,7 +17,8 @@ if [ -n "$BASH_VERSION" ]; then
     fi
 fi
 # set PATH so it includes user's private bin directories
-export PATH="$HOME/bin:$HOME/.local/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/bin:$PATH"
 
 # for golang
 export GOPATH=$HOME/go

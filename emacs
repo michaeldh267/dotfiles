@@ -8,11 +8,11 @@
   ;; (global-set-key (kbd "M-s") 'save-buffer)
   ;; (global-set-key (kbd "M-o") 'other-window)
   ;; (global-set-key (kbd "C-x C-b") 'switch-to-buffer)
-  (load-theme 'adwaita)
+  (load-theme 'manoj-dark)
   (set-frame-font "Liberation Mono-12")
   (show-paren-mode 1)
   (setq inhibit-startup-screen t)
-  (setq inferior-lisp-program "/usr/bin/mit-scheme")
+  (setq inferior-lisp-program "/usr/bin/clisp")
   (add-hook 'focus-out-hook 'garbage-collect)
   (if (display-graphic-p)
       (progn
@@ -20,7 +20,12 @@
         )))
 
 (add-to-list 'load-path "~/.emacs.d/better-defaults")
+
 (require 'better-defaults)
+(condition-case nil
+    (progn
+      (require 'mishmash))
+  (file-error (message "Go get better-defaults!")))
 
 (add-to-list 'load-path "~/.emacs.d/evil")
 (require 'evil)
