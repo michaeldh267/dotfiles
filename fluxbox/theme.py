@@ -156,10 +156,10 @@ window.grip.unfocus.colorTo: {color}
 toolbar.shaped: false'''
 
 print(config.format(
-    text="#00ff00",
-    textTo="#00ff00",
-    color="#500080",
-    colorTo="#000000",
+    text="#000000",
+    textTo="#000000",
+    color="#ffffff",
+    colorTo="#ffffff",
     texture="raised gradient crossdiagonal bevel1",
     textureTo="sunken gradient pipecross interlaced",
     justify="left"))
