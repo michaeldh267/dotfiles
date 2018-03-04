@@ -2,10 +2,9 @@
 A bunch of hacks
 
 ## Requirements
-1. Debian/Ubuntu/Mint
-2. git
-3. sudo
-4. bash
+* bash
+* git
+Only the deb installer parts are distro specific. Works great on Slackware!
 
 ### Install
 In the dotfiles directory...
