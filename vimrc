@@ -5,41 +5,42 @@ endtry
 
 syntax on
 filetype plugin indent on
-
 map <C-n> :NERDTreeToggle<CR>
 cnoreabbrev W w
+cnoreabbrev X x
 nnoremap <C-w>q :close<CR>
 nnoremap ZZ :close<CR>
 nnoremap / /\v
 nnoremap ? ?\v
-set autoindent
 set backspace=indent,eol,start
 set complete-=i
 set display=lastline
-set encoding=utf-8
+set encoding=utf-8 " make sure this is the same as $LANG...OR ELSE
 set formatoptions=qrn1
 set formatoptions=tcqj
 set history=10000
 set hlsearch
 set incsearch
 set langnoremap
-set laststatus=2
 set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+,eol:$
 set modelines=0
 set mouse=a
 set nrformats=hex
-set ruler
 set sessionoptions-=options
-set showcmd
-set smartindent " testing
-set smarttab
 set tabpagemax=50
 set tags=./tags;,tags
-set ttyfast
 set viminfo+=!
 set wildmenu
 
+"set ruler
+"set lazyredraw
+set laststatus=2
+"set smartindent " testing
+"set smarttab
+"set showcmd
+"set autoindent
 "set textwidth=79
+"set ttyfast
 set nowrap " Friends don't let friends wrap text. You've been warned.
 
 set nobackup
@@ -49,7 +50,7 @@ set nocursorline
 set noundofile
 
 " indent crap
-"set tabstop=2 softtabstop=2 shiftwidth=2 shiftround expandtab
+" set tabstop=2 softtabstop=2 shiftwidth=2 shiftround expandtab
 
 set colorcolumn=80
 " Load matchit.vim, but only if the user hasn't installed a newer version.
@@ -62,7 +63,7 @@ if maparg('<C-L>', 'n') ==# ''
 endif
 
 " 
-set t_ut=
+"set t_ut=
 "if &t_Co == "256" || has("gui_running")
 if has("gui_running")
   try 

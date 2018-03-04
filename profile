@@ -22,3 +22,4 @@ export PATH="$HOME/bin:$PATH"
 
 # for golang
 export GOPATH=$HOME/go
+export LANG=en_US.UTF-8
