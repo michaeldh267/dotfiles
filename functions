@@ -7,6 +7,12 @@
 # #set -x # debug mode
 # IFS=$'\n\t'
 
+myk-check() {
+echo -e "LANG: $LANG"
+echo -e "TERM: $TERM"
+echo "$PATH"
+}
+
 myk-update-db() {
 find / >"$HOME/.myk-db" 2>/dev/null
 # don't scan fat-c; don't care
