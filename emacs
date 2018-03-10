@@ -30,6 +30,10 @@
 (add-to-list 'load-path "~/.emacs.d/evil")
 (require 'evil)
 (evil-mode 1)
+
+(add-to-list 'load-path "~/.emacs.d/slime")
+(require 'slime-autoloads)
+(setq slime-contribs '(slime-fancy))
 ;; If you don't have MELPA in your package archives:
 ; (require 'package)
 ; 
