@@ -117,11 +117,11 @@ fi
 [ -f ~/.functions ] && . ~/.functions
 
 # # set PATH so it includes user's private bin directories
-# export PATH="$HOME/.local/bin:$PATH"
-# export PATH="$HOME/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/bin:$PATH"
 
 # # for golang
-# export GOPATH=$HOME/go
+export GOPATH=$HOME/go
 
 alias dt='cd ~/dotfiles && ls'
 alias dl='cd ~/Downloads && ls'

@@ -10,7 +10,11 @@
 myk-check() {
 echo -e "LANG: $LANG"
 echo -e "TERM: $TERM"
-echo "$PATH"
+#echo "$PATH"
+IFS=':'
+for p in $PATH; do
+  echo "$p"
+done
 }
 
 myk-update-db() {
