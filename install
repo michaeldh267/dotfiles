@@ -19,7 +19,7 @@ ensure_link () {
 
 mkdir -p "$HOME/.vim/autoload" "$HOME/.vim/bundle"
 mkdir -p "$HOME/.config/fontconfig"
-mkdir -p "$HOME/.fluxbox"
+mkdir -p "$HOME/.fluxbox/styles"
 mkdir -p "$HOME/.vim"
 mkdir -p "$HOME/bin"
 
@@ -40,7 +40,6 @@ ensure_link "$dotdir/pythonrc" "$HOME/.pythonrc"
 ensure_link "$dotdir/tmux.conf" "$HOME/.tmux.conf"
 ensure_link "$dotdir/toprc" "$HOME/.toprc"
 ensure_link "$dotdir/vimrc" "$HOME/.vimrc"
-#ensure_link "$dotdir/xinitrc" "$HOME/.xinitrc"
 )
 }
 
@@ -114,6 +113,17 @@ sudo apt clean
 )
 }
 
+install_fluxbox()
+{
+(
+dotdir="$HOME/dotfiles"
+#echo "$dotdir/fluxbox/init"
+ensure_link "$dotdir/fluxbox/init" "$HOME/.fluxbox/init"
+ensure_link "$dotdir/fluxbox/keys" "$HOME/.fluxbox/keys"
+python "$dotdir/fluxbox/theme.py" > "$HOME/.fluxbox/styles/theme0"
+)
+}
+
 main() {
   case "$@" in
     vim)
@@ -128,10 +138,15 @@ main() {
       install_debs
       exit
       ;;
+    fluxbox)
+      install_fluxbox
+      exit
+      ;;
     all)
       install_debs
       install_dotfiles
       install_vim
+      install_fluxbox
       exit
       ;;
     *)
