@@ -81,14 +81,14 @@ endif
 
 if has("gui_running")
   set guifont=Liberation\ Mono\ 12
-  set guioptions-=l
-  set guioptions-=r
-  set guioptions-=L
-  " winpos 0 0
-  " set lines=60
-  " set columns=90
-  set guioptions-=R
-  set guioptions-=T
+  " set guioptions-=l
+  " set guioptions-=r
+  " set guioptions-=L
+  winpos 0 0
+  "set lines=40
+  "set columns=80
+  " set guioptions-=R
+  " set guioptions-=T
 endif
 
 set statusline=%f     " Path to the file
