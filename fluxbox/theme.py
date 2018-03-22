@@ -114,7 +114,7 @@ window.label.unfocus.color: {colorTo}
 window.label.unfocus.colorTo: {colorTo}
 window.label.unfocus.textColor: {textTo}
 
-window.button.focus: {texture}
+window.button.focus: raised gradient pipecross bevel1
 window.button.focus.color: {color}
 window.button.focus.colorTo: {colorTo}
 window.button.focus.picColor: {text}
@@ -143,11 +143,11 @@ window.handle.unfocus.color: {colorTo}
 window.handle.unfocus.colorTo: {colorTo}
 
 window.grip.focus: {texture}
-window.grip.focus.color: {text}
+window.grip.focus.color: {color}
 window.grip.focus.colorTo: {color}
 window.grip.unfocus: {texture}
-window.grip.unfocus.color: {color}
-window.grip.unfocus.colorTo: {color}
+window.grip.unfocus.color: {colorTo}
+window.grip.unfocus.colorTo: {colorTo}
 
 *font: sans-12
 
@@ -156,10 +156,10 @@ window.grip.unfocus.colorTo: {color}
 toolbar.shaped: false'''
 
 print(config.format(
-    text="#000000",
-    textTo="#000000",
-    color="#ffffff",
-    colorTo="#ffffff",
+    text=   "#ffffff",
+    textTo= "#ffffff",
+    color=  "#900090",
+    colorTo="#000000",
     texture="raised gradient crossdiagonal bevel1",
     textureTo="sunken gradient pipecross interlaced",
     justify="left"))
