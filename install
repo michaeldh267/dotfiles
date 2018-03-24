@@ -95,7 +95,6 @@ software-properties-common'
 desktop='fonts-symbola fonts-inconsolata
 suckless-tools
 youtube-dl
-mpd mpc
 mpv
 feh
 transmission-gtk
