@@ -32,15 +32,7 @@ set tags=./tags;,tags
 set viminfo+=!
 set wildmenu
 
-"set ruler
-"set lazyredraw
 set laststatus=2
-"set smartindent " testing
-"set smarttab
-"set showcmd
-"set autoindent
-"set textwidth=79
-"set ttyfast
 set nowrap " Friends don't let friends wrap text. You've been warned.
 
 set nobackup
@@ -49,10 +41,12 @@ set nocursorcolumn
 set nocursorline
 set noundofile
 
-" indent crap
-" set tabstop=2 softtabstop=2 shiftwidth=2 shiftround expandtab
+set foldmethod=marker
+set foldnestmax=1
 
 set colorcolumn=80
+
+set omnifunc=syntaxcomplete#Complete
 " Load matchit.vim, but only if the user hasn't installed a newer version.
 if !exists('g:loaded_matchit') && findfile('plugin/matchit.vim', &rtp) ==# ''
   runtime! macros/matchit.vim
@@ -63,8 +57,6 @@ if maparg('<C-L>', 'n') ==# ''
 endif
 
 " 
-"set t_ut=
-"if &t_Co == "256" || has("gui_running")
 if has("gui_running")
   try 
     colorscheme badwolf
@@ -81,16 +73,12 @@ endif
 
 if has("gui_running")
   set guifont=Liberation\ Mono\ 12
-  " set guioptions-=l
-  " set guioptions-=r
-  " set guioptions-=L
   winpos 0 0
   "set lines=40
   "set columns=80
-  " set guioptions-=R
-  " set guioptions-=T
 endif
 
+"{{{ Statusline
 set statusline=%f     " Path to the file
 set statusline+=\ -\  " Separator
 set statusline+=FT:   " Label
@@ -103,7 +91,20 @@ set statusline+=%L    " Total lines
 set statusline+=%m    " Modified?
 set statusline+=%m    " Modified?
 set statusline+=%m    " Modified?
+"}}}
 
+"{{{ old crud
+"set ruler
+"set lazyredraw
+"set smartindent " testing
+"set smarttab
+"set showcmd
+"set autoindent
+"set textwidth=79
+"set ttyfast
+"set t_ut=
+"if &t_Co == "256" || has("gui_running")
+" set tabstop=2 softtabstop=2 shiftwidth=2 shiftround expandtab
 " if exists('g:loaded_syntastic_plugin')
 " let g:syntastic_always_populate_loc_list = 1
 " let g:syntastic_auto_loc_list = 1
@@ -115,16 +116,7 @@ set statusline+=%m    " Modified?
 " set statusline+=%{SyntasticStatuslineFlag()}
 " set statusline+=%*
 " endif
-let g:syntastic_python_checkers = ['flake8', 'python'] " or python
-"let g:syntastic_python_checkers = ['pyflakes', 'python'] " or python
-let g:syntastic_python_python_exec = '/usr/bin/python3'
-
-let g:syntastic_javascript_checkers = ['eslint']
-"let g:syntastic_javascript_checkers = ['jshint']
-
 "au BufNewfile,BufRead *.hs set tabstop=2 softtabstop=2 shiftwidth=2 shiftround expandtab
-"au BufNewfile,BufRead *.pas set tabstop=2 softtabstop=2 shiftwidth=2 smartindent
-let g:paredit_mode=1
 " let g:paredit_electric_return=1
 " let g:slimv_swank_cmd = '! xterm -e sbcl --load /usr/share/common-lisp/source/slime/start-swank.lisp &'
 "
@@ -132,6 +124,24 @@ let g:paredit_mode=1
 " let g:rbpt_max = 16
 " let g:rbpt_loadcmd_toggle = 0
 " au VimEnter * RainbowParenthesesToggle
+" }}}
+
+"{{{ Python settings
+let g:syntastic_python_python_exec = '/usr/bin/python3'
+let g:syntastic_python_pyflakes_exec = '/usr/bin/pyflakes3'
+let g:syntastic_python_checkers = ['pyflakes', 'python'] " or python
+
+" Python specific settings:
+autocmd FileType python setlocal tabstop=8 softtabstop=4 shiftwidth=4 expandtab
+autocmd FileType python setlocal foldmethod=indent
+autocmd FileType python setlocal foldnestmax=1
+autocmd FileType python setlocal omnifunc=python3complete#Complete
+"}}}
+
+" Javascript checker gunk
+let g:syntastic_javascript_checkers = ['eslint']
+
+let g:paredit_mode=1
 " CtrlP root
 let g:ctrlp_working_path_mode = 'c'
 " EOF
