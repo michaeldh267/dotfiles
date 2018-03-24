@@ -18,7 +18,7 @@ menu.title.colorTo: {colorTo}
 menu.title.textColor: {text}
 menu.titleHeight: 0
 
-menu.frame: {textureTo}
+menu.frame: {textureSolid}
 menu.frame.justify: {justify}
 menu.frame.color: {colorTo}
 menu.frame.colorTo: {colorTo}
@@ -29,7 +29,6 @@ menu.hilite: {texture}
 menu.hilite.color: {color}
 menu.hilite.colorTo: {colorTo}
 menu.hilite.textColor: {text}
-
 
 toolbar.bevelWidth: 0
 
@@ -42,7 +41,7 @@ toolbar: {texture}
 toolbar.color: {colorTo}
 toolbar.colorTo: {colorTo}
 
-toolbar.clock: {textureTo}
+toolbar.clock: {textureSolid}
 toolbar.clock.borderWidth: 2
 toolbar.clock.borderColor: {colorTo}
 toolbar.clock.justify: {justify}
@@ -50,13 +49,13 @@ toolbar.clock.textColor: {text}
 toolbar.clock.color: {colorTo}
 toolbar.clock.colorTo: {colorTo}
 
-toolbar.systray: {textureTo}
+toolbar.systray: {textureSolid}
 toolbar.systray.borderWidth: 2
 toolbar.systray.borderColor: {colorTo}
 toolbar.systray.color: {colorTo}
 toolbar.systray.colorTo: {colorTo}
 
-toolbar.workspace: {textureTo}
+toolbar.workspace: {textureSolid}
 toolbar.workspace.borderWidth: 2
 toolbar.workspace.borderColor: {colorTo}
 toolbar.workspace.justify: {justify}
@@ -64,22 +63,22 @@ toolbar.workspace.textColor: {textTo}
 toolbar.workspace.color: {colorTo}
 toolbar.workspace.colorTo: {colorTo}
 
-toolbar.button: {textureTo}
+toolbar.button: {textureButton}
 toolbar.button.borderWidth: 2
 toolbar.button.borderColor: {colorTo}
 toolbar.button.picColor: {text}
-toolbar.button.color: {colorTo}
+toolbar.button.color: {color}
 toolbar.button.colorTo: {colorTo}
 toolbar.button.pressed: {textureTo}
 toolbar.button.pressed.picColor: {textTo}
-toolbar.button.pressed.color: {colorTo}
-toolbar.button.pressed.colorTo: {color}
+toolbar.button.pressed.color: {color}
+toolbar.button.pressed.colorTo: {colorTo}
 
-toolbar.iconbar.empty: {textureTo}
+toolbar.iconbar.empty: {textureButton}
 toolbar.iconbar.empty.color: {color}
 toolbar.iconbar.empty.colorTo: {colorTo}
 
-toolbar.iconbar.focused: {texture}
+toolbar.iconbar.focused: {textureButton}
 toolbar.iconbar.focused.borderWidth: 2
 toolbar.iconbar.focused.borderColor: {colorTo}
 toolbar.iconbar.focused.justify: {justify}
@@ -94,7 +93,6 @@ toolbar.iconbar.unfocused.justify: {justify}
 toolbar.iconbar.unfocused.textColor: {textTo}
 toolbar.iconbar.unfocused.color: {colorTo}
 toolbar.iconbar.unfocused.colorTo: {colorTo}
-
 
 window.bevelWidth: 1
 
@@ -114,7 +112,7 @@ window.label.unfocus.color: {colorTo}
 window.label.unfocus.colorTo: {colorTo}
 window.label.unfocus.textColor: {textTo}
 
-window.button.focus: raised gradient pipecross bevel1
+window.button.focus: {textureButton}
 window.button.focus.color: {color}
 window.button.focus.colorTo: {colorTo}
 window.button.focus.picColor: {text}
@@ -162,4 +160,6 @@ print(config.format(
     colorTo="#000000",
     texture="raised gradient crossdiagonal bevel1",
     textureTo="sunken gradient pipecross interlaced",
+    textureSolid="raised solid bevel1",
+    textureButton="raised gradient pipecross bevel1",
     justify="left"))
