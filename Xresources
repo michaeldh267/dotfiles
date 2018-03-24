@@ -12,19 +12,7 @@ URxvt.letterSpace: -2
 URxvt.perl-ext-common: default,matcher
 URxvt.url-launcher: /usr/bin/xdg-open
 URxvt.matcher.button: 1
-!URxvt*background:black
-!URxvt*foreground:white
 URxvt*reverseVideo:true
-URxvt*color0: #000000
-URxvt*color7: #ffffff
-! blue
-! URxvt*color4:  #7979ff
-! bright blue
-URxvt*color12: #9898ff
-! bright red
-! URxvt*color9:  #ff8000
-! dark red / now orange
-URxvt*color1: #ff8000
 
 XTerm*termName: xterm-256color
 XTerm.vt100.renderfont: true
@@ -37,8 +25,8 @@ XTerm.vt100.reverseVideo: on
 XTerm.vt100.saveLines: 5000
 XTerm.vt100.scrollBar: true
 XTerm.vt100.scrollbar.width: 8
-XTerm.vt100.color12: #9898ff
-XTerm.vt100.color1: #ff8000
+!XTerm.vt100.color12: #9898ff
+!XTerm.vt100.color1: #ff8000
 XTerm.vt100.metaSendsEscape: true
 XTerm.vt100.locale: true
 XTerm.vt100.utf8: 1
