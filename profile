@@ -22,6 +22,6 @@ fi
 
 # for golang
 # export GOPATH=$HOME/go
-
+xrdb ~/.Xresources
 # just in case!
 export LANG=en_US.UTF-8
