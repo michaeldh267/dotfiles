@@ -156,7 +156,8 @@ toolbar.shaped: false'''
 print(config.format(
     text=   "#ffffff",
     textTo= "#ffffff",
-    color=  "#900090",
+    #color=  "#900090",
+    color=  "#005AA3",
     colorTo="#000000",
     texture="raised gradient crossdiagonal bevel1",
     textureTo="sunken gradient pipecross interlaced",
