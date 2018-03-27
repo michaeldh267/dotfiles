@@ -119,6 +119,7 @@ dotdir="$HOME/dotfiles"
 #echo "$dotdir/fluxbox/init"
 ensure_link "$dotdir/fluxbox/init" "$HOME/.fluxbox/init"
 ensure_link "$dotdir/fluxbox/keys" "$HOME/.fluxbox/keys"
+ensure_link "$dotdir/fluxbox/menu" "$HOME/.fluxbox/menu"
 python "$dotdir/fluxbox/theme.py" > "$HOME/.fluxbox/styles/theme0"
 )
 }
