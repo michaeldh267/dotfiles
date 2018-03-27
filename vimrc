@@ -138,6 +138,9 @@ autocmd FileType python setlocal foldnestmax=1
 autocmd FileType python setlocal omnifunc=python3complete#Complete
 "}}}
 
+" let g:syntastic_perl_checkers = ['perl']
+" let g:syntastic_enable_perl_checker = 1
+
 " Javascript checker gunk
 let g:syntastic_javascript_checkers = ['eslint']
 
