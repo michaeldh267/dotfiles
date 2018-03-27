@@ -25,3 +25,4 @@ fi
 xrdb ~/.Xresources
 # just in case!
 export LANG=en_US.UTF-8
+export LESS=MR
