@@ -73,7 +73,7 @@ endif
 
 if has("gui_running")
   set guifont=Liberation\ Mono\ 12
-  winpos 0 0
+  "winpos 0 0
   "set lines=40
   "set columns=80
 endif
