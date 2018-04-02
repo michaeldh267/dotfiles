@@ -56,7 +56,7 @@ if maparg('<C-L>', 'n') ==# ''
   nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
 endif
 
-" 
+
 if has("gui_running")
   try 
     colorscheme badwolf
@@ -71,12 +71,12 @@ else
   endtry
 endif
 
-if has("gui_running")
-  set guifont=Liberation\ Mono\ 12
-  winpos 0 0
-  "set lines=40
-  "set columns=80
-endif
+"if has("gui_running")
+"  set guifont=Liberation\ Mono\ 12
+"  winpos 0 0
+"  set lines=60
+"  set columns=80
+"endif
 
 "{{{ Statusline
 set statusline=%f     " Path to the file
@@ -120,22 +120,23 @@ set statusline+=%m    " Modified?
 " let g:paredit_electric_return=1
 " let g:slimv_swank_cmd = '! xterm -e sbcl --load /usr/share/common-lisp/source/slime/start-swank.lisp &'
 "
-" rainbow parenthesis settings
-" let g:rbpt_max = 16
-" let g:rbpt_loadcmd_toggle = 0
-" au VimEnter * RainbowParenthesesToggle
-" }}}
+""rainbow parenthesis settings
+"let g:rbpt_max = 16
+"let g:rbpt_loadcmd_toggle = 0
+"au VimEnter * RainbowParenthesesToggle
+"}}}
 
-"{{{ Python settings
-let g:syntastic_python_python_exec = '/usr/bin/python3'
-let g:syntastic_python_pyflakes_exec = '/usr/bin/pyflakes3'
-let g:syntastic_python_checkers = ['pyflakes', 'python'] " or python
-
-" Python specific settings:
-autocmd FileType python setlocal tabstop=8 softtabstop=4 shiftwidth=4 expandtab
-autocmd FileType python setlocal foldmethod=indent
-autocmd FileType python setlocal foldnestmax=1
-autocmd FileType python setlocal omnifunc=python3complete#Complete
+"{{{ Python syntastic settings
+ let g:syntastic_python_python_exec = '/usr/bin/python3'
+ let g:syntastic_python_pyflakes_exec = '/usr/bin/pyflakes3'
+ let g:syntastic_python_checkers = ['pyflakes', 'python'] " or python
+"}}}
+ 
+"{{{ Python specific settings:
+ autocmd FileType python setlocal tabstop=8 softtabstop=4 shiftwidth=4 expandtab
+ autocmd FileType python setlocal foldmethod=indent
+ autocmd FileType python setlocal foldnestmax=1
+ autocmd FileType python setlocal omnifunc=python3complete#Complete
 "}}}
 
 " let g:syntastic_perl_checkers = ['perl']
