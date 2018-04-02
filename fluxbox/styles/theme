@@ -1,0 +1,153 @@
+menu.bevelWidth: 2
+
+menu.borderWidth: 2
+menu.borderColor: #000000
+
+#menu.bullet: empty|triangle|square|diamond
+menu.bullet: diamond
+#menu.bullet.position: left|right
+menu.bullet.position: right
+
+menu.itemHeight: 0
+
+menu.title: raised gradient crossdiagonal bevel1
+menu.title.justify: left
+menu.title.color: #006363
+menu.title.colorTo: #000000
+menu.title.textColor: #ffffff
+menu.titleHeight: 0
+
+menu.frame: raised solid bevel1
+menu.frame.justify: left
+menu.frame.color: #000000
+menu.frame.colorTo: #000000
+menu.frame.textColor: #ffffff
+menu.frame.disableColor: #006363
+
+menu.hilite: raised gradient crossdiagonal bevel1
+menu.hilite.color: #006363
+menu.hilite.colorTo: #000000
+menu.hilite.textColor: #ffffff
+
+toolbar.bevelWidth: 0
+
+toolbar.borderWidth: 0
+toolbar.borderColor: black
+
+toolbar.height: 0
+
+toolbar: raised gradient crossdiagonal bevel1
+toolbar.color: #000000
+toolbar.colorTo: #000000
+
+toolbar.clock: raised solid bevel1
+toolbar.clock.borderWidth: 2
+toolbar.clock.borderColor: #000000
+toolbar.clock.justify: left
+toolbar.clock.textColor: #ffffff
+toolbar.clock.color: #000000
+toolbar.clock.colorTo: #000000
+
+toolbar.systray: raised solid bevel1
+toolbar.systray.borderWidth: 2
+toolbar.systray.borderColor: #000000
+toolbar.systray.color: #000000
+toolbar.systray.colorTo: #000000
+
+toolbar.workspace: raised solid bevel1
+toolbar.workspace.borderWidth: 2
+toolbar.workspace.borderColor: #000000
+toolbar.workspace.justify: left
+toolbar.workspace.textColor: #ffffff
+toolbar.workspace.color: #000000
+toolbar.workspace.colorTo: #000000
+
+toolbar.button: raised gradient pipecross bevel1
+toolbar.button.borderWidth: 2
+toolbar.button.borderColor: #000000
+toolbar.button.picColor: #ffffff
+toolbar.button.color: #006363
+toolbar.button.colorTo: #000000
+toolbar.button.pressed: sunken gradient pipecross interlaced
+toolbar.button.pressed.picColor: #ffffff
+toolbar.button.pressed.color: #006363
+toolbar.button.pressed.colorTo: #000000
+
+toolbar.iconbar.empty: raised gradient pipecross bevel1
+toolbar.iconbar.empty.color: #006363
+toolbar.iconbar.empty.colorTo: #000000
+
+toolbar.iconbar.focused: raised gradient pipecross bevel1
+toolbar.iconbar.focused.borderWidth: 2
+toolbar.iconbar.focused.borderColor: #000000
+toolbar.iconbar.focused.justify: left
+toolbar.iconbar.focused.textColor: #ffffff
+toolbar.iconbar.focused.color: #006363
+toolbar.iconbar.focused.colorTo: #000000
+
+toolbar.iconbar.unfocused: sunken gradient pipecross interlaced
+toolbar.iconbar.unfocused.borderWidth: 2
+toolbar.iconbar.unfocused.borderColor: #000000
+toolbar.iconbar.unfocused.justify: left
+toolbar.iconbar.unfocused.textColor: #ffffff
+toolbar.iconbar.unfocused.color: #000000
+toolbar.iconbar.unfocused.colorTo: #000000
+
+window.bevelWidth: 1
+
+window.borderWidth: 1
+window.borderColor: #000000
+
+window.title.height: 0
+
+window.justify: left
+
+window.label.focus: raised gradient crossdiagonal bevel1
+window.label.focus.color: #006363
+window.label.focus.colorTo: #000000
+window.label.focus.textColor: #ffffff
+window.label.unfocus: sunken gradient pipecross interlaced
+window.label.unfocus.color: #000000
+window.label.unfocus.colorTo: #000000
+window.label.unfocus.textColor: #ffffff
+
+window.button.focus: raised gradient pipecross bevel1
+window.button.focus.color: #006363
+window.button.focus.colorTo: #000000
+window.button.focus.picColor: #ffffff
+window.button.unfocus: sunken gradient pipecross interlaced
+window.button.unfocus.Color: #000000
+window.button.unfocus.ColorTo: #000000
+window.button.unfocus.picColor: #ffffff
+window.button.pressed: sunken gradient pipecross interlaced
+window.button.pressed.color: #006363
+window.button.pressed.colorTo: #000000
+window.button.pressed.picColor: #ffffff
+
+window.title.focus: raised gradient crossdiagonal bevel1
+window.title.focus.color: #000000
+window.title.focus.colorTo: #000000
+window.title.unfocus: sunken gradient pipecross interlaced
+window.title.unfocus.color: #000000
+window.title.unfocus.colorTo: #000000
+
+window.handleWidth: 4
+window.handle.focus: raised gradient crossdiagonal bevel1
+window.handle.focus.color: #000000
+window.handle.focus.colorTo: #000000
+window.handle.unfocus: raised gradient crossdiagonal bevel1
+window.handle.unfocus.color: #000000
+window.handle.unfocus.colorTo: #000000
+
+window.grip.focus: raised gradient crossdiagonal bevel1
+window.grip.focus.color: #006363
+window.grip.focus.colorTo: #006363
+window.grip.unfocus: raised gradient crossdiagonal bevel1
+window.grip.unfocus.color: #000000
+window.grip.unfocus.colorTo: #000000
+
+*font: sans-12
+
+#menu.roundCorners: TopRight TopLeft BottomRight BottomLeft
+#window.roundCorners: TopRight TopLeft BottomRight BottomLeft
+toolbar.shaped: false

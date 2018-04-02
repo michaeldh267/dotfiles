@@ -71,12 +71,12 @@ else
   endtry
 endif
 
-"if has("gui_running")
-"  set guifont=Liberation\ Mono\ 12
-"  winpos 0 0
-"  set lines=60
-"  set columns=80
-"endif
+if has("gui_running")
+  set guifont=Liberation\ Mono\ 12
+  winpos 0 0
+  set lines=38
+  set columns=80
+endif
 
 "{{{ Statusline
 set statusline=%f     " Path to the file

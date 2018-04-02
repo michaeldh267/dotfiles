@@ -125,4 +125,5 @@ export GOPATH=$HOME/go
 
 alias dt='cd ~/dotfiles && ls'
 alias dl='cd ~/Downloads && ls'
+alias doc='cd ~/Documents && ls'
 alias v='vim'
