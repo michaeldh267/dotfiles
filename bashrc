@@ -127,3 +127,5 @@ alias dt='cd ~/dotfiles && ls'
 alias dl='cd ~/Downloads && ls'
 alias doc='cd ~/Documents && ls'
 alias v='vim'
+. /usr/doc/git-2.14.1/contrib/completion/git-prompt.sh
+export PS1="\$(__git_ps1 '(%s)')"$PS1
