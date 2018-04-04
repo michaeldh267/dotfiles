@@ -10,7 +10,8 @@
 myk-check() {
 echo -e "LANG: $LANG"
 echo -e "TERM: $TERM"
-#echo "$PATH"
+echo -e "VISUAL: $VISUAL"
+echo -e "EDITOR: $EDITOR"
 IFS=':'
 for p in $PATH; do
   echo "$p"
