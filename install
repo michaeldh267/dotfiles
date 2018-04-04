@@ -71,6 +71,7 @@ ensure_clone "https://github.com/tpope/vim-speeddating" "vim-speeddating"
 ensure_clone "https://github.com/scrooloose/nerdtree" "nerdtree"
 ensure_clone "https://github.com/kien/ctrlp.vim" "ctrlp.vim"
 ensure_clone "https://github.com/kien/rainbow_parentheses.vim" "rainbow_parentheses.vim"
+ensure_clone "https://github.com/fatih/vim-go" "vim-go"
 )
 }
 
@@ -143,7 +144,7 @@ main() {
       exit
       ;;
     all)
-      install_debs
+      #install_debs
       install_dotfiles
       install_vim
       install_fluxbox
