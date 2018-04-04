@@ -12,6 +12,8 @@ echo -e "LANG: $LANG"
 echo -e "TERM: $TERM"
 echo -e "VISUAL: $VISUAL"
 echo -e "EDITOR: $EDITOR"
+echo -e "PAGER: $PAGER"
+echo -e "LESS: $LESS"
 IFS=':'
 for p in $PATH; do
   echo "$p"
