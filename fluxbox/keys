@@ -26,8 +26,8 @@ OnTitlebar Mouse3 :WindowMenu
 Mod1 Tab :NextWindow {groups} (workspace=[current])
 Mod1 Shift Tab :PrevWindow {groups} (workspace=[current])
 # open a terminal
-Mod1 F1 :Exec xterm
-Mod4 Shift Return :Exec xterm
+Mod1 F1 :Exec urxvt
+Mod4 Shift Return :Exec urxvt
 # open a dialog to run programs
 Mod4 d :Exec dmenu_run
 Mod4 p :Exec dmenu_run
