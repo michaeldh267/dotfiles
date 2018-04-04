@@ -121,13 +121,13 @@ dotdir="$HOME/dotfiles"
 ensure_link "$dotdir/fluxbox/init" "$HOME/.fluxbox/init"
 ensure_link "$dotdir/fluxbox/keys" "$HOME/.fluxbox/keys"
 ensure_link "$dotdir/fluxbox/menu" "$HOME/.fluxbox/menu"
-python "$dotdir/fluxbox/themer" '306090' > "$HOME/.fluxbox/styles/theme"
+python "$dotdir/fluxbox/themer"
 )
 }
 
 main() {
-#install_dotfiles
-#install_vim
+install_dotfiles
+install_vim
 install_fluxbox
 }
 

@@ -27,3 +27,5 @@ export PATH="$HOME/bin:$PATH"
 export LANG=en_US.UTF-8
 export LESS=MR
 export PAGER=most
+export VISUAL=vim
+export EDITOR="$VISUAL"

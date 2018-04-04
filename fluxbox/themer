@@ -168,17 +168,11 @@ toolbar.shaped: false'''
 #    textureSolid="raised solid bevel1",
 #    textureButton="raised gradient pipecross bevel1",
 #    justify="left"))
-if len(sys.argv) < 2:
-    print("Needs at least one argument. Ex: 4066a8")
-    exit()
-if len(sys.argv[1]) != 6:
-    print("Needs to be a 6 digit RGB value. Ex: ff00aa")
-    exit()
-with open('/home/myk/dotfiles/fluxbox/styles/theme', 'w') as f:
+with open('/home/myk/.fluxbox/styles/theme', 'w') as f:
     f.write(config.format(
     text=   "#ffffff",
     textTo= "#ffffff",
-    color = '#' + sys.argv[1],
+    color="#007700",
     colorTo="#000000",
     texture="raised gradient crossdiagonal bevel1",
     textureTo="sunken gradient pipecross interlaced",
