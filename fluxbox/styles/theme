@@ -12,7 +12,7 @@ menu.itemHeight: 0
 
 menu.title: raised gradient crossdiagonal bevel1
 menu.title.justify: left
-menu.title.color: #006363
+menu.title.color: #906090
 menu.title.colorTo: #000000
 menu.title.textColor: #ffffff
 menu.titleHeight: 0
@@ -22,10 +22,10 @@ menu.frame.justify: left
 menu.frame.color: #000000
 menu.frame.colorTo: #000000
 menu.frame.textColor: #ffffff
-menu.frame.disableColor: #006363
+menu.frame.disableColor: #906090
 
 menu.hilite: raised gradient crossdiagonal bevel1
-menu.hilite.color: #006363
+menu.hilite.color: #906090
 menu.hilite.colorTo: #000000
 menu.hilite.textColor: #ffffff
 
@@ -66,15 +66,15 @@ toolbar.button: raised gradient pipecross bevel1
 toolbar.button.borderWidth: 2
 toolbar.button.borderColor: #000000
 toolbar.button.picColor: #ffffff
-toolbar.button.color: #006363
+toolbar.button.color: #906090
 toolbar.button.colorTo: #000000
 toolbar.button.pressed: sunken gradient pipecross interlaced
 toolbar.button.pressed.picColor: #ffffff
-toolbar.button.pressed.color: #006363
+toolbar.button.pressed.color: #906090
 toolbar.button.pressed.colorTo: #000000
 
 toolbar.iconbar.empty: raised gradient pipecross bevel1
-toolbar.iconbar.empty.color: #006363
+toolbar.iconbar.empty.color: #906090
 toolbar.iconbar.empty.colorTo: #000000
 
 toolbar.iconbar.focused: raised gradient pipecross bevel1
@@ -82,7 +82,7 @@ toolbar.iconbar.focused.borderWidth: 2
 toolbar.iconbar.focused.borderColor: #000000
 toolbar.iconbar.focused.justify: left
 toolbar.iconbar.focused.textColor: #ffffff
-toolbar.iconbar.focused.color: #006363
+toolbar.iconbar.focused.color: #906090
 toolbar.iconbar.focused.colorTo: #000000
 
 toolbar.iconbar.unfocused: sunken gradient pipecross interlaced
@@ -103,7 +103,7 @@ window.title.height: 0
 window.justify: left
 
 window.label.focus: raised gradient crossdiagonal bevel1
-window.label.focus.color: #006363
+window.label.focus.color: #906090
 window.label.focus.colorTo: #000000
 window.label.focus.textColor: #ffffff
 window.label.unfocus: sunken gradient pipecross interlaced
@@ -112,7 +112,7 @@ window.label.unfocus.colorTo: #000000
 window.label.unfocus.textColor: #ffffff
 
 window.button.focus: raised gradient pipecross bevel1
-window.button.focus.color: #006363
+window.button.focus.color: #906090
 window.button.focus.colorTo: #000000
 window.button.focus.picColor: #ffffff
 window.button.unfocus: sunken gradient pipecross interlaced
@@ -120,7 +120,7 @@ window.button.unfocus.Color: #000000
 window.button.unfocus.ColorTo: #000000
 window.button.unfocus.picColor: #ffffff
 window.button.pressed: sunken gradient pipecross interlaced
-window.button.pressed.color: #006363
+window.button.pressed.color: #906090
 window.button.pressed.colorTo: #000000
 window.button.pressed.picColor: #ffffff
 
@@ -140,8 +140,8 @@ window.handle.unfocus.color: #000000
 window.handle.unfocus.colorTo: #000000
 
 window.grip.focus: raised gradient crossdiagonal bevel1
-window.grip.focus.color: #006363
-window.grip.focus.colorTo: #006363
+window.grip.focus.color: #906090
+window.grip.focus.colorTo: #906090
 window.grip.unfocus: raised gradient crossdiagonal bevel1
 window.grip.unfocus.color: #000000
 window.grip.unfocus.colorTo: #000000
