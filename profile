@@ -19,6 +19,7 @@ fi
 # set PATH so it includes user's private bin directories
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/bin:$PATH"
+export PATH="$HOME/.luarocks/bin:$PATH"
 
 # for golang
 # export GOPATH=$HOME/go

@@ -18,6 +18,16 @@ URxvt.matcher.button: 1
 URxvt*reverseVideo:true
 !! max savelines 65535
 URxvt.saveLines: 16000
+! The blues
+URxvt*color4:	#6161FF
+URxvt*color12:	#8A8AFF
+! The reads
+URxvt*color1:	#EB0000
+URxvt*color9:	#FF6161
+! Greed^Hn
+URxvt*color2:	#008A00
+URxvt*color10:	#00B300
+
 
 XTerm*termName: xterm-256color
 XTerm.vt100.renderfont: true
