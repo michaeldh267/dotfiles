@@ -151,4 +151,5 @@ let g:syntastic_lua_checkers = ["luacheck"]
 let g:paredit_mode=1
 " CtrlP root
 let g:ctrlp_working_path_mode = 'c'
+"
 " EOF
