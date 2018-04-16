@@ -114,6 +114,7 @@ if ! shopt -oq posix; then
   fi
 fi
 # END DEFAULT CONFIGURATION
+shopt -s cdspell checkhash checkjobs dirspell no_empty_cmd_completion
 # happy little functions
 [ -f ~/.functions ] && . ~/.functions
 
@@ -124,9 +125,14 @@ fi
 # # for golang
 export GOPATH=$HOME/go
 
+# I do it all for the colors
+[[ $COLORTERM = 'xfce4-terminal' ]] && export TERM=xterm-256color
+
 alias dt='cd ~/dotfiles && ls'
 alias dl='cd ~/Downloads && ls'
 alias doc='cd ~/Documents && ls'
-alias v='vim'
+[[ ! -z "$DISPLAY" ]] && alias v="gvim -v"
+[[ ! -z "$DISPLAY" ]] && alias g="gvim"
+[[ ! -z "$DISPLAY" ]] && alias vim="gvim -v"
 . /usr/doc/git-2.14.1/contrib/completion/git-prompt.sh
 export PS1="\$(__git_ps1 '(%s)')"$PS1
