@@ -12,25 +12,24 @@ die() {
   exit 1
 }
 
-ensure_link () {
-# Thanks sjl!
-# $1 Actual file
-# $2 Symlink or file
-	[[ -L "$2" ]] || ln -s "$1" "$2"
-}
+git_sync() {
+(
+REMOTE="$1"
+LOCALDIR="$(echo "$REMOTE" | cut -d'/' -f5)"
 
-ensure_clone() {
-# $1 Remote git
-# $2 Git directory
-git clone "$1" || ( 
-cd "$2" || exit; 
-git pull "$1" 
+if [[ -d "$LOCALDIR" ]]; then
+  (cd "$LOCALDIR"; git pull)
+else
+  git clone "$REMOTE"
+fi
 )
 }
 
 mkdir -p "$HOME/.vim/autoload" "$HOME/.vim/bundle"
 mkdir -p "$HOME/.config/fontconfig"
 mkdir -p "$HOME/.config/herbstluftwm"
+mkdir -p "$HOME/.config/i3"
+mkdir -p "$HOME/.config/i3status"
 mkdir -p "$HOME/.fluxbox/styles"
 mkdir -p "$HOME/.vim"
 mkdir -p "$HOME/bin"
@@ -38,21 +37,22 @@ mkdir -p "$HOME/bin"
 install_dotfiles () {
 (
 dotdir="$HOME/dotfiles"
-cd "$dotdir" || exit
-ensure_link "$dotdir/Xresources" "$HOME/.Xresources"
-ensure_link "$dotdir/xsessionrc" "$HOME/.xsessionrc"
-ensure_link "$dotdir/bashrc" "$HOME/.bashrc"
-ensure_link "$dotdir/emacs" "$HOME/.emacs"
-ensure_link "$dotdir/fonts.conf" "$HOME/.config/fontconfig/fonts.conf"
-ensure_link "$dotdir/functions" "$HOME/.functions"
-ensure_link "$dotdir/inputrc" "$HOME/.inputrc"
-ensure_link "$dotdir/irbrc" "$HOME/.irbrc"
-ensure_link "$dotdir/profile" "$HOME/.profile"
-ensure_link "$dotdir/pythonrc" "$HOME/.pythonrc"
-ensure_link "$dotdir/tmux.conf" "$HOME/.tmux.conf"
-#ensure_link "$dotdir/toprc" "$HOME/.toprc"
-ensure_link "$dotdir/vimrc" "$HOME/.vimrc"
-ensure_link "$dotdir/herbstluftwm/autostart" "$HOME/.config/herbstluftwm/autostart"
+cd "$dotdir" || die
+ln -sf "$dotdir/Xresources" "$HOME/.Xresources"
+ln -sf "$dotdir/xsessionrc" "$HOME/.xsessionrc"
+ln -sf "$dotdir/bashrc" "$HOME/.bashrc"
+ln -sf "$dotdir/emacs" "$HOME/.emacs"
+ln -sf "$dotdir/fonts.conf" "$HOME/.config/fontconfig/fonts.conf"
+ln -sf "$dotdir/functions" "$HOME/.functions"
+ln -sf "$dotdir/inputrc" "$HOME/.inputrc"
+ln -sf "$dotdir/irbrc" "$HOME/.irbrc"
+ln -sf "$dotdir/profile" "$HOME/.profile"
+ln -sf "$dotdir/pythonrc" "$HOME/.pythonrc"
+ln -sf "$dotdir/tmux.conf" "$HOME/.tmux.conf"
+ln -sf "$dotdir/vimrc" "$HOME/.vimrc"
+ln -sf "$dotdir/herbstluftwm/autostart" "$HOME/.config/herbstluftwm/autostart"
+ln -sf "$dotdir/i3.config" "$HOME/.config/i3/config"
+ln -sf "$dotdir/i3status.config" "$HOME/.config/i3status/config"
 )
 }
 
@@ -60,25 +60,23 @@ install_vim() {
 (
 bundledir=$HOME/.vim/bundle
 
-
-
-cd "$HOME/.vim" || exit
-ensure_clone 'https://github.com/tpope/vim-pathogen' 'vim-pathogen'
-ensure_link "$HOME/.vim/vim-pathogen/autoload/pathogen.vim" \
+cd "$HOME/.vim" || die
+git_sync "https://github.com/tpope/vim-pathogen"
+ln -sf "$HOME/.vim/vim-pathogen/autoload/pathogen.vim" \
 	"$HOME/.vim/autoload/pathogen.vim"
 
-cd "$bundledir" || exit
-ensure_clone "https://github.com/vim-syntastic/syntastic" "syntastic"
-ensure_clone "https://github.com/tpope/vim-fugitive" "vim-fugitive"
-ensure_clone "https://github.com/tpope/vim-sleuth" "vim-sleuth"
-ensure_clone "https://github.com/sjl/badwolf" "badwolf"
-ensure_clone "https://github.com/jceb/vim-orgmode" "vim-orgmode"
-ensure_clone "https://github.com/tpope/vim-speeddating" "vim-speeddating"
-ensure_clone "https://github.com/scrooloose/nerdtree" "nerdtree"
-ensure_clone "https://github.com/kien/ctrlp.vim" "ctrlp.vim"
-ensure_clone "https://github.com/kien/rainbow_parentheses.vim" "rainbow_parentheses.vim"
-ensure_clone "https://github.com/fatih/vim-go" "vim-go"
-ensure_clone "https://github.com/chriskempson/base16-vim" "base16-vim"
+cd "$bundledir" || die
+git_sync "https://github.com/vim-syntastic/syntastic"
+git_sync "https://github.com/tpope/vim-fugitive"
+git_sync "https://github.com/tpope/vim-sleuth"
+git_sync "https://github.com/sjl/badwolf"
+git_sync "https://github.com/jceb/vim-orgmode"
+git_sync "https://github.com/tpope/vim-speeddating"
+git_sync "https://github.com/scrooloose/nerdtree"
+git_sync "https://github.com/kien/ctrlp.vim"
+git_sync "https://github.com/kien/rainbow_parentheses.vim"
+git_sync "https://github.com/fatih/vim-go"
+git_sync "https://github.com/chriskempson/base16-vim"
 )
 }
 
@@ -124,9 +122,9 @@ install_fluxbox()
 {
 (
 dotdir="$HOME/dotfiles"
-ensure_link "$dotdir/fluxbox/init" "$HOME/.fluxbox/init"
-ensure_link "$dotdir/fluxbox/keys" "$HOME/.fluxbox/keys"
-ensure_link "$dotdir/fluxbox/menu" "$HOME/.fluxbox/menu"
+ln -sf "$dotdir/fluxbox/init" "$HOME/.fluxbox/init"
+ln -sf "$dotdir/fluxbox/keys" "$HOME/.fluxbox/keys"
+ln -sf "$dotdir/fluxbox/menu" "$HOME/.fluxbox/menu"
 python "$dotdir/fluxbox/themer"
 )
 }
@@ -135,12 +133,12 @@ install_xfce4_terminal_colors()
 {
 (
 DLDIR="$HOME/Downloads"
-cd $DLDIR || exit
-ensure_clone "https://github.com/afg984/base16-xfce4-terminal" "base16-xfce4-terminal"
+cd $DLDIR || die
+git_sync "https://github.com/afg984/base16-xfce4-terminal"
 THEMEDIR="$DLDIR/base16-xfce4-terminal/colorschemes" 
 LOCALCONF="$HOME/.local/share/xfce4/terminal/colorschemes"
 mkdir -p "$LOCALCONF"
-ensure_link "$THEMEDIR/base16-dracula.theme" "$LOCALCONF"
+ln -sf "$THEMEDIR/base16-dracula.theme" "$LOCALCONF"
 )
 }
 
