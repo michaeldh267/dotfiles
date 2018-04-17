@@ -13,7 +13,9 @@ die() {
 }
 
 ensure_link () {
-# Thanks slj!
+# Thanks sjl!
+# $1 Actual file
+# $2 Symlink or file
 	[[ -L "$2" ]] || ln -s "$1" "$2"
 }
 
@@ -39,7 +41,7 @@ ensure_link "$dotdir/irbrc" "$HOME/.irbrc"
 ensure_link "$dotdir/profile" "$HOME/.profile"
 ensure_link "$dotdir/pythonrc" "$HOME/.pythonrc"
 ensure_link "$dotdir/tmux.conf" "$HOME/.tmux.conf"
-ensure_link "$dotdir/toprc" "$HOME/.toprc"
+#ensure_link "$dotdir/toprc" "$HOME/.toprc"
 ensure_link "$dotdir/vimrc" "$HOME/.vimrc"
 ensure_link "$dotdir/herbstluftwm/autostart" "$HOME/.config/herbstluftwm/autostart"
 )
@@ -50,12 +52,12 @@ install_vim() {
 bundledir=$HOME/.vim/bundle
 
 ensure_clone() {
-# Wow, this is gross!
-# Wow, this is cool.
-#cd "$bundledir" || exit
-git clone "$1" || ( cd "$2" && git pull "$1" )
-# if clone fails
-# subshell cd, etc
+# $1 Remote git
+# $2 Git directory
+git clone "$1" || ( 
+cd "$2" || exit; 
+git pull "$1" 
+)
 }
 
 
@@ -75,6 +77,7 @@ ensure_clone "https://github.com/scrooloose/nerdtree" "nerdtree"
 ensure_clone "https://github.com/kien/ctrlp.vim" "ctrlp.vim"
 ensure_clone "https://github.com/kien/rainbow_parentheses.vim" "rainbow_parentheses.vim"
 ensure_clone "https://github.com/fatih/vim-go" "vim-go"
+ensure_clone "https://github.com/chriskempson/base16-vim" "base16-vim"
 )
 }
 
@@ -127,10 +130,23 @@ python "$dotdir/fluxbox/themer"
 )
 }
 
+install_xfce4_terminal_colors()
+{
+(
+DLDIR="$HOME/Downloads"
+cd $DLDIR || exit
+ensure_clone "https://github.com/afg984/base16-xfce4-terminal" "base16-xfce4-terminal"
+THEMEDIR="$DLDIR/base16-xfce4-terminal/colorschemes" 
+LOCALCONF="$HOME/.local/share/xfce4/terminal/colorschemes"
+ensure_link "$THEMEDIR/base16-dracula.theme" "$LOCALCONF"
+)
+}
+
 main() {
 install_dotfiles
 install_vim
 install_fluxbox
+install_xfce4_terminal_colors
 }
 
 main

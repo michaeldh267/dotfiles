@@ -59,13 +59,16 @@ endif
 
 if has("gui_running")
   try 
-    colorscheme badwolf
+    "colorscheme badwolf
+    colorscheme base16-dracula
   catch
     colorscheme desert
   endtry
 else
   try
-    colorscheme badwolf
+    "colorscheme badwolf
+    colorscheme base16-dracula
+    hi StatusLine ctermfg=0 
   catch
     colorscheme desert
   endtry
