@@ -62,15 +62,18 @@ if has("gui_running")
     "colorscheme badwolf
     colorscheme base16-dracula
   catch
-    colorscheme desert
+    colorscheme murphy
   endtry
 else
   try
     "colorscheme badwolf
     colorscheme base16-dracula
-    hi StatusLine ctermfg=0 
+    hi StatusLine ctermbg=0
+    hi StatusLine ctermfg=9
+    hi StatusLineNC ctermbg=0 
+    hi Folded ctermbg=0
   catch
-    colorscheme desert
+    colorscheme murphy
   endtry
 endif
 
