@@ -1,11 +1,7 @@
 #!/bin/bash
 # installs the files
 
-# set -e # exit if any command has non-zero return value
-# set -u # exit if undefined reference found
-# set -o pipefail # do not mask pipeline errors
 # set -x # debug mode
-# IFS=$'\n\t'
 
 die() {
   printf '%s\n' "$1" >&2
@@ -27,10 +23,6 @@ fi
 
 mkdir -p "$HOME/.vim/autoload" "$HOME/.vim/bundle"
 mkdir -p "$HOME/.config/fontconfig"
-mkdir -p "$HOME/.config/herbstluftwm"
-mkdir -p "$HOME/.config/i3"
-mkdir -p "$HOME/.config/i3status"
-mkdir -p "$HOME/.fluxbox/styles"
 mkdir -p "$HOME/.vim"
 mkdir -p "$HOME/bin"
 
@@ -50,9 +42,6 @@ ln -sf "$dotdir/profile" "$HOME/.profile"
 ln -sf "$dotdir/pythonrc" "$HOME/.pythonrc"
 ln -sf "$dotdir/tmux.conf" "$HOME/.tmux.conf"
 ln -sf "$dotdir/vimrc" "$HOME/.vimrc"
-ln -sf "$dotdir/herbstluftwm/autostart" "$HOME/.config/herbstluftwm/autostart"
-ln -sf "$dotdir/i3.config" "$HOME/.config/i3/config"
-ln -sf "$dotdir/i3status.config" "$HOME/.config/i3status/config"
 )
 }
 
@@ -76,77 +65,12 @@ git_sync "https://github.com/scrooloose/nerdtree"
 git_sync "https://github.com/kien/ctrlp.vim"
 git_sync "https://github.com/kien/rainbow_parentheses.vim"
 git_sync "https://github.com/fatih/vim-go"
-git_sync "https://github.com/chriskempson/base16-vim"
-)
-}
-
-install_debs() {
-
-(
-
-basic='build-essential
-gdb git sudo curl tree
-vim-gnome ctags
-dos2unix mc links
-tig
-rename
-shellcheck
-tmux
-markdown
-atool
-apt-transport-https
-ca-certificates
-software-properties-common'
-
-desktop='fonts-symbola fonts-inconsolata
-suckless-tools
-youtube-dl
-mpv
-feh
-transmission-gtk
-hexchat'
-
-python='python3-pip python3-setuptools'
-
-# we _do_ actually want word splitting here, so no quoted vars
-sudo apt update && sudo apt upgrade && \
-sudo apt install $basic $desktop $python \
---no-install-recommends && \
-sudo apt autoremove && \
-sudo apt autoclean && \
-sudo apt clean
-)
-}
-
-install_fluxbox()
-{
-(
-dotdir="$HOME/dotfiles"
-ln -sf "$dotdir/fluxbox/init" "$HOME/.fluxbox/init"
-ln -sf "$dotdir/fluxbox/keys" "$HOME/.fluxbox/keys"
-ln -sf "$dotdir/fluxbox/menu" "$HOME/.fluxbox/menu"
-python "$dotdir/fluxbox/themer"
-)
-}
-
-install_xfce4_terminal_colors()
-{
-(
-DLDIR="$HOME/Downloads"
-cd $DLDIR || die
-git_sync "https://github.com/afg984/base16-xfce4-terminal"
-THEMEDIR="$DLDIR/base16-xfce4-terminal/colorschemes" 
-LOCALCONF="$HOME/.local/share/xfce4/terminal/colorschemes"
-mkdir -p "$LOCALCONF"
-ln -sf "$THEMEDIR/base16-dracula.theme" "$LOCALCONF"
 )
 }
 
 main() {
 install_dotfiles
 install_vim
-install_fluxbox
-install_xfce4_terminal_colors
 }
 
 main

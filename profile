@@ -16,17 +16,3 @@ if [ -n "$BASH_VERSION" ]; then
 	. "$HOME/.bashrc"
     fi
 fi
-# set PATH so it includes user's private bin directories
-export PATH="$HOME/.local/bin:$PATH"
-export PATH="$HOME/bin:$PATH"
-export PATH="$HOME/.luarocks/bin:$PATH"
-
-# for golang
-# export GOPATH=$HOME/go
-#xrdb ~/.Xresources
-# just in case!
-export LANG=en_US.UTF-8
-export LESS=MR
-export PAGER=most
-export VISUAL=vim
-export EDITOR="$VISUAL"

@@ -121,9 +121,18 @@ shopt -s cdspell checkhash checkjobs dirspell no_empty_cmd_completion
 # # set PATH so it includes user's private bin directories
 #export PATH="$HOME/.local/bin:$PATH"
 #export PATH="$HOME/bin:$PATH"
-
 # # for golang
 export GOPATH=$HOME/go
+
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/bin:$PATH"
+export PATH="$HOME/.luarocks/bin:$PATH"
+
+export LANG=en_US.UTF-8
+export LESS=MR
+export PAGER=most
+export VISUAL=vim
+export EDITOR="$VISUAL"
 
 # I do it all for the colors
 [[ $COLORTERM = 'xfce4-terminal' ]] && export TERM=xterm-256color
@@ -134,5 +143,7 @@ alias doc='cd ~/Documents && ls'
 [[ ! -z "$DISPLAY" ]] && alias v="gvim -v"
 [[ ! -z "$DISPLAY" ]] && alias g="gvim"
 [[ ! -z "$DISPLAY" ]] && alias vim="gvim -v"
-. /usr/doc/git-2.14.1/contrib/completion/git-prompt.sh
+
+# This is a Slackware specific location
+. /usr/doc/git-*/contrib/completion/git-prompt.sh
 export PS1="\$(__git_ps1 '(%s)')"$PS1
