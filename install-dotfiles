@@ -1,0 +1,29 @@
+#!/bin/bash
+# installs the files
+
+# set -x # debug mode
+
+die() {
+  printf '%s\n' "$1" >&2
+  exit 1
+}
+
+mkdir -p "$HOME/.config/fontconfig"
+mkdir -p "$HOME/bin"
+
+(
+dotdir="$HOME/dotfiles"
+cd "$dotdir" || die
+ln -sf "$dotdir/Xresources" "$HOME/.Xresources"
+ln -sf "$dotdir/xsessionrc" "$HOME/.xsessionrc"
+ln -sf "$dotdir/bashrc" "$HOME/.bashrc"
+ln -sf "$dotdir/emacs" "$HOME/.emacs"
+ln -sf "$dotdir/fonts.conf" "$HOME/.config/fontconfig/fonts.conf"
+ln -sf "$dotdir/functions" "$HOME/.functions"
+ln -sf "$dotdir/inputrc" "$HOME/.inputrc"
+ln -sf "$dotdir/irbrc" "$HOME/.irbrc"
+ln -sf "$dotdir/profile" "$HOME/.profile"
+ln -sf "$dotdir/pythonrc" "$HOME/.pythonrc"
+ln -sf "$dotdir/tmux.conf" "$HOME/.tmux.conf"
+ln -sf "$dotdir/vimrc" "$HOME/.vimrc"
+)

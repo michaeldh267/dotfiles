@@ -1,0 +1,44 @@
+#!/bin/bash
+# Links my vimrc
+# on first run: git clones my favorite vim plugins
+# run again to git pull each repo!
+
+# set -x # debug mode
+
+mkdir -p "$HOME/.vim/autoload" "$HOME/.vim/bundle"
+mkdir -p "$HOME/.vim"
+
+git_sync() {
+(
+REMOTE="$1"
+#LOCALDIR="$(echo "$REMOTE" | cut -d'/' -f5)"
+LOCALDIR="$(echo "$REMOTE" | rev | cut -d'/' -f1 | rev)"
+
+if [[ -d "$LOCALDIR" ]]; then
+  (cd "$LOCALDIR"; git pull)
+else
+  git clone "$REMOTE"
+fi
+)
+}
+
+(
+bundledir=$HOME/.vim/bundle
+
+cd "$HOME/.vim" || exit
+git_sync "https://github.com/tpope/vim-pathogen"
+ln -sf "$HOME/.vim/vim-pathogen/autoload/pathogen.vim" \
+	"$HOME/.vim/autoload/pathogen.vim"
+
+cd "$bundledir" || exit
+git_sync "https://github.com/vim-syntastic/syntastic"
+git_sync "https://github.com/tpope/vim-fugitive"
+git_sync "https://github.com/tpope/vim-sleuth"
+git_sync "https://github.com/sjl/badwolf"
+git_sync "https://github.com/jceb/vim-orgmode"
+git_sync "https://github.com/tpope/vim-speeddating"
+git_sync "https://github.com/scrooloose/nerdtree"
+git_sync "https://github.com/kien/ctrlp.vim"
+git_sync "https://github.com/kien/rainbow_parentheses.vim"
+git_sync "https://github.com/fatih/vim-go"
+)

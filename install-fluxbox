@@ -1,5 +1,5 @@
 #!/bin/bash
-
+# Setup my fluxbox environment
 
 mkdir -p "$HOME/.fluxbox/styles"
 
