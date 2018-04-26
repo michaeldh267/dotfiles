@@ -57,31 +57,24 @@ if maparg('<C-L>', 'n') ==# ''
 endif
 
 
-colorscheme murphy
-"if has("gui_running")
-"  try 
-"    "colorscheme badwolf
-"    colorscheme base16-dracula
-"  catch
-"    colorscheme murphy
-"  endtry
-"else
-"  try
-"    "colorscheme badwolf
-"    colorscheme base16-dracula
-"    hi StatusLine ctermbg=0
-"    hi StatusLine ctermfg=9
-"    hi StatusLineNC ctermbg=0 
-"    hi Folded ctermbg=0
-"  catch
-"    colorscheme murphy
-"  endtry
-"endif
+if has("gui_running")
+  try
+    colorscheme badwolf
+  catch
+    colorscheme murphy
+  endtry
+else
+  try
+    colorscheme badwolf
+  catch
+    colorscheme murphy
+  endtry
+endif
 
 if has("gui_running")
   set guifont=Liberation\ Mono\ 12
   winpos 0 0
-  set lines=38
+  set lines=35
   set columns=80
 endif
 
