@@ -116,18 +116,19 @@ fi
 # END DEFAULT CONFIGURATION
 shopt -s cdspell checkhash checkjobs dirspell no_empty_cmd_completion
 # happy little functions
-[ -f ~/.functions ] && . ~/.functions
+[ -f ~/.functions ] && source /home/myk/.functions
 
-# # set PATH so it includes user's private bin directories
-#export PATH="$HOME/.local/bin:$PATH"
-#export PATH="$HOME/bin:$PATH"
-# # for golang
+PATH_PUSH_ONCE () {
+if [[ ! "$PATH" =~ $1 ]]; then
+  export PATH="$1:$PATH"
+fi
+
+}
+PATH_PUSH_ONCE "$HOME/bin"
+PATH_PUSH_ONCE "$HOME/.local/bin"
+PATH_PUSH_ONCE "$HOME/.luarocks/bin"
+
 export GOPATH=$HOME/go
-
-export PATH="$HOME/.local/bin:$PATH"
-export PATH="$HOME/bin:$PATH"
-export PATH="$HOME/.luarocks/bin:$PATH"
-
 export LANG=en_US.UTF-8
 export LESS=MR
 export PAGER=most
@@ -140,9 +141,14 @@ export EDITOR="$VISUAL"
 alias dt='cd ~/dotfiles && ls'
 alias dl='cd ~/Downloads && ls'
 alias doc='cd ~/Documents && ls'
-[[ ! -z "$DISPLAY" ]] && alias v="gvim -v"
-[[ ! -z "$DISPLAY" ]] && alias g="gvim"
-[[ ! -z "$DISPLAY" ]] && alias vim="gvim -v"
+
+function vim () {
+if [[ ! -z "$DISPLAY" ]]; then
+  /usr/bin/gvim "$@"
+else
+  /usr/bin/vim "$@"
+fi
+}
 
 # This is a Slackware specific location
 . /usr/doc/git-*/contrib/completion/git-prompt.sh
