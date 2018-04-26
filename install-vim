@@ -4,6 +4,7 @@
 # run again to git pull each repo!
 
 # set -x # debug mode
+set -e
 
 mkdir -p "$HOME/.vim/autoload" "$HOME/.vim/bundle"
 mkdir -p "$HOME/.vim"
@@ -11,8 +12,8 @@ mkdir -p "$HOME/.vim"
 git_sync() {
 (
 REMOTE="$1"
+LOCALDIR="$(echo "$REMOTE" | rev | cut -d / -f 1 | rev)"
 #LOCALDIR="$(echo "$REMOTE" | cut -d'/' -f5)"
-LOCALDIR="$(echo "$REMOTE" | rev | cut -d'/' -f1 | rev)"
 
 if [[ -d "$LOCALDIR" ]]; then
   (cd "$LOCALDIR"; git pull)
@@ -25,12 +26,12 @@ fi
 (
 bundledir=$HOME/.vim/bundle
 
-cd "$HOME/.vim" || exit
+cd "$HOME/.vim"
 git_sync "https://github.com/tpope/vim-pathogen"
 ln -sf "$HOME/.vim/vim-pathogen/autoload/pathogen.vim" \
 	"$HOME/.vim/autoload/pathogen.vim"
 
-cd "$bundledir" || exit
+cd "$bundledir"
 git_sync "https://github.com/vim-syntastic/syntastic"
 git_sync "https://github.com/tpope/vim-fugitive"
 git_sync "https://github.com/tpope/vim-sleuth"
