@@ -151,4 +151,13 @@ let g:syntastic_lua_checkers = ["luacheck"]
 let g:paredit_mode=1
 " CtrlP root
 let g:ctrlp_working_path_mode = 'c'
-" EOF
+
+" set filetype for SlackBuild info files
+autocmd BufEnter,BufNew *.SlackBuild setlocal ft=sh
+autocmd BufEnter,BufNew *.info call CheckSlackBuildInfo()
+function! CheckSlackBuildInfo()
+    if filereadable(expand('%:p:r'). '.SlackBuild')
+        setlocal filetype=sh
+    endif
+endfunction
+"EOF
