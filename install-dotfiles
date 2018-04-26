@@ -3,17 +3,14 @@
 
 # set -x # debug mode
 
-die() {
-  printf '%s\n' "$1" >&2
-  exit 1
-}
+set -e
 
 mkdir -p "$HOME/.config/fontconfig"
 mkdir -p "$HOME/bin"
 
 (
 dotdir="$HOME/dotfiles"
-cd "$dotdir" || die
+cd "$dotdir"
 ln -sf "$dotdir/Xresources" "$HOME/.Xresources"
 ln -sf "$dotdir/xsessionrc" "$HOME/.xsessionrc"
 ln -sf "$dotdir/bashrc" "$HOME/.bashrc"
