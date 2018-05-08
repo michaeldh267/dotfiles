@@ -151,5 +151,5 @@ fi
 }
 
 # This is a Slackware specific location
-. /usr/doc/git-*/contrib/completion/git-prompt.sh
-export PS1="\$(__git_ps1 '(%s)')"$PS1
+#. /usr/doc/git-*/contrib/completion/git-prompt.sh
+#export PS1="\$(__git_ps1 '(%s)')"$PS1

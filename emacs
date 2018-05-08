@@ -9,22 +9,22 @@
   ;; (global-set-key (kbd "M-o") 'other-window)
   ;; (global-set-key (kbd "C-x C-b") 'switch-to-buffer)
   (load-theme 'manoj-dark)
-  (set-frame-font "Liberation Mono-12")
+  (set-frame-font "Liberation Mono-13")
   (show-paren-mode 1)
   (setq inhibit-startup-screen t)
-  (setq inferior-lisp-program "/usr/bin/clisp")
+  ;; (setq inferior-lisp-program "/usr/bin/clisp")
   (add-hook 'focus-out-hook 'garbage-collect)
   (if (display-graphic-p)
       (progn
         (show-paren-mode 1)
         )))
-;; (add-to-list 'load-path "~/.emacs.d/better-defaults")
 
-;; (require 'better-defaults)
-;; (condition-case nil
-;;     (progn
-;;       (require 'mishmash))
-;;   (file-error (message "Go get better-defaults!")))
+(add-to-list 'load-path "~/.emacs.d/better-defaults")
+(require 'better-defaults)
+
+(add-to-list 'load-path "~/.emacs.d/php-mode")
+(require 'php-mode)
+
 
 ;; (add-to-list 'load-path "~/.emacs.d/evil")
 ;; (require 'evil)

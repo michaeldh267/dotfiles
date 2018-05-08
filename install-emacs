@@ -1,0 +1,30 @@
+#!/bin/bash
+
+# on first run: git clones my favorite emacs plugins
+# run again to git pull each repo!
+
+# set -x # debug mode
+set -e
+
+mkdir -p "$HOME/.emacs.d/"
+
+git_sync() {
+(
+REMOTE="$1"
+LOCALDIR="$(echo "$REMOTE" | rev | cut -d / -f 1 | rev)"
+
+if [[ -d "$LOCALDIR" ]]; then
+  (cd "$LOCALDIR"; git pull)
+else
+  git clone "$REMOTE"
+fi
+)
+}
+
+(
+bundledir=$HOME/.emacs.d/
+
+cd "$bundledir"
+git_sync "https://github.com/technomancy/better-defaults"
+
+)

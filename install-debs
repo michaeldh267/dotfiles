@@ -5,7 +5,8 @@
 basic='build-essential
 gdb git sudo curl tree
 vim-gnome ctags
-dos2unix mc links
+emacs
+dos2unix links
 tig
 rename
 shellcheck
@@ -18,7 +19,6 @@ software-properties-common'
 
 desktop='fonts-symbola fonts-inconsolata
 suckless-tools
-youtube-dl
 mpv
 feh
 transmission-gtk
