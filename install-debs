@@ -26,6 +26,7 @@ vim-gtk3
 
 desktop='
 compton
+conky
 feh
 fonts-inconsolata
 fonts-symbola
@@ -34,6 +35,7 @@ nitrogen
 openbox
 pasystray
 suckless-tools
+tint2
 transmission-gtk
 '
 
