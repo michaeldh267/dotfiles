@@ -10,9 +10,7 @@
   ;; (global-set-key (kbd "C-x C-b") 'switch-to-buffer)
   (load-theme 'manoj-dark)
   (set-frame-font "Liberation Mono-13")
-  (show-paren-mode 1)
   (setq inhibit-startup-screen t)
-  ;; (setq inferior-lisp-program "/usr/bin/clisp")
   (add-hook 'focus-out-hook 'garbage-collect)
   (if (display-graphic-p)
       (progn
@@ -22,18 +20,16 @@
 (add-to-list 'load-path "~/.emacs.d/better-defaults")
 (require 'better-defaults)
 
-(add-to-list 'load-path "~/.emacs.d/php-mode")
-(require 'php-mode)
+; (setq inferior-lisp-program "/usr/bin/sbcl")
+(setq inferior-lisp-program "/usr/bin/clisp")
+(load (expand-file-name "~/quicklisp/slime-helper.el"))
+(setq slime-contribs '(slime-fancy))
 
 
 ;; (add-to-list 'load-path "~/.emacs.d/evil")
 ;; (require 'evil)
 ;; (evil-mode 1)
 
-;; (add-to-list 'load-path "~/.emacs.d/slime")
-;; (require 'slime-autoloads)
-;; (setq slime-contribs '(slime-fancy))
-;; If you don't have MELPA in your package archives:
 ; (require 'package)
 ; 
 ; (add-to-list 'package-archives
@@ -55,14 +51,5 @@
 ; (require 'better-defaults)
 ; (add-hook 'haskell-mode-hook 'intero-mode)
 ; 
-; ; GC when window loses focus
-; 
-; (custom-set-variables
-;  '(package-selected-packages (quote (paredit geiser better-defaults intero))))
-; (custom-set-faces)
-; (load (expand-file-name "~/quicklisp/slime-helper.el"))
-; ;; Replace "sbcl" with the path to your implementation
-; (setq inferior-lisp-program "/usr/bin/sbcl")
-; (setq slime-contribs '(slime-fancy))
-; ;; (shell)
 
+; (setq slime-contribs '(slime-fancy))
