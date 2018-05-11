@@ -23,8 +23,10 @@ fi
 
 (
 bundledir=$HOME/.emacs.d/
+dotdir="$HOME/dotfiles"
+cd "$dotdir"
+ln -sf "$dotdir/emacs" "$HOME/.emacs"
 
 cd "$bundledir"
 git_sync "https://github.com/technomancy/better-defaults"
-
 )
