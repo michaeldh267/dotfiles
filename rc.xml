@@ -322,6 +322,37 @@
       </action>
     </keybind>
     <!-- Keybindings for running applications -->
+
+    <!-- My Keys -->
+
+    <keybind key="W-Left">
+      <action name="Unmaximize"/>
+      <action name="MoveResizeTo">
+        <x>0</x>
+        <y>0</y>
+        <height>100%</height>
+        <width>50%</width>
+      </action>
+    </keybind>
+    
+    <keybind key="W-Right">
+      <action name="MoveResizeTo">
+        <x>-0</x>
+        <y>0</y>
+        <width>50%</width>
+        <height>100%</height>
+      </action>
+    </keybind>
+    
+    <keybind key="W-Up">
+      <action name="MoveResizeTo">
+        <x>0</x>
+        <y>0</y>
+        <width>100%</width>
+        <height>100%</height>
+      </action>
+    </keybind>
+    
     <keybind key="W-e">
       <action name="Execute">
         <startupnotify>
@@ -637,6 +668,8 @@
       </mousebind>
     </context>
     <context name="Root">
+
+      
       <!-- Menus -->
       <mousebind button="Middle" action="Press">
         <action name="ShowMenu">
