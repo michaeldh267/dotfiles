@@ -8,30 +8,18 @@ atool
 build-essential
 ca-certificates
 ctags
-curl
 dos2unix
+emacs
 gdb
-git
-links
 markdown
-rename
 shellcheck
 software-properties-common
-sudo
-tig
-tmux
 tree
-vim-gtk3
 '
 
 desktop='
-compton
-feh
-fonts-inconsolata
 fonts-symbola
 hexchat
-pasystray
-suckless-tools
 transmission-gtk
 '
 

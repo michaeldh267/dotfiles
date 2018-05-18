@@ -5,21 +5,22 @@
 
 set -e
 
+mkdir -p "$HOME/.emacs.d/"
 mkdir -p "$HOME/.config/fontconfig"
 mkdir -p "$HOME/bin"
 
 (
 dotdir="$HOME/dotfiles"
 cd "$dotdir"
-ln -sf "$dotdir/Xresources" "$HOME/.Xresources"
-ln -sf "$dotdir/xsessionrc" "$HOME/.xsessionrc"
-ln -sf "$dotdir/bashrc" "$HOME/.bashrc"
-ln -sf "$dotdir/fonts.conf" "$HOME/.config/fontconfig/fonts.conf"
-ln -sf "$dotdir/functions" "$HOME/.functions"
-ln -sf "$dotdir/inputrc" "$HOME/.inputrc"
-ln -sf "$dotdir/irbrc" "$HOME/.irbrc"
-ln -sf "$dotdir/profile" "$HOME/.profile"
-ln -sf "$dotdir/pythonrc" "$HOME/.pythonrc"
-ln -sf "$dotdir/tmux.conf" "$HOME/.tmux.conf"
-ln -sf "$dotdir/vimrc" "$HOME/.vimrc"
+#ln -sf "$dotdir/irbrc" "$HOME/.irbrc"
+#ln -sf "$dotdir/tmux.conf" "$HOME/.tmux.conf"
+#ln -sf "$dotdir/xsessionrc" "$HOME/.xsessionrc"
+#ln -sf "$dotdir/vimrc" "$HOME/.vimrc"
+ln -sfv "$dotdir/bashrc" "$HOME/.bashrc.local"
+ln -sfv "$dotdir/functions" "$HOME/.functions"
+ln -sfv "$dotdir/Xresources" "$HOME/.Xresources"
+ln -sfv "$dotdir/fonts.conf" "$HOME/.config/fontconfig/fonts.conf"
+ln -sfv "$dotdir/inputrc" "$HOME/.inputrc"
+ln -sfv "$dotdir/pythonrc" "$HOME/.pythonrc"
+ln -sfv "$dotdir/emacs" "$HOME/.emacs"
 )

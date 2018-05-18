@@ -17,12 +17,9 @@
         (show-paren-mode 1)
         )))
 
-(add-to-list 'load-path "~/.emacs.d/better-defaults")
-(require 'better-defaults)
-
 ; (setq inferior-lisp-program "/usr/bin/sbcl")
 (setq inferior-lisp-program "/usr/bin/clisp")
-(load (expand-file-name "~/quicklisp/slime-helper.el"))
+(ignore-errors (load (expand-file-name "~/quicklisp/slime-helper.el")))
 (setq slime-contribs '(slime-fancy))
 
 
@@ -30,26 +27,33 @@
 ;; (require 'evil)
 ;; (evil-mode 1)
 
-; (require 'package)
-; 
-; (add-to-list 'package-archives
-;   '("melpa" . "https://melpa.org/packages/") t)
-; (package-initialize)
-; 
-; (unless package-archive-contents
-;   (package-refresh-contents))
-; 
-; (setq my-packages '(intero
-;                     better-defaults
-;                     geiser
-;                     paredit))
-; 
-; (dolist (p my-packages)
-;   (unless (package-installed-p p)
-;     (package-install p)))
-; 
-; (require 'better-defaults)
-; (add-hook 'haskell-mode-hook 'intero-mode)
-; 
+(require 'package)
 
-; (setq slime-contribs '(slime-fancy))
+(add-to-list 'package-archives
+	     '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+;; (add-to-list 'package-archives
+;; 	     '("marmalade" . "http://marmalade-repo.org/packages/") t)
+(package-initialize)
+
+(unless package-archive-contents
+  (package-refresh-contents))
+
+(setq my-packages '(better-defaults
+		    flycheck
+		    paredit))
+
+(dolist (p my-packages)
+  (unless (package-installed-p p)
+    (package-install p)))
+
+(defun my/use-eslint-from-node-modules ()
+  (let* ((root (locate-dominating-file
+                (or (buffer-file-name) default-directory)
+                "node_modules"))
+         (eslint (and root
+                      (expand-file-name "node_modules/eslint/bin/eslint.js"
+                                        root))))
+    (when (and eslint (file-executable-p eslint))
+      (setq-local flycheck-javascript-eslint-executable eslint))))
+
+(add-hook 'flycheck-mode-hook #'my/use-eslint-from-node-modules)

@@ -43,62 +43,21 @@ myk-youtube-dl() {
 youtube-dl --restrict-filenames -o '%(title)s.%(ext)s' "$@"
 }
 
-cs () {
-# if cd succeeds, then ls
-  cd "$@" && ls
-}
-
-install-debs () {
-# install programs I like, on a Debian or Deb derivative (*buntu, Mint, etc)
-# I guess this is closer to a posix sh-like way to solve this.
+git_sync() {
 (
+REMOTE="$1"
+LOCALDIR="$(echo "$REMOTE" | rev | cut -d / -f 1 | rev)"
 
-basic='build-essential
-gdb git sudo curl tree
-vim-gnome ctags
-dos2unix mc links
-tig
-rename
-shellcheck
-tmux
-markdown
-atool
-apt-transport-https
-ca-certificates
-software-properties-common'
-
-desktop='fonts-symbola fonts-inconsolata
-suckless-tools
-youtube-dl
-mpd mpc
-mpv
-feh
-transmission-gtk
-hexchat'
-
-python='python3-pip python3-setuptools'
-
-# we _do_ actually want word splitting here, so no quoted vars
-sudo apt update && sudo apt upgrade && \
-sudo apt install $basic $desktop $python \
---no-install-recommends && \
-sudo apt autoremove && \
-sudo apt autoclean && \
-sudo apt clean
+if [[ -d "$LOCALDIR" ]]; then
+  (cd "$LOCALDIR"; git pull)
+else
+  git clone "$REMOTE"
+fi
 )
 }
 
-sapti () {
-sudo apt update && sudo apt upgrade && \
-sudo apt install "$*" && \
-sudo apt-get autoremove && \
-sudo apt-get autoclean && \
-sudo apt-get clean
-}
-
-saptuu () {
-sudo apt update && sudo apt upgrade && \
-sudo apt-get autoremove && \
-sudo apt-get autoclean && \
-sudo apt-get clean
+PATH_PUSH_ONCE () {
+if [[ ! "$PATH" =~ $1 ]]; then
+  export PATH="$1:$PATH"
+fi
 }
