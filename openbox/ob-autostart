@@ -1,9 +1,0 @@
-
-
-
-compton -b
-
-nitrogen --restore
-
-tint2 &
-conky -q &

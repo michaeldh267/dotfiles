@@ -5,6 +5,11 @@ endtry
 
 syntax on
 filetype plugin indent on
+
+" Rebindings {{{
+if maparg('<C-L>', 'n') ==# ''
+  nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
+endif
 map <C-n> :NERDTreeToggle<CR>
 cnoreabbrev W w
 cnoreabbrev X x
@@ -12,52 +17,72 @@ nnoremap <C-w>q :close<CR>
 nnoremap ZZ :close<CR>
 nnoremap / /\v
 nnoremap ? ?\v
+" }}}
+
+" General Settings {{{
+scriptencoding utf-8
+setglobal termencoding=utf-8 
 set backspace=indent,eol,start
+set colorcolumn=80
 set complete-=i
 set display=lastline
 set encoding=utf-8 " make sure this is the same as $LANG...OR ELSE
 set formatoptions=qrn1
 set formatoptions=tcqj
+set hidden
 set history=10000
 set hlsearch
 set incsearch
 set langnoremap
+set laststatus=2
 set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+,eol:$
 set modelines=0
 set mouse=a
 set nrformats=hex
+set omnifunc=syntaxcomplete#Complete
 set sessionoptions-=options
 set tabpagemax=50
 set tags=./tags;,tags
 set viminfo+=!
+" }}}
+
+" Wildmenu Completion {{{ 
 set wildmenu
+set wildmode=list:longest,full
+set wildignore+=*.pyc
+"}}}
 
-set laststatus=2
+" Disabled settings! {{{
 set nowrap " Friends don't let friends wrap text. You've been warned.
-
 set nobackup
 set nocompatible
 set nocursorcolumn
 set nocursorline
 set noundofile
+" }}}
 
+" Random thing that fixes gnome-terminal {{{
+set t_ut=
+" }}}
+
+" Folding {{{
 set foldmethod=marker
+set foldlevelstart=0
 set foldnestmax=1
+" }}}
 
-set colorcolumn=80
 
-set omnifunc=syntaxcomplete#Complete
 " Load matchit.vim, but only if the user hasn't installed a newer version.
 if !exists('g:loaded_matchit') && findfile('plugin/matchit.vim', &rtp) ==# ''
   runtime! macros/matchit.vim
 endif
 
-if maparg('<C-L>', 'n') ==# ''
-  nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
-endif
-
-
+" Colorschemin {{{
 if has("gui_running")
+  set guifont=Liberation\ Mono\ 12
+  winpos 0 0
+  set lines=35
+  set columns=80
   try
     colorscheme badwolf
   catch
@@ -70,13 +95,7 @@ else
     colorscheme murphy
   endtry
 endif
-
-if has("gui_running")
-  set guifont=Liberation\ Mono\ 12
-  winpos 0 0
-  set lines=35
-  set columns=80
-endif
+" }}}
 
 "{{{ Statusline
 set statusline=%f     " Path to the file
@@ -102,7 +121,6 @@ set statusline+=%m    " Modified?
 "set autoindent
 "set textwidth=79
 "set ttyfast
-"set t_ut=
 "if &t_Co == "256" || has("gui_running")
 " set tabstop=2 softtabstop=2 shiftwidth=2 shiftround expandtab
 " if exists('g:loaded_syntastic_plugin')

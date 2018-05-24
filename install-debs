@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 # I use these packages on Debian
 
 (
@@ -15,6 +15,7 @@ markdown
 shellcheck
 software-properties-common
 tree
+vim-gtk3
 '
 
 desktop='
