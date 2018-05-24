@@ -21,10 +21,10 @@ repos = [
         "https://github.com/sjl/badwolf",
         "https://github.com/jceb/vim-orgmode",
         "https://github.com/tpope/vim-speeddating",
-        "https://github.com/scrooloose/nerdtree",
-        "https://github.com/kien/ctrlp.vim",
-        "https://github.com/kien/rainbow_parentheses.vim",
-        "https://github.com/fatih/vim-go",
+        #"https://github.com/scrooloose/nerdtree",
+        #"https://github.com/kien/ctrlp.vim",
+        #"https://github.com/kien/rainbow_parentheses.vim",
+        #"https://github.com/fatih/vim-go",
         ]
 
 HOME=os.path.expandvars("$HOME")
@@ -49,17 +49,18 @@ def install_vim_plugins():
         git_sync(x)
 
 
-directories = [
-    "$HOME/.vim/autoload",
-    "$HOME/.vim/bundle",
-    "$HOME/.vim",
-    "$HOME/.emacs.d/",
-    "$HOME/.config/fontconfig",
-    "$HOME/bin"
-    ]
-
 def make_dirs():
     '''Directories grow on trees!'''
+
+    directories = [
+        "$HOME/.vim/autoload",
+        "$HOME/.vim/bundle",
+        "$HOME/.vim",
+        "$HOME/.emacs.d/",
+        "$HOME/.config/fontconfig",
+        "$HOME/bin"
+        ]
+
     for d in directories:
         try:
             os.mkdir(os.path.expandvars(d))
@@ -67,20 +68,22 @@ def make_dirs():
             print(e,d)
 
 
-links = [
-    ("vimrc", ".vimrc"),
-    ("bashrc", ".bashrc.local"),
-    ("functions", ".functions"),
-    ("Xresources", ".Xresources"),
-    ("fonts.conf", ".config/fontconfig/fonts.conf"),
-    ("inputrc", ".inputrc"),
-    ("pythonrc", ".pythonrc"),
-    ("emacs", ".emacs"),
-    ]
 
 DOTDIR = os.path.join(HOME, "dotfiles")
 
 def symlink_dotfiles():
+    '''Symlinkin'''
+    links = [
+        ("vimrc", ".vimrc"),
+        ("bashrc", ".bashrc.local"),
+        ("functions", ".functions"),
+        ("Xresources", ".Xresources"),
+        ("fonts.conf", ".config/fontconfig/fonts.conf"),
+        ("inputrc", ".inputrc"),
+        ("pythonrc", ".pythonrc"),
+        ("emacs", ".emacs"),
+        ]
+
     for x in links:
         src=os.path.join(DOTDIR,x[0])
         dst=os.path.join(HOME,x[1])
@@ -90,7 +93,7 @@ def symlink_dotfiles():
             print(e,x)
 
 if __name__ == '__main__':
+    make_dirs()
     install_pathogen()
     install_vim_plugins()
-    make_dirs()
     symlink_dotfiles()
