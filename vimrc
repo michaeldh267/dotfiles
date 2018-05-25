@@ -150,11 +150,37 @@ set statusline+=%m    " Modified?
  let g:syntastic_python_checkers = ['pyflakes', 'python'] " or python
 "}}}
  
-"{{{ Python specific settings:
- autocmd FileType python setlocal tabstop=8 softtabstop=4 shiftwidth=4 expandtab
- autocmd FileType python setlocal foldmethod=indent
- autocmd FileType python setlocal foldnestmax=1
- autocmd FileType python setlocal omnifunc=python3complete#Complete
+"{{{ Python
+function! PythonOpts()
+ setlocal tabstop=8 
+ setlocal softtabstop=4
+ setlocal shiftwidth=4
+ setlocal expandtab
+ setlocal foldmethod=indent
+ setlocal foldnestmax=1
+ setlocal omnifunc=python3complete#Complete
+endfunction
+autocmd FileType python call PythonOpts()
+"autocmd FileType python setlocal makeprg=cat\ %
+" autocmd BufWritePost *.py make
+"autocmd QuickFixCmdPost * copen
+"}}}
+
+" Java {{{
+function! JavaOpts()
+  " Keep these two equal at all times!
+  setlocal tabstop=4 " How many columns a tab counts for
+  setlocal shiftwidth=4 " How many columns indent with >>,<<,cindent
+
+  setlocal softtabstop=4 " How far TAB and BS move the cursor
+
+  setlocal expandtab " Expand TAB presses to spaces
+
+  setlocal autoindent
+  setlocal smartindent
+  set cinoptions+=j1
+endfunction
+autocmd FileType java call JavaOpts()
 "}}}
 
 " let g:syntastic_perl_checkers = ['perl']
