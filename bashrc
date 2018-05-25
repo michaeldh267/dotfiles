@@ -12,7 +12,7 @@ export GOPATH=$HOME/go
 #export LANG=en_US.UTF-8
 #export LESS=MR
 #export PAGER=most
-export VISUAL=emacs
+export VISUAL=vim
 export EDITOR="$VISUAL"
 
 alias dt='cd ~/dotfiles && ls'
