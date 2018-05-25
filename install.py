@@ -58,6 +58,7 @@ def make_dirs():
         "$HOME/.vim",
         "$HOME/.emacs.d/",
         "$HOME/.config/fontconfig",
+        "$HOME/.netbeans/8.1/etc",
         "$HOME/bin"
         ]
 
@@ -82,6 +83,7 @@ def symlink_dotfiles():
         ("inputrc", ".inputrc"),
         ("pythonrc", ".pythonrc"),
         ("emacs", ".emacs"),
+        ("netbeans.conf", ".netbeans/8.1/etc/netbeans.conf"),
         ]
 
     for x in links:
