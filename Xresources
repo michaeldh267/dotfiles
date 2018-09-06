@@ -29,7 +29,7 @@ URxvt*color2:	#008A00
 URxvt*color10:	#00B300
 
 !!! XTterm
-!XTerm*termName: xterm-256color
+XTerm*termName: xterm-256color
 XTerm.vt100.renderfont: true
 XTerm.vt100.fastScroll: true
 !XTerm.vt100.faceName: monospace:size=13:antialias=true

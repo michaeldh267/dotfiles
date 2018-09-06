@@ -22,6 +22,9 @@ desktop='
 fonts-symbola
 hexchat
 transmission-gtk
+dmenu
+gkrellm
+guile-2.2
 '
 
 python='python3-venv python3-pip python3-setuptools'

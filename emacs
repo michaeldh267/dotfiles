@@ -1,5 +1,5 @@
-; -*-Lisp-*-
-;; (require 'cl-lib) 
+;;; -*-mode: Emacs-Lisp; lexical-binding:t;-*-
+;; (require 'cl-lib)
 
 (progn
   ;;; Never to be uncommented
@@ -11,17 +11,16 @@
   (load-theme 'manoj-dark)
   (set-frame-font "Liberation Mono-13")
   (setq inhibit-startup-screen t)
-  (add-hook 'focus-out-hook 'garbage-collect)
+  (cua-mode t)
+  (winner-mode 1)
   (if (display-graphic-p)
       (progn
         (show-paren-mode 1)
         )))
 
-; (setq inferior-lisp-program "/usr/bin/sbcl")
-(setq inferior-lisp-program "/usr/bin/clisp")
+(setq inferior-lisp-program "/usr/bin/sbcl")
 (ignore-errors (load (expand-file-name "~/quicklisp/slime-helper.el")))
 (setq slime-contribs '(slime-fancy))
-
 
 ;; (add-to-list 'load-path "~/.emacs.d/evil")
 ;; (require 'evil)
@@ -31,33 +30,22 @@
 
 (add-to-list 'package-archives
 	     '("melpa-stable" . "https://stable.melpa.org/packages/") t)
-;; (add-to-list 'package-archives
-;; 	     '("marmalade" . "http://marmalade-repo.org/packages/") t)
 (package-initialize)
 
 (unless package-archive-contents
   (package-refresh-contents))
 
+(defvar my-packages)
 (setq my-packages '(better-defaults
-		    flycheck
 		    paredit))
 
 (dolist (p my-packages)
   (unless (package-installed-p p)
     (package-install p)))
 
-(defun my/use-eslint-from-node-modules ()
-  (let* ((root (locate-dominating-file
-                (or (buffer-file-name) default-directory)
-                "node_modules"))
-         (eslint (and root
-                      (expand-file-name "node_modules/eslint/bin/eslint.js"
-                                        root))))
-    (when (and eslint (file-executable-p eslint))
-      (setq-local flycheck-javascript-eslint-executable eslint))))
 
-(add-hook 'flycheck-mode-hook #'my/use-eslint-from-node-modules)
+(custom-set-variables
+ '(scheme-program-name "guile")))
 
-(global-flycheck-mode)
-
-(cua-mode t)
+(add-to-list 'Info-default-directory-list "~/.info")
+;;; End

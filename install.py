@@ -24,7 +24,7 @@ repos = [
         #"https://github.com/scrooloose/nerdtree",
         #"https://github.com/kien/ctrlp.vim",
         #"https://github.com/kien/rainbow_parentheses.vim",
-        #"https://github.com/fatih/vim-go",
+        "https://github.com/fatih/vim-go",
         ]
 
 HOME=os.path.expandvars("$HOME")

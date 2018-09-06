@@ -11,24 +11,34 @@ if maparg('<C-L>', 'n') ==# ''
   nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
 endif
 map <C-n> :NERDTreeToggle<CR>
+
+" I never mean these when I'm trying to type the other.
 cnoreabbrev W w
 cnoreabbrev X x
-nnoremap <C-w>q :close<CR>
-nnoremap ZZ :close<CR>
+
+" If you want to quit you'll have to spell it out!
+"cnoreabbrev x close<CR>
+"cnoreabbrev q close<CR>
+"cnoreabbrev wq close<CR>
+"nnoremap <C-w>q :close<CR>
+"nnoremap ZZ :close<CR>
 nnoremap / /\v
 nnoremap ? ?\v
+nnoremap <leader>n :bn<CR>
+nnoremap <leader>p :bp<CR>
 " }}}
 
 " General Settings {{{
 scriptencoding utf-8
 setglobal termencoding=utf-8 
+set ttyfast
 set backspace=indent,eol,start
-set colorcolumn=80
+"set colorcolumn=80
 set complete-=i
 set display=lastline
 set encoding=utf-8 " make sure this is the same as $LANG...OR ELSE
-set formatoptions=qrn1
-set formatoptions=tcqj
+set textwidth=0
+set wrapmargin=0
 set hidden
 set history=10000
 set hlsearch
@@ -39,12 +49,17 @@ set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+,eol:$
 set modelines=0
 set mouse=a
 set nrformats=hex
-set omnifunc=syntaxcomplete#Complete
+"set omnifunc=syntaxcomplete#Complete
 set sessionoptions-=options
 set tabpagemax=50
 set tags=./tags;,tags
 set viminfo+=!
 " }}}
+
+" Allow formatting with 'gq'
+set formatoptions=q
+set fo-=c
+set fo-=t
 
 " Wildmenu Completion {{{ 
 set wildmenu
@@ -67,8 +82,9 @@ set t_ut=
 
 " Folding {{{
 set foldmethod=marker
-set foldlevelstart=0
-set foldnestmax=1
+set nofoldenable
+" set foldlevelstart=0
+" set foldnestmax=1
 " }}}
 
 
@@ -119,7 +135,6 @@ set statusline+=%m    " Modified?
 "set smarttab
 "set showcmd
 "set autoindent
-"set textwidth=79
 "set ttyfast
 "if &t_Co == "256" || has("gui_running")
 " set tabstop=2 softtabstop=2 shiftwidth=2 shiftround expandtab
@@ -136,7 +151,9 @@ set statusline+=%m    " Modified?
 " endif
 "au BufNewfile,BufRead *.hs set tabstop=2 softtabstop=2 shiftwidth=2 shiftround expandtab
 " let g:paredit_electric_return=1
-" let g:slimv_swank_cmd = '! xterm -e sbcl --load /usr/share/common-lisp/source/slime/start-swank.lisp &'
+let g:slimv_swank_cmd = '! gnome-terminal -- bash -c "sbcl --load ~/.vim/slime/start-swank.lisp" &'
+"let g:slimv_swank_cmd = '! xterm -e clisp -C ~/quicklisp/dists/quicklisp/software/slime-v2.21/swank &'
+"/quicklisp/dists/quicklisp/software/slime-v2.21/swank
 "
 ""rainbow parenthesis settings
 "let g:rbpt_max = 16
@@ -183,6 +200,15 @@ endfunction
 autocmd FileType java call JavaOpts()
 "}}}
 
+" Haskell {{{
+function! HaskellOpts()
+set expandtab
+set nofoldenable
+endfunction
+autocmd FileType haskell call HaskellOpts()
+"}}}
+
+" Misc {{{
 " let g:syntastic_perl_checkers = ['perl']
 " let g:syntastic_enable_perl_checker = 1
 
@@ -204,4 +230,5 @@ function! CheckSlackBuildInfo()
         setlocal filetype=sh
     endif
 endfunction
-"EOF
+"}}}
+

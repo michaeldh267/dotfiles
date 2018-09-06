@@ -7,6 +7,7 @@
 PATH_PUSH_ONCE "$HOME/bin"
 PATH_PUSH_ONCE "$HOME/.local/bin"
 PATH_PUSH_ONCE "$HOME/.luarocks/bin"
+PATH_PUSH_ONCE "/usr/local/go/bin"
 
 export GOPATH=$HOME/go
 #export LANG=en_US.UTF-8
