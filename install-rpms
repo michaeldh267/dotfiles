@@ -1,0 +1,14 @@
+#!/bin/sh
+# I use these on Fedora
+
+(
+desktop='
+keepassx
+sbcl
+vim
+'
+
+# we _do_ actually want word splitting here, so no quoted vars
+sudo dnf update && sudo dnf upgrade && \
+sudo dnf install $desktop \
+)

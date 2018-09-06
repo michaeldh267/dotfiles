@@ -16,29 +16,22 @@ map <C-n> :NERDTreeToggle<CR>
 cnoreabbrev W w
 cnoreabbrev X x
 
-" If you want to quit you'll have to spell it out!
-"cnoreabbrev x close<CR>
-"cnoreabbrev q close<CR>
-"cnoreabbrev wq close<CR>
-"nnoremap <C-w>q :close<CR>
-"nnoremap ZZ :close<CR>
+" Nicer regex syntax?
 nnoremap / /\v
 nnoremap ? ?\v
+
+" Good intentions...
 nnoremap <leader>n :bn<CR>
 nnoremap <leader>p :bp<CR>
 " }}}
 
 " General Settings {{{
+:set timeout timeoutlen=1000 ttimeoutlen=100
 scriptencoding utf-8
-setglobal termencoding=utf-8 
-set ttyfast
 set backspace=indent,eol,start
-"set colorcolumn=80
 set complete-=i
 set display=lastline
 set encoding=utf-8 " make sure this is the same as $LANG...OR ELSE
-set textwidth=0
-set wrapmargin=0
 set hidden
 set history=10000
 set hlsearch
@@ -49,17 +42,22 @@ set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+,eol:$
 set modelines=0
 set mouse=a
 set nrformats=hex
-"set omnifunc=syntaxcomplete#Complete
 set sessionoptions-=options
 set tabpagemax=50
 set tags=./tags;,tags
+set textwidth=0
+set ttyfast
 set viminfo+=!
+set wrapmargin=0
+setglobal termencoding=utf-8 
 " }}}
 
+" Formatting options {{{
 " Allow formatting with 'gq'
 set formatoptions=q
 set fo-=c
 set fo-=t
+" }}}
 
 " Wildmenu Completion {{{ 
 set wildmenu
@@ -114,21 +112,23 @@ endif
 " }}}
 
 "{{{ Statusline
-set statusline=%f     " Path to the file
-set statusline+=\ -\  " Separator
-set statusline+=FT:   " Label
-set statusline+=%y    " Filetype of the file
-set statusline+=%c    " Current column
-set statusline+=-     " sep
-set statusline+=%l    " Current line
-set statusline+=/     " Separatorr
-set statusline+=%L    " Total lines
-set statusline+=%m    " Modified?
-set statusline+=%m    " Modified?
-set statusline+=%m    " Modified?
+set statusline=%f     " path to the file
+set statusline+=\ -\  " separator
+set statusline+=FT:   " label
+set statusline+=%y    " filetype of the file
+set statusline+=%c    " current column
+set statusline+=-     " separator
+set statusline+=%l    " current line
+set statusline+=/     " separator
+set statusline+=%L    " total lines
+set statusline+=%m    " modified?
+set statusline+=%m    " modified?
+set statusline+=%m    " modified?
 "}}}
 
 "{{{ old crud
+"set colorcolumn=80
+"set omnifunc=syntaxcomplete#Complete
 "set ruler
 "set lazyredraw
 "set smartindent " testing
