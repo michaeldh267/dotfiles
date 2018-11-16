@@ -4,19 +4,19 @@
 import subprocess
 import os
 
-def git_sync(x):
+def git_sync(url):
     '''Clone a git repo or pull'''
     try:
-        subprocess.check_call(["git", "clone", x])
+        subprocess.check_call(["git", "clone", url])
     except subprocess.CalledProcessError as e:
         print(e, e.returncode)
-        os.chdir(x.split('/')[-1:][0])
+        os.chdir(url.split('/')[-1:][0])
         subprocess.check_call(["git", "pull"])
         os.chdir(os.path.expandvars(".."))
 
 repos = [
         "https://github.com/vim-syntastic/syntastic",
-        "https://github.com/tpope/vim-fugitive",
+        #"https://github.com/tpope/vim-fugitive",
         "https://github.com/tpope/vim-sleuth",
         "https://github.com/sjl/badwolf",
         #"https://github.com/jceb/vim-orgmode",
@@ -30,7 +30,6 @@ repos = [
 HOME=os.path.expandvars("$HOME")
 
 def install_pathogen():
-    '''Setup pathogen'''
     os.chdir(os.path.join(HOME, ".vim"))
     git_sync("https://github.com/tpope/vim-pathogen")
     src=os.path.join(HOME, ".vim", "vim-pathogen", "autoload", "pathogen.vim")
@@ -39,8 +38,6 @@ def install_pathogen():
         os.symlink(src, dst)
     except OSError as e:
         print(e)
-        # TODO atomic replace (create tmp file, rename)?
-
 
 def install_vim_plugins():
     '''Sync all the repos from git'''
@@ -48,10 +45,7 @@ def install_vim_plugins():
     for x in repos:
         git_sync(x)
 
-
 def make_dirs():
-    '''Directories grow on trees!'''
-
     directories = [
         "$HOME/.vim/autoload",
         "$HOME/.vim/bundle",
@@ -69,11 +63,9 @@ def make_dirs():
             print(e,d)
 
 
-
 DOTDIR = os.path.join(HOME, "dotfiles")
 
 def symlink_dotfiles():
-    '''Symlinkin'''
     links = [
         ("vimrc", ".vimrc"),
         ("bashrc", ".bashrc.local"),
