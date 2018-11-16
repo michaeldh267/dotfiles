@@ -8,6 +8,7 @@ PATH_PUSH_ONCE "$HOME/bin"
 PATH_PUSH_ONCE "$HOME/.local/bin"
 PATH_PUSH_ONCE "$HOME/.luarocks/bin"
 PATH_PUSH_ONCE "/usr/local/go/bin"
+PATH_PUSH_ONCE "$HOME/kotlinc/bin"
 
 export GOPATH=$HOME/go
 #export LANG=en_US.UTF-8
@@ -19,3 +20,5 @@ export EDITOR="$VISUAL"
 alias dt='cd ~/dotfiles && ls'
 alias dl='cd ~/Downloads && ls'
 alias doc='cd ~/Documents && ls'
+
+PS1="\$? $PS1"

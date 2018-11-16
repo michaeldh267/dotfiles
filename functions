@@ -61,3 +61,13 @@ if [[ ! "$PATH" =~ $1 ]]; then
   export PATH="$1:$PATH"
 fi
 }
+
+myk-screenshot() {
+if [ -n "$1" ]; then
+echo "$1.png"
+import -window root "$1.png"
+else
+echo "Usage: my-screenshot [filename]"
+fi
+}
+

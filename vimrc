@@ -1,5 +1,6 @@
 try
-execute pathogen#infect()
+"execute pathogen#infect('bundle/{}', '~/.vim/bundle/vlime/{}')
+execute pathogen#infect('bundle/{}')
 catch
 endtry
 
@@ -29,7 +30,8 @@ nnoremap <leader>p :bp<CR>
 :set timeout timeoutlen=1000 ttimeoutlen=100
 scriptencoding utf-8
 set backspace=indent,eol,start
-set complete-=i
+set completeopt=longest,menuone
+"set complete-=i
 set display=lastline
 set encoding=utf-8 " make sure this is the same as $LANG...OR ELSE
 set hidden
@@ -42,9 +44,10 @@ set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+,eol:$
 set modelines=0
 set mouse=a
 set nrformats=hex
+set omnifunc=syntaxcomplete#Complete
 set sessionoptions-=options
 set tabpagemax=50
-set tags=./tags;,tags
+set tags=./tags,tags
 set textwidth=0
 set ttyfast
 set viminfo+=!
@@ -100,13 +103,13 @@ if has("gui_running")
   try
     colorscheme badwolf
   catch
-    colorscheme murphy
+    colorscheme industry
   endtry
 else
   try
     colorscheme badwolf
   catch
-    colorscheme murphy
+    colorscheme industry
   endtry
 endif
 " }}}
@@ -128,7 +131,6 @@ set statusline+=%m    " modified?
 
 "{{{ old crud
 "set colorcolumn=80
-"set omnifunc=syntaxcomplete#Complete
 "set ruler
 "set lazyredraw
 "set smartindent " testing
@@ -151,7 +153,7 @@ set statusline+=%m    " modified?
 " endif
 "au BufNewfile,BufRead *.hs set tabstop=2 softtabstop=2 shiftwidth=2 shiftround expandtab
 " let g:paredit_electric_return=1
-let g:slimv_swank_cmd = '! gnome-terminal -- bash -c "sbcl --load ~/.vim/slime/start-swank.lisp" &'
+" let g:slimv_swank_cmd = '! gnome-terminal -- bash -c "sbcl --load ~/.vim/slime/start-swank.lisp" &'
 "let g:slimv_swank_cmd = '! xterm -e clisp -C ~/quicklisp/dists/quicklisp/software/slime-v2.21/swank &'
 "/quicklisp/dists/quicklisp/software/slime-v2.21/swank
 "
@@ -161,12 +163,28 @@ let g:slimv_swank_cmd = '! gnome-terminal -- bash -c "sbcl --load ~/.vim/slime/s
 "au VimEnter * RainbowParenthesesToggle
 "}}}
 
-"{{{ Python syntastic settings
- let g:syntastic_python_python_exec = '/usr/bin/python3'
- let g:syntastic_python_pyflakes_exec = '/usr/bin/pyflakes3'
- let g:syntastic_python_checkers = ['pyflakes', 'python'] " or python
+"{{{ Javascript
+function! JavascriptOpts()
+ setlocal tabstop=2
+ setlocal softtabstop=2
+ setlocal shiftwidth=2
+ setlocal expandtab
+ "setlocal foldmethod=indent
+ "setlocal foldnestmax=1
+ "setlocal omnifunc=python3complete#Complete
+endfunction
+autocmd FileType javascript call JavascriptOpts()
+"autocmd FileType python setlocal makeprg=cat\ %
+" autocmd BufWritePost *.py make
+"autocmd QuickFixCmdPost * copen
 "}}}
- 
+"
+"{{{ Python syntastic settings
+let g:syntastic_python_python_exec = '/usr/bin/python3'
+let g:syntastic_python_pyflakes_exec = '/usr/bin/pyflakes-3'
+let g:syntastic_python_checkers = ['pyflakes', 'python'] " or python
+"}}}
+"
 "{{{ Python
 function! PythonOpts()
  setlocal tabstop=8 

@@ -4,11 +4,19 @@
 (
 desktop='
 keepassx
+perl-Text-Markdown
 sbcl
 vim
 '
 
-# we _do_ actually want word splitting here, so no quoted vars
+dev='
+@development-tools
+fedora-packager
+rpmdevtools
+'
+#ShellCheck
+
 sudo dnf update && sudo dnf upgrade && \
-sudo dnf install $desktop \
+sudo dnf install $desktop #$dev
 )
+
