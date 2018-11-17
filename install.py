@@ -4,90 +4,83 @@
 import subprocess
 import os
 
-def git_sync(url):
-    '''Clone a git repo or pull'''
-    try:
-        subprocess.check_call(["git", "clone", url])
-    except subprocess.CalledProcessError as e:
-        print(e, e.returncode)
-        os.chdir(url.split('/')[-1:][0])
-        subprocess.check_call(["git", "pull"])
-        os.chdir(os.path.expandvars(".."))
+HOME = os.path.expandvars("$HOME")
+DOTDIR = os.path.join(HOME, "dotfiles")
+VIMHOME = os.path.join(HOME, ".vim")
+BUNDLEDIR = os.path.join(VIMHOME, "bundle")
 
-repos = [
-        "https://github.com/vim-syntastic/syntastic",
-        #"https://github.com/tpope/vim-fugitive",
-        "https://github.com/tpope/vim-sleuth",
-        "https://github.com/sjl/badwolf",
+DIRS = [
+        [VIMHOME,"autoload"],
+        [BUNDLEDIR],
+        [VIMHOME],
+        [HOME,".emacs.d"],
+        [HOME,".config","fontconfig"],
+        [HOME,".netbeans","8.1","etc"],
+        [HOME, "bin"]
+        ]
+
+LINK_MAP = [
+        ([DOTDIR, "vimrc"], [HOME, ".vimrc"]),
+        ([DOTDIR, "bashrc"], [HOME, ".bashrc.local"]),
+        ([DOTDIR, "functions"], [HOME, ".functions"]),
+        ([DOTDIR, "Xresources"], [HOME, ".Xresources"]),
+        ([DOTDIR, "fonts.conf"], [HOME, ".config","fontconfig","fonts.conf"]),
+        ([DOTDIR, "inputrc"], [HOME, ".inputrc"]),
+        ([DOTDIR, "pythonrc"], [HOME, ".pythonrc"]),
+        ([DOTDIR, "emacs"], [HOME, ".emacs"]),
+        ([DOTDIR, "netbeans.conf"], [HOME, ".netbeans","8.1","etc","netbeans.conf"]),
+
+        ([VIMHOME, "vim-pathogen", "autoload", "pathogen"],
+            [VIMHOME, "autoload", "pathogen.vim"])
+        ]
+
+GIT_REPOS = [
         #"https://github.com/jceb/vim-orgmode",
-        #"https://github.com/tpope/vim-speeddating",
-        #"https://github.com/scrooloose/nerdtree",
         #"https://github.com/kien/ctrlp.vim",
         #"https://github.com/kien/rainbow_parentheses.vim",
-        #"https://github.com/fatih/vim-go",
+        #"https://github.com/scrooloose/nerdtree",
+        #"https://github.com/tpope/vim-fugitive",
+        #"https://github.com/tpope/vim-sleuth",
+        #"https://github.com/tpope/vim-speeddating",
+        #(VIMHOME,"https://github.com/fatih/vim-go"),
+        (BUNDLEDIR, "https://github.com/sjl/badwolf"),
+        (BUNDLEDIR, "https://github.com/vim-syntastic/syntastic"),
+        (VIMHOME, "https://github.com/tpope/vim-pathogen"),
         ]
 
-HOME=os.path.expandvars("$HOME")
-
-def install_pathogen():
-    os.chdir(os.path.join(HOME, ".vim"))
-    git_sync("https://github.com/tpope/vim-pathogen")
-    src=os.path.join(HOME, ".vim", "vim-pathogen", "autoload", "pathogen.vim")
-    dst=os.path.join(HOME, ".vim", "autoload", "pathogen.vim")
+def git_sync(repo):
+    '''Clone a git repo or pull'''
     try:
-        os.symlink(src, dst)
-    except OSError as e:
-        print(e)
+        subprocess.check_call(["git", "clone", repo])
+    except subprocess.CalledProcessError as e:
+        print(e, e.returncode)
+        git_directory = repo.split('/')[-1:][0]
+        os.chdir(git_directory)
+        subprocess.check_call(["git", "pull"])
+        os.chdir(DOTDIR)
 
-def install_vim_plugins():
-    '''Sync all the repos from git'''
-    os.chdir(os.path.join(HOME, ".vim", "bundle"))
-    for x in repos:
-        git_sync(x)
-
-def make_dirs():
-    directories = [
-        "$HOME/.vim/autoload",
-        "$HOME/.vim/bundle",
-        "$HOME/.vim",
-        "$HOME/.emacs.d/",
-        "$HOME/.config/fontconfig",
-        "$HOME/.netbeans/8.1/etc",
-        "$HOME/bin"
-        ]
-
-    for d in directories:
+def make_dirs(dirlist):
+    for d in dirlist:
         try:
-            os.mkdir(os.path.expandvars(d))
+            os.mkdir(os.path.join(*d))
         except OSError as e:
             print(e,d)
 
+def install_plugins(repo_pairs):
+    for dst,url in repo_pairs:
+        os.chdir(dst)
+        git_sync(url)
 
-DOTDIR = os.path.join(HOME, "dotfiles")
-
-def symlink_dotfiles():
-    links = [
-        ("vimrc", ".vimrc"),
-        ("bashrc", ".bashrc.local"),
-        ("functions", ".functions"),
-        ("Xresources", ".Xresources"),
-        ("fonts.conf", ".config/fontconfig/fonts.conf"),
-        ("inputrc", ".inputrc"),
-        ("pythonrc", ".pythonrc"),
-        ("emacs", ".emacs"),
-        ("netbeans.conf", ".netbeans/8.1/etc/netbeans.conf"),
-        ]
-
-    for x in links:
-        src=os.path.join(DOTDIR,x[0])
-        dst=os.path.join(HOME,x[1])
+def symlink_dotfiles(link_pairs):
+    for fst,snd in link_pairs:
+        src=os.path.join(*fst)
+        dst=os.path.join(*snd)
         try:
             os.symlink(src, dst)
         except OSError as e:
-            print(e,x)
+            print(e,src,dst)
 
 if __name__ == '__main__':
-    make_dirs()
-    install_pathogen()
-    install_vim_plugins()
-    symlink_dotfiles()
+    make_dirs(DIRS)
+    install_plugins(GIT_REPOS)
+    symlink_dotfiles(LINK_MAP)
