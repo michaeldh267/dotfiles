@@ -35,15 +35,9 @@ LINK_MAP = [
         ]
 
 GIT_REPOS = [
-        #"https://github.com/jceb/vim-orgmode",
-        #"https://github.com/kien/ctrlp.vim",
-        #"https://github.com/kien/rainbow_parentheses.vim",
-        #"https://github.com/scrooloose/nerdtree",
-        #"https://github.com/tpope/vim-fugitive",
-        #"https://github.com/tpope/vim-sleuth",
-        #"https://github.com/tpope/vim-speeddating",
-        #(VIMHOME,"https://github.com/fatih/vim-go"),
+        (BUNDLEDIR,"https://github.com/kien/rainbow_parentheses.vim"),
         (BUNDLEDIR, "https://github.com/sjl/badwolf"),
+        (BUNDLEDIR, "https://github.com/tpope/vim-sleuth",)
         (BUNDLEDIR, "https://github.com/vim-syntastic/syntastic"),
         (VIMHOME, "https://github.com/tpope/vim-pathogen"),
         ]
@@ -54,7 +48,9 @@ def git_sync(repo):
         subprocess.check_call(["git", "clone", repo])
     except subprocess.CalledProcessError as e:
         print(e, e.returncode)
+
         git_directory = repo.split('/')[-1:][0]
+
         os.chdir(git_directory)
         subprocess.check_call(["git", "pull"])
         os.chdir(DOTDIR)
@@ -72,11 +68,9 @@ def install_plugins(repo_pairs):
         git_sync(url)
 
 def symlink_dotfiles(link_pairs):
-    for fst,snd in link_pairs:
-        src=os.path.join(*fst)
-        dst=os.path.join(*snd)
+    for src,dst in link_pairs:
         try:
-            os.symlink(src, dst)
+            os.symlink(os.path.join(*src), os.path.join(*dst))
         except OSError as e:
             print(e,src,dst)
 
