@@ -49,20 +49,21 @@ def git_sync(repo):
     try:
         subprocess.check_call(["git", "clone", repo])
     except subprocess.CalledProcessError as e:
-        print(e, e.returncode)
+        #print(e, e.returncode)
+        print(e)
 
         git_directory = repo.split('/')[-1:][0]
 
         os.chdir(git_directory)
         subprocess.check_call(["git", "pull"])
-        os.chdir(DOTDIR)
 
 def make_dirs(dirlist):
     for d in dirlist:
         try:
             os.mkdir(os.path.join(*d))
         except OSError as e:
-            print(e,d)
+            #print(e,d)
+            print(e)
 
 def install_plugins(repo_pairs):
     for dst,url in repo_pairs:
@@ -74,7 +75,8 @@ def symlink_dotfiles(link_pairs):
         try:
             os.symlink(os.path.join(*src), os.path.join(*dst))
         except OSError as e:
-            print(e,src,dst)
+            #print(e,src,dst)
+            print(e)
 
 if __name__ == '__main__':
     make_dirs(DIRS)
