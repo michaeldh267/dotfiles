@@ -39,7 +39,7 @@ LINK_MAP = [
 GIT_REPOS = [
         (BUNDLEDIR,"https://github.com/kien/rainbow_parentheses.vim"),
         (BUNDLEDIR, "https://github.com/sjl/badwolf"),
-        (BUNDLEDIR, "https://github.com/tpope/vim-sleuth",)
+        (BUNDLEDIR, "https://github.com/tpope/vim-sleuth"),
         (BUNDLEDIR, "https://github.com/vim-syntastic/syntastic"),
         (VIMHOME, "https://github.com/tpope/vim-pathogen"),
         ]
