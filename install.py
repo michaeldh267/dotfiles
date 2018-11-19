@@ -16,6 +16,7 @@ DIRS = [
         [HOME,".emacs.d"],
         [HOME,".config","fontconfig"],
         [HOME,".netbeans","8.1","etc"],
+        [HOME,".netbeans","8.2","etc"],
         [HOME, "bin"]
         ]
 
@@ -29,6 +30,7 @@ LINK_MAP = [
         ([DOTDIR, "pythonrc"], [HOME, ".pythonrc"]),
         ([DOTDIR, "emacs"], [HOME, ".emacs"]),
         ([DOTDIR, "netbeans.conf"], [HOME, ".netbeans","8.1","etc","netbeans.conf"]),
+        ([DOTDIR, "netbeans.conf"], [HOME, ".netbeans","8.2","etc","netbeans.conf"]),
 
         ([VIMHOME, "vim-pathogen", "autoload", "pathogen"],
             [VIMHOME, "autoload", "pathogen.vim"])
