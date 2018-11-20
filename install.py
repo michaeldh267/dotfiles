@@ -1,47 +1,43 @@
 #!/usr/bin/env python3
-# A gross python script that installs my dotfiles and pulls from github
+# A nice python script that installs my dotfiles and pulls from github
 
 import subprocess
 import os
 
-HOME = os.path.expandvars("$HOME")
-DOTDIR = os.path.join(HOME, "dotfiles")
-VIMHOME = os.path.join(HOME, ".vim")
-BUNDLEDIR = os.path.join(VIMHOME, "bundle")
+HOME = [os.path.expandvars("$HOME")]
+DOTDIR = HOME + ["dotfiles"]
+VIMHOME = HOME + [".vim"]
+BUNDLEDIR = VIMHOME + ["bundle"]
 
 DIRS = [
-        [VIMHOME,"autoload"],
-        [BUNDLEDIR],
-        [VIMHOME],
-        [HOME,".emacs.d"],
-        [HOME,".config","fontconfig"],
-        [HOME,".netbeans","8.1","etc"],
-        [HOME,".netbeans","8.2","etc"],
-        [HOME, "bin"]
+        {"dst": BUNDLEDIR },
+        {"dst": HOME + [".emacs.d"]},
+        {"dst": HOME + ["bin"]},
         ]
 
-LINK_MAP = [
-        ([DOTDIR, "vimrc"], [HOME, ".vimrc"]),
-        ([DOTDIR, "bashrc"], [HOME, ".bashrc.local"]),
-        ([DOTDIR, "functions"], [HOME, ".functions"]),
-        ([DOTDIR, "Xresources"], [HOME, ".Xresources"]),
-        ([DOTDIR, "fonts.conf"], [HOME, ".config","fontconfig","fonts.conf"]),
-        ([DOTDIR, "inputrc"], [HOME, ".inputrc"]),
-        ([DOTDIR, "pythonrc"], [HOME, ".pythonrc"]),
-        ([DOTDIR, "emacs"], [HOME, ".emacs"]),
-        ([DOTDIR, "netbeans.conf"], [HOME, ".netbeans","8.1","etc","netbeans.conf"]),
-        ([DOTDIR, "netbeans.conf"], [HOME, ".netbeans","8.2","etc","netbeans.conf"]),
 
-        ([VIMHOME, "vim-pathogen", "autoload", "pathogen"],
-            [VIMHOME, "autoload", "pathogen.vim"])
+LINK_MAP = [
+        {"src": DOTDIR + ["vimrc"],         "dst": HOME + [".vimrc"]},
+        {"src": DOTDIR + ["bashrc"],        "dst": HOME + [".bashrc.local"]},
+        {"src": DOTDIR + ["functions"],     "dst": HOME + [".functions"]},
+        {"src": DOTDIR + ["Xresources"],    "dst": HOME + [".Xresources"]},
+        {"src": DOTDIR + ["fonts.conf"],    "dst": HOME + [".config","fontconfig","fonts.conf"]},
+        {"src": DOTDIR + ["inputrc"],       "dst": HOME + [".inputrc"]},
+        {"src": DOTDIR + ["pythonrc"],      "dst": HOME + [".pythonrc"]},
+        {"src": DOTDIR + ["emacs"],         "dst": HOME + [".emacs"]},
+        {"src": DOTDIR + ["netbeans.conf"], "dst": HOME + [".netbeans","8.1","etc","netbeans.conf"]},
+        {"src": DOTDIR + ["netbeans.conf"], "dst": HOME + [".netbeans","8.2","etc","netbeans.conf"]},
+
+        {"src": VIMHOME + ["vim-pathogen", "autoload", "pathogen"],
+            "dst": VIMHOME + ["autoload", "pathogen.vim"]}
         ]
 
 GIT_REPOS = [
-        (BUNDLEDIR,"https://github.com/kien/rainbow_parentheses.vim"),
-        (BUNDLEDIR, "https://github.com/sjl/badwolf"),
-        (BUNDLEDIR, "https://github.com/tpope/vim-sleuth"),
-        (BUNDLEDIR, "https://github.com/vim-syntastic/syntastic"),
-        (VIMHOME, "https://github.com/tpope/vim-pathogen"),
+        {"dst": BUNDLEDIR, "giturl": "https://github.com/kien/rainbow_parentheses.vim"},
+        {"dst": BUNDLEDIR, "giturl": "https://github.com/sjl/badwolf"},
+        {"dst": BUNDLEDIR, "giturl": "https://github.com/tpope/vim-sleuth"},
+        {"dst": BUNDLEDIR, "giturl": "https://github.com/vim-syntastic/syntastic"},
+        {"dst": VIMHOME,   "giturl": "https://github.com/tpope/vim-pathogen"},
         ]
 
 def git_sync(repo):
@@ -57,28 +53,39 @@ def git_sync(repo):
         os.chdir(git_directory)
         subprocess.check_call(["git", "pull"])
 
-def make_dirs(dirlist):
-    for d in dirlist:
+
+def make_dirs(arglist):
+    for arg in arglist:
         try:
-            os.mkdir(os.path.join(*d))
+            os.mkdir(os.path.join(arg))
         except OSError as e:
-            #print(e,d)
             print(e)
 
-def install_plugins(repo_pairs):
-    for dst,url in repo_pairs:
-        os.chdir(dst)
-        git_sync(url)
+def make_dir_list(*args):
+    dir_list = []
+    for arg in args:
+        for path in arg:
+            if "dst" in path:
+                dir_list.append(os.path.join(*path.get("dst")))
 
-def symlink_dotfiles(link_pairs):
-    for src,dst in link_pairs:
-        try:
-            os.symlink(os.path.join(*src), os.path.join(*dst))
-        except OSError as e:
-            #print(e,src,dst)
-            print(e)
+    return sorted(list(set(dir_list)))
+
+def install_plugins(repolist):
+    for repo in repolist:
+        if "dst" in repo and "giturl" in repo:
+            os.chdir(os.path.join(*repo.get("dst")))
+            git_sync(repo.get("giturl"))
+
+def symlink_dotfiles(linklist):
+    for link in linklist:
+        if "src" in link and "dst" in link:
+            try:
+                os.symlink(os.path.join(*link.get("src")),
+                           os.path.join(*link.get("dst")))
+            except OSError as e:
+                print(e)
 
 if __name__ == '__main__':
-    make_dirs(DIRS)
+    make_dirs(make_dir_list(LINK_MAP, GIT_REPOS, DIRS))
     install_plugins(GIT_REPOS)
     symlink_dotfiles(LINK_MAP)
