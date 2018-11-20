@@ -66,7 +66,7 @@ def make_dir_list(*args):
     for arg in args:
         for path in arg:
             if "dst" in path:
-                dir_list.append(os.path.join(*path.get("dst")))
+                dir_list.append(os.path.join(*path.get("dst")[0:-1]))
 
     return sorted(list(set(dir_list)))
 
