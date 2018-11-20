@@ -22,9 +22,9 @@
 (ignore-errors (load (expand-file-name "~/quicklisp/slime-helper.el")))
 (setq slime-contribs '(slime-fancy))
 
-;; (add-to-list 'load-path "~/.emacs.d/evil")
-;; (require 'evil)
-;; (evil-mode 1)
+(add-to-list 'load-path "~/.emacs.d/evil")
+(require 'evil)
+(evil-mode 1)
 
 (require 'package)
 
@@ -45,7 +45,7 @@
 
 
 (custom-set-variables
- '(scheme-program-name "guile")))
+ '(scheme-program-name "guile"))
 
 (add-to-list 'Info-default-directory-list "~/.info")
 ;;; End
