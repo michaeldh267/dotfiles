@@ -22,3 +22,5 @@ alias dl='cd ~/Downloads && ls'
 alias doc='cd ~/Documents && ls'
 
 PS1="\$? $PS1"
+
+[ -f /usr/bin/fish ] && exec fish
