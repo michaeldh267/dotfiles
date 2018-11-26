@@ -17,16 +17,17 @@ DIRS = [
 
 
 LINK_MAP = [
-        {"src": DOTDIR + ["vimrc"],         "dst": HOME + [".vimrc"]},
-        {"src": DOTDIR + ["bashrc"],        "dst": HOME + [".bashrc.local"]},
-        {"src": DOTDIR + ["functions"],     "dst": HOME + [".functions"]},
         {"src": DOTDIR + ["Xresources"],    "dst": HOME + [".Xresources"]},
-        {"src": DOTDIR + ["fonts.conf"],    "dst": HOME + [".config","fontconfig","fonts.conf"]},
-        {"src": DOTDIR + ["inputrc"],       "dst": HOME + [".inputrc"]},
-        {"src": DOTDIR + ["pythonrc"],      "dst": HOME + [".pythonrc"]},
+        {"src": DOTDIR + ["bashrc"],        "dst": HOME + [".bashrc.local"]},
+        {"src": DOTDIR + ["config.fish"],   "dst": HOME + [".config","fish","config.fish"]},
         {"src": DOTDIR + ["emacs"],         "dst": HOME + [".emacs"]},
+        {"src": DOTDIR + ["fonts.conf"],    "dst": HOME + [".config","fontconfig","fonts.conf"]},
+        {"src": DOTDIR + ["functions"],     "dst": HOME + [".functions"]},
+        {"src": DOTDIR + ["inputrc"],       "dst": HOME + [".inputrc"]},
         {"src": DOTDIR + ["netbeans.conf"], "dst": HOME + [".netbeans","8.1","etc","netbeans.conf"]},
         {"src": DOTDIR + ["netbeans.conf"], "dst": HOME + [".netbeans","8.2","etc","netbeans.conf"]},
+        {"src": DOTDIR + ["pythonrc"],      "dst": HOME + [".pythonrc"]},
+        {"src": DOTDIR + ["vimrc"],         "dst": HOME + [".vimrc"]},
 
         {"src": VIMHOME + ["vim-pathogen", "autoload", "pathogen"],
             "dst": VIMHOME + ["autoload", "pathogen.vim"]}
