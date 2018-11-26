@@ -44,15 +44,17 @@ GIT_REPOS = [
 def git_sync(repo):
     '''Clone a git repo or pull'''
     try:
-        subprocess.check_call(["git", "clone", repo])
+        subprocess.run(["git", "clone", repo], check=True, stderr=subprocess.DEVNULL)
     except subprocess.CalledProcessError as e:
-        #print(e, e.returncode)
-        print(e)
 
-        git_directory = repo.split('/')[-1:][0]
+        if e.returncode == 128:
 
-        os.chdir(git_directory)
-        subprocess.check_call(["git", "pull"])
+            git_directory = repo.split('/')[-1:][0]
+
+            os.chdir(git_directory)
+            subprocess.run(["git", "pull", "--quiet"], check=True)
+        else:
+            print(e)
 
 
 def make_dirs(arglist):
@@ -60,7 +62,11 @@ def make_dirs(arglist):
         try:
             os.makedirs(arg)
         except OSError as e:
-            print(e)
+            if e.errno == 17:
+                pass
+            else:
+                print(e)
+                
 
 def make_dir_list(*args):
     dir_list = []
@@ -84,7 +90,10 @@ def symlink_dotfiles(linklist):
                 os.symlink(os.path.join(*link.get("src")),
                            os.path.join(*link.get("dst")))
             except OSError as e:
-                print(e)
+                if e.errno == 17:
+                    pass
+                else:
+                    print(e)
 
 if __name__ == '__main__':
     make_dirs(make_dir_list(LINK_MAP, GIT_REPOS, DIRS))
