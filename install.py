@@ -58,7 +58,7 @@ def git_sync(repo):
 def make_dirs(arglist):
     for arg in arglist:
         try:
-            os.mkdir(os.path.join(arg))
+            os.makedirs(arg)
         except OSError as e:
             print(e)
 
