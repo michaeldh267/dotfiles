@@ -9,20 +9,6 @@ shout() { echo "$0: $*" >&2; }
 barf() { shout "fatal: $*"; exit 111; }
 safe() { "$@" || barf "cannot $*"; }
 
-git_sync() {
-(
-cd "$1" || exit 1
-REMOTE="$2"
-LOCALDIR="$(echo "$REMOTE" | rev | cut -d / -f 1 | rev)"
-
-if [[ -d "$LOCALDIR" ]]; then
-  cd "$LOCALDIR" || exit 1; git pull
-else
-  git clone "$REMOTE"
-fi
-)
-}
-
 myk-rnd-bg() {
 feh --bg-fill --randomize ~/Downloads/*.jpg
 }
@@ -37,7 +23,7 @@ REMOTE="$1"
 LOCALDIR="$(echo "$REMOTE" | rev | cut -d / -f 1 | rev)"
 
 if [[ -d "$LOCALDIR" ]]; then
-  (cd "$LOCALDIR"; git pull)
+  (cd "$LOCALDIR" || exit 1; git pull)
 else
   git clone "$REMOTE"
 fi
