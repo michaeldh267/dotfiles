@@ -1,0 +1,9 @@
+#!/bin/bash
+# set -e # exit if any command has non-zero return value
+# set -u # exit if undefined reference found
+# set -o pipefail # do not mask pipeline errors
+# #set -x # debug mode
+# IFS=$'\n\t'
+find / >"$HOME/.myk-db" 2>/dev/null
+# don't scan fat-c; don't care
+#find / -not \( -path /fat-c -prune \) >$HOME/.myk-db 2>/dev/null
