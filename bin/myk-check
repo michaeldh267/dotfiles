@@ -1,0 +1,16 @@
+#!/bin/bash
+# set -e # exit if any command has non-zero return value
+# set -u # exit if undefined reference found
+# set -o pipefail # do not mask pipeline errors
+# #set -x # debug mode
+# IFS=$'\n\t'
+echo -e "LANG: $LANG"
+echo -e "TERM: $TERM"
+echo -e "VISUAL: $VISUAL"
+echo -e "EDITOR: $EDITOR"
+echo -e "PAGER: $PAGER"
+echo -e "LESS: $LESS"
+IFS=':'
+for p in $PATH; do
+  echo "$p"
+done
