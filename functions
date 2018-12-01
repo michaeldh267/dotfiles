@@ -32,7 +32,7 @@ fi
 
 PATH_PUSH_ONCE () {
 if [[ ! "$PATH" =~ $1 ]]; then
-  export PATH="$1:$PATH"
+  export PATH="$PATH:$1"
 fi
 }
 
