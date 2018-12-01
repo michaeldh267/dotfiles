@@ -37,7 +37,7 @@ XTerm.vt100.fastScroll: true
 !XTerm.vt100.faceName: Unifont:size=12
 XTerm.vt100.faceName: Terminus:size=13
 XTerm.vt100.reverseVideo: on
-XTerm.vt100.saveLines: 5000
+XTerm.vt100.saveLines: 51234
 XTerm.vt100.scrollBar: true
 XTerm.vt100.scrollbar.width: 8
 !XTerm.vt100.color12: #9898ff
