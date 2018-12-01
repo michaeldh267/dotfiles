@@ -1,39 +1,27 @@
 #!/bin/bash
-# Stuff I use
-
 # set -e # exit if any command has non-zero return value
 # set -u # exit if undefined reference found
 # set -o pipefail # do not mask pipeline errors
 # #set -x # debug mode
 # IFS=$'\n\t'
 
-myk-check() {
-echo -e "LANG: $LANG"
-echo -e "TERM: $TERM"
-echo -e "VISUAL: $VISUAL"
-echo -e "EDITOR: $EDITOR"
-echo -e "PAGER: $PAGER"
-echo -e "LESS: $LESS"
-IFS=':'
-for p in $PATH; do
-  echo "$p"
-done
-}
+shout() { echo "$0: $*" >&2; }
+barf() { shout "fatal: $*"; exit 111; }
+safe() { "$@" || barf "cannot $*"; }
 
-myk-update-db() {
-find / >"$HOME/.myk-db" 2>/dev/null
-# don't scan fat-c; don't care
-#find / -not \( -path /fat-c -prune \) >$HOME/.myk-db 2>/dev/null
-}
+git_sync() {
+(
+cd "$1" || exit 1
+REMOTE="$2"
+LOCALDIR="$(echo "$REMOTE" | rev | cut -d / -f 1 | rev)"
 
-myk-find() {
-if [ ! -f "$HOME/.myk-db" ]; then
-  echo "Database not found; updating database..."
-  myk-update-db
+if [[ -d "$LOCALDIR" ]]; then
+  cd "$LOCALDIR" || exit 1; git pull
+else
+  git clone "$REMOTE"
 fi
-grep --color=auto "$*" "$HOME/.myk-db"
+)
 }
-
 
 myk-rnd-bg() {
 feh --bg-fill --randomize ~/Downloads/*.jpg
