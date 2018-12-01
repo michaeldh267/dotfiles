@@ -45,4 +45,5 @@ cd "$DOTDIR" || exit 1
 ./maybe_mkdir_ln "$DOTDIR/bin/myk-find" "$HOME/bin/myk-find" 
 ./maybe_mkdir_ln "$DOTDIR/bin/myk-update-db" "$HOME/bin/myk-update-db" 
 ./maybe_mkdir_ln "$DOTDIR/bin/myk-check" "$HOME/bin/myk-check" 
+./maybe_mkdir_ln "$DOTDIR/rc.lua" "$HOME/.config/awesome/rc.lua"
 
