@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+INPUT='links'
+
+if [[ ! -s $INPUT ]]; then
+
+	echo "Failed. Nothing is installed yet."
+	exit 1
+
+else
+
+	while IFS= read -r aline; do 
+		printf 'Unlinking:%s\n' "$aline";
+		unlink "$aline"
+	done < "$INPUT"
+
+	true > "$INPUT"
+
+fi
