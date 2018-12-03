@@ -17,9 +17,6 @@ export GOPATH=$HOME/go
 export VISUAL=vim
 export EDITOR="$VISUAL"
 
-alias dt='cd ~/dotfiles && ls'
-alias dl='cd ~/Downloads && ls'
-alias doc='cd ~/Documents && ls'
 
 PS1="\$? $PS1"
 

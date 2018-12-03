@@ -1,0 +1,3 @@
+#!/bin/bash
+#nohup ~/Downloads/firefox/firefox 2>/dev/null &
+nohup ~/Downloads/firefox-beta/firefox-bin 2>/dev/null &
