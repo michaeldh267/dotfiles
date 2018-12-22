@@ -1,25 +1,33 @@
-#!/usr/bin/env python3
+#!/usr/bin/env perl
 
-import os
-import sys
-from pathlib import Path
+use v5.18;
+use warnings;
+use autodie;
 
-assert(len(sys.argv) == 3)
+use feature 'say';
 
-try:
-    os.makedirs(Path(sys.argv[2]).parent)
-except OSError as e:
-    if e.errno == 17:
-        pass
-        #print("File exists: {}".format(sys.argv[2]))
-    else:
-        print(e)
+use File::Path qw(make_path);
+use File::Basename qw(basename dirname);
 
-try:
-    os.symlink(sys.argv[1], sys.argv[2])
-except OSError as e:
-    if e.errno == 17:
-        pass
-        #print("Symlink exists: {}".format(sys.argv[2]))
-    else:
-        print(e)
+exit main(@ARGV);
+
+sub main {
+	my ($source,$destination) = @_;
+
+	die "Bad source file path: $source\n" unless -e $source;
+
+	my $destination_parent = dirname($destination);
+
+	if (-e $destination_parent) {
+		say "Directory already exists: " . $destination_parent;
+	} else {
+		die "make_path fail" unless make_path($destination_parent);
+	}
+
+	if (-l $destination) {
+		die "Symbolic link already exists: $destination\n";
+	} else {
+		die "Symlink fail" unless symlink($source,$destination);
+	}
+	return 0;
+}
