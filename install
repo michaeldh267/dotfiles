@@ -39,7 +39,8 @@ cd "$DOTDIR" || exit 1
 true > links # zero the file first
 maybe_mkdir_ln "$DOTDIR/Xresources" "$HOME/.Xresources"
 maybe_mkdir_ln "$DOTDIR/bashrc" "$HOME/.bashrc.local" 
-maybe_mkdir_ln "$DOTDIR/config.fish" "$HOME/.config/fontconfig/fonts.conf" 
+maybe_mkdir_ln "$DOTDIR/fonts.conf" "$HOME/.config/fontconfig/fonts.conf" 
+maybe_mkdir_ln "$DOTDIR/config.fish" "$HOME/.config/fish/config.fish" 
 maybe_mkdir_ln "$DOTDIR/functions" "$HOME/.functions" 
 maybe_mkdir_ln "$DOTDIR/inputrc" "$HOME/.inputrc" 
 maybe_mkdir_ln "$DOTDIR/netbeans.conf" "$HOME/.netbeans/8.1/etc/netbeans.conf" 
