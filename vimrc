@@ -163,67 +163,10 @@ set statusline+=%m    " modified?
 "au VimEnter * RainbowParenthesesToggle
 "}}}
 
-"{{{ Javascript
-function! JavascriptOpts()
- setlocal tabstop=2
- setlocal softtabstop=2
- setlocal shiftwidth=2
- setlocal expandtab
- "setlocal foldmethod=indent
- "setlocal foldnestmax=1
- "setlocal omnifunc=python3complete#Complete
-endfunction
-autocmd FileType javascript call JavascriptOpts()
-"autocmd FileType python setlocal makeprg=cat\ %
-" autocmd BufWritePost *.py make
-"autocmd QuickFixCmdPost * copen
-"}}}
-"
 "{{{ Python syntastic settings
 let g:syntastic_python_python_exec = '/usr/bin/python3'
 let g:syntastic_python_pyflakes_exec = '/usr/bin/pyflakes-3'
 let g:syntastic_python_checkers = ['pyflakes', 'python'] " or python
-"}}}
-"
-"{{{ Python
-function! PythonOpts()
- setlocal tabstop=8 
- setlocal softtabstop=4
- setlocal shiftwidth=4
- setlocal expandtab
- setlocal foldmethod=indent
- setlocal foldnestmax=1
- setlocal omnifunc=python3complete#Complete
-endfunction
-autocmd FileType python call PythonOpts()
-"autocmd FileType python setlocal makeprg=cat\ %
-" autocmd BufWritePost *.py make
-"autocmd QuickFixCmdPost * copen
-"}}}
-
-" Java {{{
-function! JavaOpts()
-  " Keep these two equal at all times!
-  setlocal tabstop=4 " How many columns a tab counts for
-  setlocal shiftwidth=4 " How many columns indent with >>,<<,cindent
-
-  setlocal softtabstop=4 " How far TAB and BS move the cursor
-
-  setlocal expandtab " Expand TAB presses to spaces
-
-  setlocal autoindent
-  setlocal smartindent
-  set cinoptions+=j1
-endfunction
-autocmd FileType java call JavaOpts()
-"}}}
-
-" Haskell {{{
-function! HaskellOpts()
-set expandtab
-set nofoldenable
-endfunction
-autocmd FileType haskell call HaskellOpts()
 "}}}
 
 " Misc {{{

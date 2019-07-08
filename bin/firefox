@@ -1,3 +1,2 @@
 #!/bin/bash
-quiet() { "$@" > /dev/null 2>&1; }
-quiet exec ~/Downloads/firefox-beta/firefox-bin &
+nohup ~/Downloads/firefox-beta/firefox-bin &
