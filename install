@@ -57,9 +57,9 @@ maybe_mkdir_ln() {
 }
 cd "$DOTDIR" || exit 1
 true > links # zero the file first
-maybe_mkdir_ln "$DOTDIR/rc.lua" "$HOMECONFIG/awesome/rc.lua"
+#maybe_mkdir_ln "$DOTDIR/rc.lua" "$HOMECONFIG/awesome/rc.lua"
 maybe_mkdir_ln "$DOTDIR/fonts.conf" "$HOMECONFIG/fontconfig/fonts.conf" 
-maybe_mkdir_ln "$DOTDIR/config.fish" "$HOMECONFIG/fish/config.fish" 
+#maybe_mkdir_ln "$DOTDIR/config.fish" "$HOMECONFIG/fish/config.fish" 
 
 maybe_mkdir_ln "$DOTDIR/Xresources" "$HOME/.Xresources"
 maybe_mkdir_ln "$DOTDIR/bashrc" "$HOME/.bashrc.local" 
@@ -69,8 +69,8 @@ maybe_mkdir_ln "$DOTDIR/pythonrc" "$HOME/.pythonrc"
 maybe_mkdir_ln "$DOTDIR/vimrc" "$HOME/.vimrc" 
 maybe_mkdir_ln "$DOTDIR/emacs" "$HOME/.emacs"
 
-maybe_mkdir_ln "$DOTDIR/netbeans.conf" "$HOME/.netbeans/8.1/etc/netbeans.conf" 
-maybe_mkdir_ln "$DOTDIR/netbeans.conf" "$HOME/.netbeans/8.2/etc/netbeans.conf" 
+#maybe_mkdir_ln "$DOTDIR/netbeans.conf" "$HOME/.netbeans/8.1/etc/netbeans.conf" 
+#maybe_mkdir_ln "$DOTDIR/netbeans.conf" "$HOME/.netbeans/8.2/etc/netbeans.conf" 
 
 maybe_mkdir_ln "$DOTDIR/bin/myk-find" "$HOMEBIN/myk-find" 
 maybe_mkdir_ln "$DOTDIR/bin/myk-update-db" "$HOMEBIN/myk-update-db" 
@@ -81,4 +81,4 @@ maybe_mkdir_ln "$DOTDIR/bin/thunderbird" "$HOMEBIN/mythunderbird"
 maybe_mkdir_ln "$DOTDIR/python.vim" "$VIMFTPLUGIN/python.vim" 
 maybe_mkdir_ln "$DOTDIR/java.vim" "$VIMFTPLUGIN/java.vim" 
 maybe_mkdir_ln "$DOTDIR/javascript.vim" "$VIMFTPLUGIN/javascript.vim" 
-maybe_mkdir_ln "$DOTDIR/haskell.vim" "$VIMFTPLUGIN/haskell.vim" 
+#maybe_mkdir_ln "$DOTDIR/haskell.vim" "$VIMFTPLUGIN/haskell.vim" 
