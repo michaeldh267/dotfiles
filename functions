@@ -5,18 +5,6 @@
 # #set -x # debug mode
 # IFS=$'\n\t'
 
-shout() { echo "$0: $*" >&2; }
-barf() { shout "fatal: $*"; exit 111; }
-safe() { "$@" || barf "cannot $*"; }
-
-myk-rnd-bg() {
-feh --bg-fill --randomize ~/Downloads/*.jpg
-}
-
-myk-youtube-dl() {
-youtube-dl --restrict-filenames -o '%(title)s.%(ext)s' "$@"
-}
-
 git_sync() {
 (
 REMOTE="$1"
@@ -33,15 +21,6 @@ fi
 PATH_PUSH_ONCE () {
 if [[ ! "$PATH" =~ $1 ]]; then
   export PATH="$PATH:$1"
-fi
-}
-
-myk-screenshot() {
-if [ -n "$1" ]; then
-echo "$1.png"
-import -window root "$1.png"
-else
-echo "Usage: my-screenshot [filename]"
 fi
 }
 
